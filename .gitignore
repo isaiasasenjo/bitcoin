@@ -1,0 +1,5 @@
+node_modules/
+bitcoin-22/**
+polar/**
+bitcoin-22.*
+.env

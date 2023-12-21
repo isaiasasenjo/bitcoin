@@ -1,0 +1,134 @@
+/* CSS */
+
+*{
+    margin: 0px;
+
+}
+
+button{
+    color:red;
+    font-size: 20px ;
+}
+
+div{
+    margin: 0px;
+    padding: 12px;
+}
+
+table{
+    
+    border: "1";
+    background-color: beige;
+    margin:30px;
+    margin-right: 50px;
+    WIDTH:"100%";
+    align-self: "center";
+   
+}
+
+#table1{
+    
+    border: "2";
+    background-color: beige;
+    margin:30px;
+    margin-right: 30px;
+    WIDTH:"100%";
+    align-self: "center";
+   
+}
+
+.ancho{
+    width:140px;
+}
+
+
+body{
+    /* background-color: rgb(125, 114, 158); */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+}
+
+#container{
+    background-color: rgb(191, 197, 201);
+    width:90%;
+    margin: 5px auto;
+    border:1px solid black;
+    text-align: left;
+    line-height: 100px;
+    color: rgb(21, 2, 2);
+  
+}
+#foot{
+    background-color:   rgb(199, 7, 7);
+    width:90%;
+    margin: 5px auto;
+    /*border:1px solid black;*/
+    text-align: right;
+    /*line-height: 100px;*/
+    color: rgb(21, 2, 2); 
+}
+
+#menu{
+    background-color: rgb(237, 241, 201);
+    width:90%;
+   /*margin: 5px auto;*/
+    /*border:1px solid black;*/
+    text-align: left;
+    /*line-height: 100px;*/
+    color: rgb(21, 2, 2); 
+}
+
+#portada{
+    background-color: rgb(219, 216, 216);
+
+
+
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;   
+}
+
+#output{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;   
+    margin-right: 50px;
+}
+
+nav{
+    background: lightblue;
+    height: 1px;
+    border-bottom: 1px solid black;
+}
+
+nav ul li{
+    float:  left;
+    list-style: none;
+    margin: 15px;
+    line-height: 4px;
+    font-size: 18px;
+}
+
+ul ol li{
+
+    list-style: none;
+    margin: 15px;
+    line-height: 4px;
+    font-size: 16px;
+}
+
+.clearfix{
+    clear:both;
+}
+
+frontpage{
+    background-color: rgb(187, 152, 186);
+}
+
+.section{
+    background-color: rgb(239, 214, 214);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
