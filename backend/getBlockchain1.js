@@ -188,7 +188,7 @@ app.get("/blockchaininfo", async (req, res) => {
       blockChainInfo.blocks +
       "</h3></td></tr> <tr><td>Best Block Hash: </td><td><h3>" +
       blockChainInfo.bestblockhash +
-      "</h3></td>    console.log(mempoolInfo1);</tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h3>" +
+      "</h3></td></tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h3>" +
       blockChainInfo.softforks.bip34.height +
       "</h3></td></tr><tr><td></td><td>Fork number two (bip 66) in block number:  </td><td><h3>" +
       blockChainInfo.softforks.bip66.height +
