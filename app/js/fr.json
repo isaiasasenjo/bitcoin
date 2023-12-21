@@ -1,0 +1,16 @@
+ 
+    {
+        "menu1":"Projet",
+        "menu2":"Hardware  France",
+        "menu3":"Wallets",
+        "menu4":"Contrats intelligents",   
+        "portada": "Système de vérification de l'intégrité des données utilisant la technologie Blockchain. Le but de ce projet est de concevoir un système pour assurer l'intégrité des données générées par un capteur. Cette conception contiendra un matériel spécifique et une plate-forme pour visualiser les données générées par le capteur.",
+        "smartcontract": "",
+        "tokens": "",
+        "another":"",
+        "project":"This is my project",
+        "hardware":"HARDWARE of card  wallet",
+        "form":"Formulaire pour se connecter Metamask",
+        "peu":"Pied de page"
+
+    }

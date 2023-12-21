@@ -1,0 +1,14 @@
+{
+        "menu1":"Projecte",
+        "menu2":"Hardware català",
+        "menu3":"Wallets",
+        "menu4":"Contractes Intel·ligents",   
+        "portada": "Sistema per verificar la integritat de les dades mitjançant la tecnologia Blockchain. L'objectiu d'aquest projecte és dissenyar un sistema per garantir la integritat de les dades generades per un sensor. Aquest disseny contindrà un maquinari específic i una plataforma per visualitzar les dades generades pel sensor.",
+        "smartcontract": "",
+        "tokens": "",
+        "another":"",
+        "project":"This is my project",
+        "hardware":"HARDWARE of card  wallet",
+        "form":"Formulari per connectar Metamask",
+        "peu":"Peu de pàgina"
+}

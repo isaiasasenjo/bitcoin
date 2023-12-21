@@ -1,0 +1,30 @@
+table{
+    width:100%;
+    box-align:left;
+    letter-spacing:10;
+    scroll-padding:10;
+    border:0;
+}
+
+#lista1 {
+    font-family:Arial;
+    font-weight:bold;
+    font-size:13px;
+}
+.separador {
+    color:gray;
+}
+#lista1 li {
+     display:inline;
+     padding-left:3px;
+     padding-right:3px;
+    background-color:black;
+}
+a {
+    color:white;
+    text-decoration:none;
+}
+a:hover {
+    color:black;
+    background-color:lightgray;
+}

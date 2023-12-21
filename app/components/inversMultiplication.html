@@ -1,0 +1,239 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" type="text/css" href="./../styles/styles1.css"> -->
+    <link rel="stylesheet" type="text/css" href="./../styles/styles1.css">
+    <script>
+      let a = [0, 1, 2, 3, 4];
+      let b = [0, 1, 2, 3, 4];
+      var c = new Array(5);
+      //A cada posició del array c, guardem un nou array de 5 posicions. Es a dir una matriu de 5x5
+      // Això és per els resultats de la taula cuadrada
+      c[0] = new Array(5);
+      c[1] = new Array(5);
+      c[2] = new Array(5);
+      c[3] = new Array(5);
+      c[4] = new Array(5);
+      for (var i = 0; i < a.length; i++) {
+        for (var j = 0; j < b.length; j++) {
+          c[i][j] = parseInt((a[i] * b[j]) % 5, 10);
+
+          if (c[i][j] != 1) {
+            c[i][j] = "";
+          }
+        }
+      }
+    </script>
+    <script src="./../json/language.js"></script>
+    <style>
+      table,
+      th,
+      td {
+        table-layout: fixed;
+        width: 250px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        padding-right: 40px;
+        border: 1px solid blue;
+        width: 100px;
+        word-wrap: break-word;
+      }
+
+      ul,
+      ol,
+      li {
+        font-size: 40px;
+        font-family: "Times New Roman";
+        color: blue;
+      }
+    </style>
+  </head>
+  <body id="portada">
+    <button onClick="triggerEnglish()">English</button>
+    <button onClick="triggerSpanish()">Spanish</button>
+    <br><br>
+    <div id="output">The inverse of the multiplication, module 5  is: the two values are multiplied with modul 5. The inverse is the rest of the division when the division it's iqual to 1, because 1 it's a neutral element of the multiplication. Example: 3*2 = 6 and 6 mod 5 = 1 because it's the rest. 
+      Result: The inverse of the 2 it's 3 and the inverse of the 3 it's 2. Zero has no inverse because it is not an element of the list.
+    </div>
+    <table
+      border="1"
+      cellspacing="1"
+      cellpadding="0"
+      align="center"
+      width="100%"
+    >
+      <tr style="background-color: rgb(102, 255, 153);">
+     
+        <th class="ancho" scope="row">Invers Multiplication %5</th>
+        <th>0</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+      </tr>
+      <tr align="center">
+        <th style="background-color: rgb(102, 255, 153);" >0</th>
+        <td>
+          <script>
+            document.write(c[0][0]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[0][1]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[0][2]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[0][3]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[0][4]);
+          </script>
+        </td>
+      </tr>
+
+      <tr align="center">
+        <th style="background-color: rgb(102, 255, 153);">1</th>
+        <td>
+          <script>
+            document.write(c[1][0]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[1][1]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[1][2]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[1][3]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[1][4]);
+          </script>
+        </td>
+      </tr>
+
+      <tr align="center">
+        <th style="background-color: rgb(102, 255, 153);">2</th>
+        <td>
+          <script>
+            document.write(c[2][0]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[2][1]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[2][2]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[2][3]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[2][4]);
+          </script>
+        </td>
+      </tr>
+
+      <tr align="center">
+        <th style="background-color: rgb(102, 255, 153);">3</th>
+        <td>
+          <script>
+            document.write(c[3][0]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[3][1]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[3][2]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[3][3]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[3][4]);
+          </script>
+        </td>
+      </tr>
+
+      <tr align="center">
+        <th style="background-color: rgb(102, 255, 153);">4</th>
+        <td>
+          <script>
+            document.write(c[4][0]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[4][1]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[4][2]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[4][3]);
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(c[4][4]);
+          </script>
+        </td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    function triggerEnglish() {
+
+        document.getElementById('output').innerHTML = 
+        language[0].invermul;
+    } 
+    function triggerSpanish() {
+
+        document.getElementById('output').innerHTML = 
+        language[1].invermul;
+    } 
+
+</script>
+</html>
