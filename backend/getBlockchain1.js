@@ -3,6 +3,8 @@
 const express = require("express");
 const Client = require("bitcoin-core");
 const app = express();
+// Configurar middleware para servir archivos estáticos
+app.use(express.static('/home/eduard/bitcoin/backend'));
 const fs = require("fs");
 const port = 3001;
 
@@ -18,7 +20,8 @@ app.get("/transactions", async (req, res) => {
   const blockHash =
     "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
   // 00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9
-  // https://blockstream.info/testnet/
+  // https://blockstream.i// Configurar middleware para servir archivos estáticos
+app.use(express.static('ruta_de_tus_archivos_estaticos'));
 
   const blockHashBuffer = Buffer.from(blockHash, "hex");
   const formattedBlockHash = blockHashBuffer.toString("hex");
@@ -26,7 +29,8 @@ app.get("/transactions", async (req, res) => {
   try {
     // Obtén el bloque completo (incluyendo las transacciones)
     const block = await client.getBlock(formattedBlockHash);
-    // Accede a las transacciones del bloque
+    // Accede a las transa// Configurar middleware para servir archivos estáticos
+
     const transactions = block.transaction;
     // Imprime la información sobre las transacciones
     transactions.forEach((transaction, index) => {
@@ -140,6 +144,15 @@ app.get("/getblock", async (req, res) => {
 app.get("/", async (req, res) => {
   try {
     res.sendFile("/home/eduard/bitcoin/backend/index.html");
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("Error in the initial page");
+  }
+});
+//FUNCIONA BIEN
+app.get("/index1", async (req, res) => {
+  try {
+    res.sendFile("/home/eduard/bitcoin/backend/index1.html");
   } catch (e) {
     console.error("Error:", e);
     res.status(500).send("Error in the initial page");

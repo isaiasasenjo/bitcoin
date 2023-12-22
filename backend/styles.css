@@ -1,41 +1,56 @@
 /* CSS */
 
 *{
-    margin: 0px;
+    margin: 10px;
 
 }
 
-button{
-    color:red;
-    font-size: 20px ;
+#container{
+    background-color: rgb(201, 214, 223);
+    width:95%;
+    margin: 5px auto;
+    border:1px solid black;
+    text-align: left;
+    line-height: 100px;
+    color: rgb(21, 2, 2);
+}
+ 
+#header{
+    background-color: rgb(148, 148, 167);
+    border-color: rgb(14, 15, 61);
 }
 
-div{
-    margin: 0px;
-    padding: 12px;
-}
+#header
 
-table{
-    
+
+
+#table1{
     border: "1";
     background-color: beige;
     margin:30px;
+    margin-right: 30px;
+    width:90%;
+    align-self: "center";
+}
+
+#table1 tr {
+    width:auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+table2{
+    
+    border: "2";
+    background-color: rgb(14, 75, 24);
+    margin:30px;
     margin-right: 50px;
-    WIDTH:"100%";
+    width:100%;
     align-self: "center";
    
 }
 
-#table1{
-    
-    border: "2";
-    background-color: beige;
-    margin:30px;
-    margin-right: 30px;
-    WIDTH:"100%";
-    align-self: "center";
-   
-}
 
 .ancho{
     width:140px;
@@ -49,18 +64,10 @@ body{
 
 }
 
-#container{
-    background-color: rgb(191, 197, 201);
-    width:90%;
-    margin: 5px auto;
-    border:1px solid black;
-    text-align: left;
-    line-height: 100px;
-    color: rgb(21, 2, 2);
-  
-}
+
+
 #foot{
-    background-color:   rgb(199, 7, 7);
+    background-color:   rgb(148, 144, 144);
     width:90%;
     margin: 5px auto;
     /*border:1px solid black;*/
