@@ -6,7 +6,7 @@
 
 }
 
-#container{
+#container1{
     background-color: rgb(201, 214, 223);
     width:95%; /* anchura */
     height: 200px;
@@ -19,12 +19,13 @@
 
 
  
-header{
+header1{
     background-color:   rgb(181, 208, 240);
     border-color: rgb(14, 15, 61);
     margin:0px;
     margin-top: 0px;
-    text-align: left;
+    
+    text-align: right;
     line-height: 100px;
     width: 100%;  /* anchura*/
     height: 40px;  /* altura */
@@ -33,26 +34,16 @@ header{
     /*font-size: 24px;
     /*font-weight: bold;*/
 }
-
-div.lista {
-    text-align: right;
-  }
   
-  <link rel="stylesheet" type="text/css" href="/styles.css" /> ul.lista-ul {
-    display: inline-block;
-    text-align: left;
-  }
-
 .one {
     list-style: circle;
   }
   
-  .two {
+.two {
     list-style: square inside;
   }
 
 
-  background-color:   rgb(181, 208, 240);
 
 #table1{
     border: "1";
@@ -84,9 +75,6 @@ table2{
 }
 
 
-.ancho{
-    width:140px;
-}
 
 
 body1{
@@ -96,7 +84,7 @@ body1{
     width:95%; /* anchura */
     height: 200px;
 
-}
+}   
 
 
 
