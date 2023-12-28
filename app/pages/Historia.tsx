@@ -32,14 +32,12 @@ const Historia = () => {
         el doble gasto? Vayamos al mundo FIAT ($,€, Libra, Yen, etc.), cuando
         nos gastamos dinero en una compra, no nos podemos gastar el mismo
         billete en otra compra, ese papel de 50€ ya lo tiene la tienda donde
-        hemos comprado. Es algo natural y lo entendemos. Pues bien, lo mismo
-        hemos de hacer con el dinero Bitcoin, hemos de impedir ese doble gasto.
-        Ejemplo,si doy una transferencia de 0,05 BTC a un amigo, ese mismo
-        dinero no lo puedo utilizar para comprar algo. Los mineros impiden que
-        hagamos doble gasto. Un protocolo es una serie de reglas que siguen los
-        ordenadores para que se puedan comunicar entre ellos. En realidad un
-        protocolo es un programa que sirve de comunicación entre dos procesos.
-        Esos procesos pueden ser de software o hardware.
+        hemos comprado. Es algo natural y lo entendemos. Se ha de impedir el
+        doble gasto. Ejemplo,si doy una transferencia de 0,05 BTC a un amigo,
+        ese mismo dinero no lo puedo utilizar para comprar algo. El protocolo de
+        Bitcoin impide eldoble gasto. Un protocolo es un programa que sirve de
+        comunicación entre dos proc esos. Esos procesos pueden ser de software o
+        hardware.
       </p>
     </div>
   );
