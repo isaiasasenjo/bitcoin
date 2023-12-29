@@ -44,10 +44,23 @@
 }
 
 
-cabecera{
-    margin-top: 15px;
+cabecera1{
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    background-color: rojo;
+    
+}
+cabecera1 nav ul li{
+    background-color: rojo;
+}
+
+
+cabecera2{
+    margin-top: 45px;
     margin-left: 10px;
     padding: 15px;
+    background-color: greenyellow;
     
 }
 
@@ -56,7 +69,7 @@ blocks{
 }
 
 nav ul li{
-    float:  left;
+    float:  right;
     list-style: none;
     margin: 15px;
     line-height: 4px;
@@ -75,12 +88,12 @@ cabecera table{
     margin-left: 20px;
     margin-top: 20px;
 }
+
 .table-endpoints{
     margin-left: 10px;
     margin-top: 10px;
     font-size: large;
     border: 1;
-    background-color: aqua;
     padding: 2px;
 }
 
@@ -103,3 +116,48 @@ p{
     font-size: large;
 }
 
+
+
+
+/* Estilos para los submenús */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Estilos para los submenús */
+/* Estilos para los submenús */
+ul ul {
+    display: none;
+    position: absolute;
+    min-width: 140px;
+    background-color: #8f5757;
+    border: 1px solid #ccc;
+    z-index: 1;
+    top: 100%;
+    /* Cambiado de left a top para que aparezca debajo */
+    left: 0;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+    /* Añadido para que el submenú sea relativo a este elemento */
+}
+
+
+ul li:hover>ul {
+    display: inherit;
+}

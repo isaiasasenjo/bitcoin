@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu con Submenús</title>
+    <style>
+        /* Estilos básicos para el menú */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* Estilos para los submenús */
+        /* Estilos para los submenús */
+        ul ul {
+            display: none;
+            position: absolute;
+            min-width: 140px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            z-index: 1;
+            top: 100%;
+            /* Cambiado de left a top para que aparezca debajo */
+            left: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+            position: relative;
+            /* Añadido para que el submenú sea relativo a este elemento */
+        }
+
+
+        ul li:hover>ul {
+            display: inherit;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li>
+            <a href="#">NETWORK</a>
+            <ul>
+                <li><a href="#" onclick="cargarContenido('mainnet.html')">Mainnet</a></li>
+                <li><a href="#" onclick="cargarContenido('testnet.html')">Testnet</a></li>
+
+                <li>hhhhhhhhh</li>
+                <li>nnnnnnnnn</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div id="contenido">
+        <!-- Aquí se cargará el contenido -->
+    </div>
+
+    <script>
+        function cargarContenido(archivo) {
+            // Puedes cargar el contenido en un elemento div
+            var contenidoDiv = document.getElementById("contenido");
+            contenidoDiv.innerHTML = "Contenido cargado desde " + archivo;
+
+            // También puedes redirigir a la página correspondiente si lo prefieres
+            // window.location.href = archivo;
+        }
+    </script>
+
+</body>
+
+</html>
