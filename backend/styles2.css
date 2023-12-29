@@ -1,6 +1,7 @@
 *{
     margin:0px;
     padding:0px;
+   
 }
 
 .contenedor {
@@ -40,21 +41,26 @@
     background: #000;
     bottom: 50%;
     left: 100%; /* Ajusta la posición de la línea según sea necesario */
-    transform: translateY(-50%);
+    transform: trans/* Estilos para los submenús */lateY(-50%);
 }
 
 
-cabecera1{
+.cabecera{
     margin-top: 0px;
     margin-left: 0px;
     padding: 0px;
-    background-color: rojo;
+    background-color:#cccfdf;
     
 }
-cabecera1 nav ul li{
-    background-color: rojo;
+logotip{
+
+    background-color: #fa0404;
+}
+cabecera,nav,ul,li{
+    background-color: #fa0404;
 }
 
+/* Estilos para los submenús */
 
 cabecera2{
     margin-top: 45px;
@@ -62,7 +68,7 @@ cabecera2{
     padding: 15px;
     background-color: greenyellow;
     
-}
+}/* Estilos para los submenús */
 
 blocks{
     margin:40px;
@@ -78,8 +84,10 @@ nav ul li{
 }
 
 
-table,tr,td{
-    background-color: rgb(240, 239, 230);    
+cabecera3,table,tr,td{
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: rgb(247, 246, 245);    
 
 }
 
@@ -102,7 +110,7 @@ footer{
     font-size: 14px;
     color: black;   
     margin-top: 300px;
-    background-color: rojo;
+    background-color:#cccfdf;
 }
 
 h2{  
@@ -137,7 +145,7 @@ a {
 }
 
 /* Estilos para los submenús */
-/* Estilos para los submenús */
+
 ul ul {
     display: none;
     position: absolute;
