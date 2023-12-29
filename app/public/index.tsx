@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Menu from '../components/Menu'
+import Menu1 from '../components/Menu1'
 import Peu from '../components/Peu'
 import Historia from '../pages/Historia'
 
@@ -11,7 +11,7 @@ export default function Home() {
 
 <div className={styles.container}>
 {/* <App /> */}
-<Menu />
+<Menu1 />
 <Historia />
 <Peu />
       <Head>
