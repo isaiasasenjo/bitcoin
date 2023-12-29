@@ -53,20 +53,22 @@
     
 }
 logotip{
-
-    background-color: #fa0404;
-}
-cabecera,nav,ul,li{
-    background-color: #fa0404;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 10px;
+    letter-spacing: 4px;
+    background-color: #dbd4d4;
 }
 
 /* Estilos para los submenús */
 
-cabecera2{
-    margin-top: 45px;
-    margin-left: 10px;
-    padding: 15px;
-    background-color: greenyellow;
+cabecera,nav,ul,li{
+    size: 14px;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    
+    
     
 }/* Estilos para los submenús */
 
@@ -84,9 +86,15 @@ nav ul li{
 }
 
 
-cabecera3,table,tr,td{
+cabecera-tabla,table,tr,td{
+    padding:10px;
+    word-spacing:7px;
+    letter-spacing: 2px;
+    border-spacing: 5px;
     margin-top: 20px;
     margin-left: 20px;
+    
+    border-color: rgb(0, 0, 0);  
     background-color: rgb(247, 246, 245);    
 
 }
@@ -107,7 +115,7 @@ cabecera table{
 
 footer{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
+    font-size: 24px;
     color: black;   
     margin-top: 300px;
     background-color:#cccfdf;
