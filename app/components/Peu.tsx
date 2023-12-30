@@ -19,6 +19,7 @@ const Peu = () => {
           Mainnet Bitcoin</a></td>
           <td> <a  href="https://mempool.space/" target="_blank"> 
           Mempool</a></td>
+          <td>Mainnet</td>
           
           <td> English</td>
         </tr>
@@ -26,6 +27,7 @@ const Peu = () => {
         <td> <a  href="https://blockchair.com/es/bitcoin/testnet" target="_blank"> 
         Tesnet Bitcoin</a></td>
           <td>   <Link href="/Lightning">Lightning</Link></td>
+          <td>Testnet</td>
           <td> Spanish</td>
         </tr>
       </tbody>

@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import Menu from "../components/Menu";
+import Menu2 from "../components/Menu2";
 export default function Bloques() {
   return (
     <main>
       <div>
-        <Menu />
+        <Menu2 />
 
 
         <div id="output">There are a Blocks in the Network of Bitcoin
@@ -28,11 +28,6 @@ export default function Bloques() {
             </table>
           </body>
         </html>
-
-
-
-
-
       </div>
       </div>
     </main>
