@@ -19,8 +19,7 @@ const Peu = () => {
           Mainnet Bitcoin</a></td>
           <td> <a  href="https://mempool.space/" target="_blank"> 
           Mempool</a></td>
-          <td>Mainnet</td>
-          
+          <td>Mainnet</td>       
           <td> English</td>
         </tr>
         <tr>

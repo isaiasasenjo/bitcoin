@@ -1,5 +1,7 @@
 import React from "react";
 import Link from 'next/link';
+import './../styles/Styles2.module.css' ;
+
 import Bloques from '../pages/Bloques'
 import Bloques1 from '../pages/Bloques1'
 import Mempool from '../pages/Mempool'
@@ -27,8 +29,8 @@ const Menu = () => {
   return (
     <div style={divStylesMenu}>
 
-      <table
-        width="50%"
+      <table className="cabecera-tabla"
+        width="30%"
         
         // style={dinvStylesMenu}
         // align="right"
