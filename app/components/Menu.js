@@ -1,7 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 import Bloques from '../pages/Bloques'
-import Bloques1 from '../pages/Bloques1'
+
 import Mempool from '../pages/Mempool'
 import Lightning from '../pages/Lightning'
 import Frontend2 from '../pages/Frontend2'
@@ -47,9 +47,7 @@ const Menu = () => {
           <td align="center">
                 <Link href="/">Home</Link>
           </td>
-          <td align="center">
-                <Link href="/Bloques1">Bloques-1</Link>
-          </td>
+
           <td align="center">
                 <Link href="/Bloques">Bloques/Tx</Link>
           </td>

@@ -1,13 +1,10 @@
 import React from "react";
-import Link from 'next/link';
-import './../styles/Styles2.module.css' ;
-
-import Bloques from '../pages/Bloques'
-import Blocks from '../pages/Blocks'
-import Bloques1 from '../pages/Bloques1'
-import Mempool from '../pages/Mempool'
-import Lightning from '../pages/Lightning'
-import Frontend2 from '../pages/Frontend2'
+import Link from "next/link";
+import "./../styles/Styles2.module.css";
+import Blocks from "../pages/Blocks";
+import Mempool from "../pages/Mempool";
+import Lightning from "../pages/Lightning";
+import Frontend2 from "../pages/Frontend2";
 
 //import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 //import language from "./../js/lang.json"; //language es un objecte que apunta al fitxer idioma.json
@@ -25,14 +22,18 @@ const Menu = () => {
     backgroundColor: "#5499c7",
     color: "white",
     fontSize: "18px",
+    display: "flex", // Utilizamos flexbox
+    justifyContent: "flex-end", // Alineamos los elementos a la derecha
+    padding: "10px", // Añadimos algún espacio de padding
+
   };
 
   return (
     <div style={divStylesMenu}>
+      <table
+        className="cabecera-tabla"
+        width="20%"
 
-      <table className="cabecera-tabla"
-        width="50%"
-        
         // style={dinvStylesMenu}
         // align="right"
         // cellspacing="10"
@@ -40,37 +41,31 @@ const Menu = () => {
         // border="0"
       >
         <tbody>
-        <tr>
-          <td align="right"> 
-            
-            <a href="" target="_parent">
-              {/* <img src={logo} width="40" height="34" /> */}
-            </a>
-          </td>
+          <tr align="right">
+            <td align="right">
+              <a href="" target="_parent">
+                {/* <img src={logo} width="40" height="34" /> */}
+              </a>
+            </td>
 
-          <td align="right">
-                <Link href="/">Home</Link>
-          </td>
-          <td align="right">
-                <Link href="/Bloques1">History</Link>
-          </td>
-          <td align="right">
-                <Link href="/Bloques">Blocks-Tx</Link>
-          </td>
-          <td align="right">
-                <Link href="/Blocks">Prova de Blocks</Link>
-          </td>
+            <td align="right">
+              <Link href="/">Home</Link>
+            </td>
 
-
-        </tr>
+            <td align="right">
+              <Link href="/Blocks">Blocks/Tx</Link>
+            </td>
+          </tr>
         </tbody>
       </table>
-{/* 
+
+      
+      
+      {/* 
      <button onClick="triggerEnglish()">English</button>
     <button onClick="triggerSpanish()">Spanish</button>
 */}
     </div>
-
   );
 };
 
