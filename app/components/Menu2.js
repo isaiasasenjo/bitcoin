@@ -3,6 +3,7 @@ import Link from 'next/link';
 import './../styles/Styles2.module.css' ;
 
 import Bloques from '../pages/Bloques'
+import Blocks from '../pages/Blocks'
 import Bloques1 from '../pages/Bloques1'
 import Mempool from '../pages/Mempool'
 import Lightning from '../pages/Lightning'
@@ -30,7 +31,7 @@ const Menu = () => {
     <div style={divStylesMenu}>
 
       <table className="cabecera-tabla"
-        width="30%"
+        width="50%"
         
         // style={dinvStylesMenu}
         // align="right"
@@ -51,10 +52,13 @@ const Menu = () => {
                 <Link href="/">Home</Link>
           </td>
           <td align="right">
-                <Link href="/Bloques1">Blocks-Tx</Link>
+                <Link href="/Bloques1">History</Link>
           </td>
           <td align="right">
-                <Link href="/Bloques">Block-2</Link>
+                <Link href="/Bloques">Blocks-Tx</Link>
+          </td>
+          <td align="right">
+                <Link href="/Blocks">Prova de Blocks</Link>
           </td>
 
 
