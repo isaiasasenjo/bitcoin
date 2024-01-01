@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import Menu2 from "./../components/Menu2";
+import Menu from "./../components/Menu";
 import Peu from "../components/Peu";
 //import logo from "./../logos/triangulo.jpg";
 
@@ -10,7 +10,7 @@ export default function Bloques() {
     
     <main>
       <div className={styles.container}>
-        <Menu2 />
+        <Menu />
 
         <br></br>
         <Link
