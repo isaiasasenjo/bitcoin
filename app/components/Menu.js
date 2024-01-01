@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import "./../styles/Styles2.module.css";
-import Blocks from "../pages/Blocks";
-import Transactions from "../pages/Transactions";
-import Mempool from "../pages/Mempool";
-import Lightning from "../pages/Lightning";
-import Frontend2 from "../pages/Frontend2";
+//import Blocks from "../pages/Blocks";
+//import Transactions from "../pages/Transactions";
+//import Mempool from "../pages/Mempool";
+//import Lightning from "../pages/Lightning";
+//import Frontend2 from "../pages/Frontend2";
 
 //import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 //import language from "./../js/lang.json"; //language es un objecte que apunta al fitxer idioma.json

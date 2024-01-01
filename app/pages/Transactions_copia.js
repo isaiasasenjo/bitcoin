@@ -1,21 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
-import styles2 from "../styles/Styles2.module.css";
-import Menu from "./../components/Menu";
+//import styles from "../styles/Home.module.css";
+//import styles2 from "../styles/Styles2.module.css";
+import Menu from "../components/Menu";
 import Peu from "../components/Peu";
 //import logo from "./../logos/triangulo.jpg";
 
 export default function Transactions() {
-  let x = 1;
-
   return (
     <div>
+      <Menu />
 
-        <Menu />
-        
-        <h3>Transactions</h3>
-        <table className="cabecera-tabla" width="100%" border={2}>
+      <h3>Transactions</h3>
+      <table className="cabecera-tabla" width="100%" border={2}>
+        <tbody>
           <tr>
             <td>Hash</td>
             <td>Value</td>
@@ -32,10 +30,9 @@ export default function Transactions() {
             <td>1.2</td>
             <td>0.005BTC</td>
           </tr>{" "}
+        </tbody>
+      </table>
 
-
-        </table>
-    
       <br></br>
       <Peu />
     </div>
