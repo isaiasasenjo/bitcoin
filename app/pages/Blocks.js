@@ -19,7 +19,7 @@ export default function Blocks() {
       <div className={styles2.contenedor}>
          <div className={styles2.cuadrado}>
             <h3>
-              {last_block}
+              <a href="https://blockchair.com/es/bitcoin/testnet/block/2569541">{last_block}</a>
             </h3>
         </div>
         <div className={styles2.cuadrado}>
