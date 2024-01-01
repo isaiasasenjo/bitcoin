@@ -7,7 +7,7 @@ import Peu from "../components/Peu";
 //import logo from "./../logos/triangulo.jpg";
 
 export default function Blocks() {
-  let last_block = 2568600;
+  let last_block = 2569713;
   
   return (
     
@@ -19,7 +19,7 @@ export default function Blocks() {
       <div className={styles2.contenedor}>
          <div className={styles2.cuadrado}>
             <h3>
-              <a href="https://blockchair.com/es/bitcoin/testnet/block/2569541">{last_block}</a>
+              <a href="https://blockchair.com/es/bitcoin/testnet/block/2569713">{last_block}</a>
             </h3>
         </div>
         <div className={styles2.cuadrado}>

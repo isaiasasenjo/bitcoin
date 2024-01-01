@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import "./../styles/Styles2.module.css";
 import Blocks from "../pages/Blocks";
+import Transactions from "../pages/Transactions";
 import Mempool from "../pages/Mempool";
 import Lightning from "../pages/Lightning";
 import Frontend2 from "../pages/Frontend2";
@@ -32,7 +33,7 @@ const Menu = () => {
     <div style={divStylesMenu}>
       <table
         className="cabecera-tabla"
-        width="20%"
+        width="30%"
 
         // style={dinvStylesMenu}
         // align="right"
@@ -53,7 +54,10 @@ const Menu = () => {
             </td>
 
             <td align="right">
-              <Link href="/Blocks">Blocks/Tx</Link>
+              <Link href="/Blocks">Blocks</Link>
+            </td>
+            <td align="right">
+              <Link href="/Transactions">Transactions</Link>
             </td>
           </tr>
         </tbody>
