@@ -36,7 +36,7 @@ export default function Bloques() {
           {" "}
           <ul>
             <li>
-              nnnnnnnnnnnnnnnnnnnnnnnnnn
+              Blocks of Chain
           
             </li>
           </ul>
