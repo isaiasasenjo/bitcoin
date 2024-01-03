@@ -11,7 +11,7 @@ export default function Transactions() {
     <div>
       <Menu />
 
-      <h3>Transactions111</h3>
+      <h3>Transactions</h3>
       <table className="cabecera-tabla" width="100%" border={2}>
         <tbody>
           <tr>
@@ -30,6 +30,26 @@ export default function Transactions() {
             <td>2,3</td>
             <td>1.2</td>
             <td>0.005BTC</td>
+          </tr>
+          <tr>
+            <td>
+              <Link href="https://blockstream.info/testnet/tx/7cf34344bd28091a7b9a48e5c59360787bd55f8890fff0f45572f55319e909da">
+              7cf34344bd28091a7b9a48e5c59360787bd55f8890fff0f45572f55319e909da
+              </Link>
+            </td>
+            <td>1,5</td>
+            <td>0.8</td>
+            <td>0.003BTC</td>
+          </tr>
+          <tr>
+            <td>
+              <Link href="https://blockstream.info/testnet/tx/7b4599c550cc9a26fa3de08ccff4a42f44fd1e672e43fcc3ed890c65cb411ef0">
+              7b4599c550cc9a26fa3de08ccff4a42f44fd1e672e43fcc3ed890c65cb411ef0
+              </Link>
+            </td>
+            <td>3.1</td>
+            <td>2.52</td>
+            <td>0.00002BTC</td>
           </tr>
         </tbody>
       </table>

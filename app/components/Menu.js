@@ -33,7 +33,7 @@ const Menu = () => {
     <div style={divStylesMenu}>
       <table
         className="cabecera-tabla"
-        width="30%"
+        width="25%"
 
         // style={dinvStylesMenu}
         // align="right"

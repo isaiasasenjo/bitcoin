@@ -4,6 +4,8 @@ import styles from "../styles/Home.module.css";
 import styles2 from "../styles/Styles2.module.css";
 import Menu from "./../components/Menu";
 import Peu from "../components/Peu";
+import Blocks1 from "./Blocks1";
+import Blocks2 from "./Blocks2";
 //import logo from "./../logos/triangulo.jpg";
 
 export default function Blocks() {
@@ -55,6 +57,10 @@ export default function Blocks() {
             </h3>
         </div>
       </div>
+      <br></br>
+      <Blocks1 />
+      <br></br>
+      <Blocks2 />
       <br></br>
         <Peu />
       </div>
