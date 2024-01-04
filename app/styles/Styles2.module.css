@@ -70,6 +70,13 @@
     background-color: rgb(247, 246, 245);    
 }
 
+.tabla1{
+    width:100%;
+    background-color: #ccc;
+    border: red 9px solid;
+  
+}
+
 
 .table-endpoints{
     margin-left: 10px;

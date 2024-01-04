@@ -8,7 +8,7 @@ export default function Blocks() {
   return (
     <main>
       <div>
-        <h3>Blocks-1</h3>
+        <h3>Blocks-1 Blocks</h3>
 
         <table className={styles2.tabla1}>
         
