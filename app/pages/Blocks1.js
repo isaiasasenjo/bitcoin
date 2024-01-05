@@ -6,12 +6,12 @@ import styles2 from "../styles/Styles2.module.css";
 export default function Blocks() {
   
   return (
-    <main>
+    
       <div>
         <h3>Blocks-1 Blocks</h3>
 
         <table className={styles2.tabla1}>
-        
+        <tbody>
           <tr>
             <td>Height</td>
             <td>Timestamp</td>
@@ -47,9 +47,9 @@ export default function Blocks() {
             <td>83.821</td>
             <td>195.433</td>
           </tr>
-        
+          </tbody>        
         </table>
       </div>
-    </main>
+
   );
 }

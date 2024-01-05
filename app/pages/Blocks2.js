@@ -7,13 +7,13 @@ export default function Blocks2() {
   
   return (
     
-    <main>
-      <div className={styles2.container}>
+    
+      <div>
 <h3>Blocks-2 Transactions</h3>
-<div>
+
 
         <table className={styles2.tabla1}>
-        
+        <tbody>        
           <tr>
             <td>Transactions ID</td>
             <td>Value</td>
@@ -52,10 +52,11 @@ export default function Blocks2() {
             <td>0.004</td>
 
           </tr>
+          </tbody>
+
         </table>
       </div>
 
-      </div>
-    </main>
+
   );
 }
