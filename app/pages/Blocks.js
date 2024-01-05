@@ -7,7 +7,7 @@ import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
 
 export default function Blocks() {
-  const lastBlock = 2569713;
+  let lastBlock = 100050;
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
@@ -15,11 +15,14 @@ export default function Blocks() {
 
   const handlePrevious = () => {
     setCurrentBlock((prevBlock) => prevBlock - numBlocksToShow);
-  };
+   };
 
   const handleNext = () => {
-    setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
-  };
+    if (lastBlock>currentBlock){
+      setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
+    }else{
+    } 
+    };
 
   for (let i = 0; i < numBlocksToShow; i++) {
     const blockNumber = currentBlock - i;
@@ -40,8 +43,10 @@ export default function Blocks() {
         <Menu />
         <h3>Blocks of Chain</h3>
         <div>
-          <button onClick={handlePrevious}>PREVIOUS</button>
-          <button onClick={handleNext}>NEXT</button>
+
+        <button onClick={handleNext}>NEXT</button>
+        <button onClick={handlePrevious}>PREVIOUS</button>
+
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
 
