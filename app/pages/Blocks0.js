@@ -39,12 +39,11 @@ export default function Blocks() {
       <div className={styles2.container}>
         <Menu />
         <h3>Blocks of Chain</h3>
+        <div className={styles2.contenedor}>{blocks}</div>
         <div>
           <button onClick={handlePrevious}>PREVIOUS</button>
           <button onClick={handleNext}>NEXT</button>
         </div>
-        <div className={styles2.contenedor}>{blocks}</div>
-
         <br />
         <Blocks1 />
         <br />
