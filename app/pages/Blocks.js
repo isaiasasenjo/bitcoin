@@ -7,7 +7,7 @@ import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
 
 export default function Blocks() {
-  let lastBlock = 100050;
+  let lastBlock = 100000;
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
@@ -15,6 +15,7 @@ export default function Blocks() {
 
   const handlePrevious = () => {
     setCurrentBlock((prevBlock) => prevBlock - numBlocksToShow);
+    
    };
 
   const handleNext = () => {
@@ -43,7 +44,8 @@ export default function Blocks() {
         <Menu />
         <h3>Blocks of Chain</h3>
         <div>
-
+        <button onClick={""}>Last Block</button>
+        <button onClick={""}>----</button>
         <button onClick={handleNext}>NEXT</button>
         <button onClick={handlePrevious}>PREVIOUS</button>
 

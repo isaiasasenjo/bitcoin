@@ -51,7 +51,10 @@
 
 /* Estilos para los submenús */
 
-#blocks{
+#blocks{.tabla1 td:nth-child(1) {
+    width: 200px;
+  }
+
     margin:40px;
 }
 
@@ -68,13 +71,14 @@
     background-color: rgb(247, 246, 245);    
 }
 
-.tabla1 tr td{
+.tabla1{
     width:100%;
     background-color: #ccc;
     border: rgb(10, 10, 10) 1px solid;
-    border-collapse: separate;
-  
+    border-collapse: separate;  
 }
+
+
 
 
 .table-endpoints{

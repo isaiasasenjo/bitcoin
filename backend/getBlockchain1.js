@@ -187,7 +187,7 @@ app.get("/blockcount", async (req, res) => {
 // Define a route to get the block count
 app.get("/blockhash", async (req, res) => {
   try {
-    const blockHash = await client.getBlockHash(2570875);
+    const blockHash = await client.getBlockHash(2570874);
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);
