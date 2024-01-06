@@ -14,11 +14,11 @@ async function getLatestBlock() {
       const latestBlock = await client.getBlock(bestBlockHash);
       return latestBlock;
     } catch (error) {
-      console.error('Error fetching latest block:', error);
+      console.error('Error fetching latest blocks:', error);
       throw error;
     }
   }
   
 getLatestBlock()
 
-console.log("Hice la llamada")
+console.log("Hice la crida")

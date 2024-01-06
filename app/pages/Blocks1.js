@@ -20,16 +20,16 @@ export default function Blocks() {
             <td>Weight(KWU)</td>
           </tr>
           <tr>
-            <td>2570661</td>
+            <td>257456</td>
             <td>2024-01.04 20:50</td>
             <td>38</td>
             <td>10.66</td>
             <td>31.561</td>
           </tr>
           <tr>
-            <td>2570660</td>
+            <td>2570652</td>
             <td>2024-01.04 20:44</td>
-            <td>23</td>
+            <td>25</td>
             <td>7.139</td>
             <td>22.136</td>
           </tr>

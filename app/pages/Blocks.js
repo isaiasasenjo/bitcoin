@@ -7,7 +7,7 @@ import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
 
 export default function Blocks() {
-  let lastBlock = 100000;
+  let lastBlock = 2450000;
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
