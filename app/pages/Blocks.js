@@ -13,15 +13,27 @@ export default function Blocks() {
 
   const blocks = [];
 
+  const [vacio, setVacio] = useState('          ');
   const handlePrevious = () => {
+
     setCurrentBlock((prevBlock) => prevBlock - numBlocksToShow);
+
+    if (lastBlock>currentBlock){
+      setVacio('         ');
+    }else{
+      setVacio('LastBlock');
+    } 
+
+
     
    };
 
   const handleNext = () => {
+
     if (lastBlock>currentBlock){
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
     }else{
+      setVacio('LastBlock');
     } 
     };
 
@@ -43,8 +55,8 @@ export default function Blocks() {
       <div className={styles2.container}>
         <Menu />
         <h3>Blocks of Chain</h3>
-        <div>
-        <button onClick={""}>Last Block</button>
+        <div>  
+        <button onClick={""}>{vacio}</button>
         <button onClick={""}>----</button>
         <button onClick={handleNext}>NEXT</button>
         <button onClick={handlePrevious}>PREVIOUS</button>
