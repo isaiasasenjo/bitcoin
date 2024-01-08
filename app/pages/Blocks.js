@@ -5,9 +5,11 @@ import Menu from "./../components/Menu";
 import Peu from "../components/Peu";
 import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
+import Frontend3 from "./Frontend3";
 
 export default function Blocks() {
   let lastBlock = 2450000;
+  <Frontend3 />
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 

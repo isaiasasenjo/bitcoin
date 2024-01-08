@@ -1,8 +1,11 @@
 // https://www.youtube.com/watch?v=dsWD2fR8O7I
 
 const express = require("express");
+const cors = require('cors');
 const Client = require("bitcoin-core");
+
 const app = express();
+app.use(cors());
 // Configurar middleware para servir archivos estáticos
 app.use(express.static('/home/eduard/bitcoin/backend'));
 const fs = require("fs");
@@ -15,6 +18,74 @@ const client = new Client({
   password: "2001", // Replace with your rpcpassword
   port: 18332, // Default RPC port for testnet
 });
+
+// FUNCIONA BIEN
+app.get("/blockcount", async (req, res) => {
+  try {
+    const blockCount = await client.getBlockCount();
+    res.json({
+      blockCount,
+    });
+    console.log("Estoy en el Backend")
+    //res.send(`Current block count: ${blockCount}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhash", async (req, res) => {
+  try {
+    const blockHash = await client.getBlockHash(2570874);
+    res.send(`BlockHash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+// Define a route to get the block count
+//FUNCIONA BIEN
+app.get("/blockchaininfo", async (req, res) => {
+  try {
+    //Aquí tenim un objecte blockchaininfo
+    const blockChainInfo = await client.getBlockchainInfo();
+    //console.log(blockChainInfo.chain);
+    const blockchainInfoString = JSON.stringify(blockChainInfo);
+
+    const response =
+      "<html><body><table border=2><tr><td>Concept</td><td>Result</td></tr> <tr><td>Network: </td><td><h3>" +
+      blockChainInfo.chain +
+      "</h3> </td></tr><tr><td>Number of Blocks: </td><td><h3>" +
+      blockChainInfo.blocks +
+      "</h3></td></tr> <tr><td>Best Block Hash: </td><td><h3>" +
+      blockChainInfo.bestblockhash +
+      "</h3></td></tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h3>" +
+      blockChainInfo.softforks.bip34.height +
+      "</h3></td></tr><tr><td></td><td>Fork number two (bip 66) in block number:  </td><td><h3>" +
+      blockChainInfo.softforks.bip66.height +
+      "</h3></td></tr><tr><td></td><td>Fork number three (bip 65) in block number:  </td><td><h3>" +
+      blockChainInfo.softforks.bip65.height +
+      "</h3></td></tr><tr><td></td><td>Fork number four (bip csv) in block number:  </td><td><h3>" +
+      blockChainInfo.softforks.csv.height +
+      "</h3></td></tr><tr><td></td><td>Fork number five (segwit) in block number:  </td><td><h3>" +
+      blockChainInfo.softforks.segwit.height +
+      "</h3></td></tr><tr><td></td><td>Fork number six (taproot) in block number:  </td><td><h3>" +
+      blockChainInfo.softforks.taproot.height +
+      "</h3></td></tr></table></body></html>";
+    res.send(response);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+
+
+
+
 
 app.get("/transactions", async (req, res) => {
   const blockHash =
@@ -98,7 +169,7 @@ app.get("/getblock", async (req, res) => {
     const blockHash =
       "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
     const blockHashBuffer = Buffer.from(blockHash, "hex");
-    // Convert the block hash buffer to a string in the correct format
+    // Convert the const express = require('express');
     const formattedBlockHash = blockHashBuffer.toString("hex");
     // Retrieve the block header from the Bitcoin node using the formatted block hash
     const blockHeader = await client.getBlockHeader(formattedBlockHash);
@@ -169,67 +240,6 @@ app.get("/index2", async (req, res) => {
   }
 });
 
-// FUNCIONA BIEN
-app.get("/blockcount", async (req, res) => {
-  try {
-    const blockCount = await client.getBlockCount();
-    res.json({
-      blockCount,
-    });
-    //res.send(`Current block count: ${blockCount}`);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
-
-//FUNCIONA BIEN
-// Define a route to get the block count
-app.get("/blockhash", async (req, res) => {
-  try {
-    const blockHash = await client.getBlockHash(2570874);
-    res.send(`BlockHash: ${blockHash}`);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
-
-// Define a route to get the block count
-//FUNCIONA BIEN
-app.get("/blockchaininfo", async (req, res) => {
-  try {
-    //Aquí tenim un objecte blockchaininfo
-    const blockChainInfo = await client.getBlockchainInfo();
-    //console.log(blockChainInfo.chain);
-    const blockchainInfoString = JSON.stringify(blockChainInfo);
-
-    const response =
-      "<html><body><table border=2><tr><td>Concept</td><td>Result</td></tr> <tr><td>Network: </td><td><h3>" +
-      blockChainInfo.chain +
-      "</h3> </td></tr><tr><td>Number of Blocks: </td><td><h3>" +
-      blockChainInfo.blocks +
-      "</h3></td></tr> <tr><td>Best Block Hash: </td><td><h3>" +
-      blockChainInfo.bestblockhash +
-      "</h3></td></tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h3>" +
-      blockChainInfo.softforks.bip34.height +
-      "</h3></td></tr><tr><td></td><td>Fork number two (bip 66) in block number:  </td><td><h3>" +
-      blockChainInfo.softforks.bip66.height +
-      "</h3></td></tr><tr><td></td><td>Fork number three (bip 65) in block number:  </td><td><h3>" +
-      blockChainInfo.softforks.bip65.height +
-      "</h3></td></tr><tr><td></td><td>Fork number four (bip csv) in block number:  </td><td><h3>" +
-      blockChainInfo.softforks.csv.height +
-      "</h3></td></tr><tr><td></td><td>Fork number five (segwit) in block number:  </td><td><h3>" +
-      blockChainInfo.softforks.segwit.height +
-      "</h3></td></tr><tr><td></td><td>Fork number six (taproot) in block number:  </td><td><h3>" +
-      blockChainInfo.softforks.taproot.height +
-      "</h3></td></tr></table></body></html>";
-    res.send(response);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
 
 // Start the server
 app.listen(port, () => {
