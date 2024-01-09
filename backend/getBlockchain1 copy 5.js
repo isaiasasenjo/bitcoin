@@ -5,10 +5,7 @@ const cors = require('cors');
 const Client = require("bitcoin-core");
 
 const app = express();
-var corsOptions = {
-  origin: '[http://localhost:3001](http://localhost:3001)',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
+
 
 // Configurar middleware para servir archivos estáticos
 app.use(express.static('/home/eduard/bitcoin/backend'));
@@ -26,18 +23,13 @@ const client = new Client({
 
 //https://platzi.com/tutoriales/2485-backend-nodejs/22425-como-instalar-y-configurar-cors/
 // FUNCIONA BIEN
-app.get("/blockcount", cors(corsOptions),async (req, res) => {
-  console.log("Estoy en el Backend1111111111111");
+app.get("/blockcount",async (req, res) => {
   try {
-    console.log("Estoy en el Backend222222222");
-    console.log(corsOptions);
-    console.log(cors);
     const blockCount = await client.getBlockCount();
-
     res.json({
       blockCount,
     });
- 
+    console.log("Estoy en el Backend")
     //res.send(`Current block count: ${blockCount}`);
   } catch (e) {
     console.error("Error:", e);
