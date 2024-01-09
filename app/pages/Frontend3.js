@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
 
-const Frontend3 = () => {
+export const blockCount = null;
+
+const Frontend3 = () => { 
   const [blockCount, setBlockCount] = useState(null);
-  console.log("FRONTEND 11111111");
+  
   useEffect(() => {
     // Llamada al Endpoint del Backend
-    fetch("http://localhost:3001/blockcount")  // ajusta la URL según la configuración de tu servidor
+    fetch("http://localhost:3001/blockcount")
       .then(response => response.json())
-      .then(data => setBlockCount(data.blockcount))
+      .then(data => setBlockCount(data.blockCount))
       .catch(error => console.error("Error fetching blockcount:", error));
   }, []);
-  console.log("FRONTEND 22222222");
+
   console.log(blockCount);
+//blockcount tiene el último bloque minado
   return (
     <div>
-      <p>Último bloque minado: {blockCount}</p>
+      <p>
+        Último bloque minado: {blockCount === null ? "Cargando..." : blockCount}
+      </p>
     </div>
   );
 };

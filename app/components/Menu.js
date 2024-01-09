@@ -54,7 +54,7 @@ const Menu = () => {
             </td>
 
             <td align="right">
-              <Link href="/Blocks0">Blocks</Link>
+              <Link href="/Blocks">Blocks</Link>
             </td>
             <td align="right">
               <Link href="/Transactions">Transactions</Link>
