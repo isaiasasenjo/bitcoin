@@ -6,7 +6,7 @@ const Client = require("bitcoin-core");
 
 const app = express();
 var corsOptions = {
-  origin: '[http://localhost:3001](http://localhost:3001)',
+  origin: '[http://localhost](http://localhost)',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
@@ -30,8 +30,6 @@ app.get("/blockcount", cors(corsOptions),async (req, res) => {
   console.log("Estoy en el Backend1111111111111");
   try {
     console.log("Estoy en el Backend222222222");
-    console.log(corsOptions);
-    console.log(cors);
     const blockCount = await client.getBlockCount();
 
     res.json({
