@@ -13,7 +13,7 @@ const Frontend3 = () => {
       .catch(error => console.error("Error fetching blockcount:", error));
   }, []);
 
-  console.log(blockCount);
+
 //blockcount tiene el último bloque minado
   return (
     <div>
