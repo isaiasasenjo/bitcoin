@@ -1,31 +1,22 @@
-import React, { useEffect,useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import styles2 from "../styles/Styles2.module.css";
 import Menu from "./../components/Menu";
 import Peu from "../components/Peu";
 import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
-//import Frontend4, { blockCount } from "./Frontend4";
-import Frontend4 from "./Frontend4"; 
+import Frontend3, { blockCount } from "./Frontend3";
 
 export default function Blocks() {
-  const [blockCount, setBlockCount] = useState(null);
- 
   let lastBlock = 2450000;
-  useEffect(() => {
-    
-    // puedes hacer algo con blockCount aquí si es necesario
-  }, [blockCount]);
-  console.log(`estoy en Blocks, blockcount vale: ${blockCount}`);  
-  {Frontend4({ blockCount, setBlockCount })}
-  lastBlock = blockCount;  
+  <Frontend3 />
+  console.log(blockCount);
+  //lastBlock={blockCount}
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
   const blocks = [];
 
-console.log(`lastBlock vale: ${lastBlock}`)
-console.log(`CurrentBlock vale: ${currentBlock}`);
   const [vacio, setVacio] = useState('');
   const handlePrevious = () => {
 
@@ -55,8 +46,8 @@ console.log(`CurrentBlock vale: ${currentBlock}`);
     blocks.push(
       <div key={blockNumber} className={styles2.cuadrado}>
         <h3>
-          <a href={`https://blockchair.com/es/bitcoin/testnet/block/${blockNumber+blockCount}`} target="_blank">
-            {blockNumber+blockCount}
+          <a href={`https://blockchair.com/es/bitcoin/testnet/block/${blockNumber}`}>
+            {blockNumber}
           </a>
         </h3>
       </div>
@@ -69,10 +60,14 @@ console.log(`CurrentBlock vale: ${currentBlock}`);
         <Menu />
         <h3>Blocks of Chain</h3>
         <div>  
+        <button onClick={""}><h4>{vacio}</h4></button>
+        <button onClick={""}>----</button>
         <button onClick={handleNext}>NEXT</button>
         <button onClick={handlePrevious}>PREVIOUS</button>
+
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
+
         <br />
         <Blocks1 />
         <br />

@@ -8,7 +8,7 @@ const Frontend4 = ({ blockCount, setBlockCount }) => {
       .then(data => setBlockCount(data.blockCount))
       .catch(error => console.error("Error fetching blockcount:", error));
   }, []);
-
+console.log(`blockcount dentro de Frontend4 vale: ${blockCount}`)
   // blockCount tiene el último bloque minado
   return (
     <div>

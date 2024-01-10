@@ -8,8 +8,8 @@ export default function Blocks() {
   useEffect(() => {
     // puedes hacer algo con blockCount aquí si es necesario
   }, [blockCount]);
-  console.log("Estoy en Blocks01");
-  console.log(blockCount);
+
+  console.log(`Estoy en Blocks01, blockCount vale: ${blockCount}`);
 
   return (
     <main>
