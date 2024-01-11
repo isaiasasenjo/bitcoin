@@ -10,9 +10,9 @@ color: #000000;
 text-decoration: none;
 padding: 3px;
 border-radius: 5px;
-
-
 }
+
+
 .cuadrado {
     width: 100px;
     height: 100px;
@@ -116,13 +116,13 @@ border-radius: 5px;
 
 
 /* Estilos para los submenús */
-.ul {
+.ul1 {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.li {
+.li1 {
     display: inline-block;
     margin-right: 20px;
 }
@@ -134,7 +134,7 @@ border-radius: 5px;
 
 /* Estilos para los submenús */
 
-.ul--ul {
+.ul1--ul1 {
     display: none;
     position: absolute;
     min-width: 140px;
@@ -147,7 +147,7 @@ border-radius: 5px;
 }
 
 
-.li {
+.li2 {
     display: inline-block;
     margin-right: 20px;
     position: relative;
@@ -155,6 +155,6 @@ border-radius: 5px;
 }
 
 
-.ul--li:hover>ul {
+.ul2--li1:hover>ul {
     display: inherit;
 }

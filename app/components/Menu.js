@@ -63,9 +63,6 @@ const Menu = () => {
           </tr>
         </tbody>
       </table>
-
-      
-      
       {/* 
      <button onClick="triggerEnglish()">English</button>
     <button onClick="triggerSpanish()">Spanish</button>

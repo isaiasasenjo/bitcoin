@@ -10,27 +10,25 @@ color: #000000;
 text-decoration: none;
 padding: 3px;
 border-radius: 5px;
-
-
 }
+
 .enlaces:hover {
     color: #fa0404;
     cursor: pointer;
-  }
+}
 
-  .enlacesMenu{
+.enlacesMenu{
     background-color: #5497c7;
     color: #ffffff;
     text-decoration: none;
     padding: 3px;
     border-radius: 5px;
-    
-    
-    }
-    .enlacesMenu:hover {
+ }
+ 
+.enlacesMenu:hover {
         color: #fa0404;
         cursor: pointer;
-      }
+ }
     
 .cuadrado {
     width: 100px;
