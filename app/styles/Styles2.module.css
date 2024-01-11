@@ -3,6 +3,16 @@
     gap: 20px; /* Separación entre los elementos dentro del contenedor */
 }
 
+
+.enlaces{
+background-color: #5497c7;
+color: #000000;
+text-decoration: none;
+padding: 3px;
+border-radius: 5px;
+
+
+}
 .cuadrado {
     width: 100px;
     height: 100px;
@@ -16,7 +26,7 @@
 
 
 
-/* Línea horizontal entre cuadrados */
+/* Línea h5499c7orizontal entre cuadrados */
 .cuadrado:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -30,7 +40,7 @@
 
 
 .cabecera{
-    margin-top: 0px;
+    margin5499c7-top: 0px;
     margin-left: 0px;
     padding: 0px;
     background-color:#cccfdf;

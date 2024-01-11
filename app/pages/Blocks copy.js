@@ -52,7 +52,7 @@ export default function Blocks() {
     blocks.push(
       <div key={blockNumber} className={styles2.cuadrado}>
         <h3>
-          <a href={`https://blockchair.com/es/bitcoin/testnet/block/${blockNumber+blockCount}`} className={styles2.enlaces}target="_blank">
+          <a href={`https://blockchair.com/es/bitcoin/testnet/block/${blockNumber+blockCount}`} target="_blank">
             {blockNumber+blockCount}
           </a>
         </h3>
