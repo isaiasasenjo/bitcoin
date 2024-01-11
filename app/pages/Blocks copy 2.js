@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from "react";
 import Link from "next/link";
 import styles2 from "../styles/Styles2.module.css";
-import styles3 from "../styles/Styles3.module.css";
 import Menu from "./../components/Menu";
 import Peu from "../components/Peu";
 import Blocks1 from "./Blocks1";
@@ -41,7 +40,7 @@ export default function Blocks() {
 
   const handleNext = () => {
 
-    if (lastBlock>(blockCount+currentBlock)){
+    if (lastBlock>currentBlock){
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
     }else{
       setVacio('LastBlock');
@@ -53,7 +52,7 @@ export default function Blocks() {
     blocks.push(
       <div key={blockNumber} className={styles2.cuadrado}>
         <h3>
-          <a href={`https://blockchair.com/es/bitcoin/testnet/block/${blockNumber+blockCount}`} className={styles3.enlaces}target="_blank">
+          <a href={`https://blockchair.com/es/bitcoin/testnet/block/${blockNumber+blockCount}`} className={styles2.enlaces}target="_blank">
             {blockNumber+blockCount}
           </a>
         </h3>
@@ -66,10 +65,7 @@ export default function Blocks() {
       <div className={styles2.container}>
         <Menu />
         <h3>Blocks of Chain</h3>
-        <div> 
-        <button onClick={""}><h4>{vacio}</h4></button>
-        <button onClick={""}>----</button>
-      
+        <div>  
         <button onClick={handleNext}>NEXT</button>
         <button onClick={handlePrevious}>PREVIOUS</button>
         </div>

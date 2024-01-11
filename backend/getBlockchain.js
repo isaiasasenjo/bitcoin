@@ -29,7 +29,7 @@ const client = new Client({
 app.get("/getblock", async (req, res) => {
   try {
     const blockHash =
-      "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
+      "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871";
     const blockHashBuffer = Buffer.from(blockHash, "hex");
     // Convert the const express = require('express');
     const formattedBlockHash = blockHashBuffer.toString("hex");
@@ -127,7 +127,7 @@ app.get("/blockcount", cors(corsOptions),async (req, res) => {
 // Define a route to get the block count
 app.get("/blockhash", async (req, res) => {
   try {
-    const blockHash = await client.getBlockHash(2570874);
+    const blockHash = await client.getBlockHash(2572370);
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);

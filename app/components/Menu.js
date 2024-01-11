@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import "./../styles/Styles2.module.css";
+import styles3 from "../styles/Styles3.module.css";
 //import Blocks from "../pages/Blocks";
 //import Transactions from "../pages/Transactions";
 //import Mempool from "../pages/Mempool";
@@ -48,16 +49,16 @@ const Menu = () => {
                 {/* <img src={logo} width="40" height="34" /> */}
               </a>
             </td>
-
+          
             <td align="right">
-              <Link href="/">Home</Link>
+              <Link href="/"  className={styles3.enlacesMenu}>Home</Link>
             </td>
 
             <td align="right">
-              <Link href="/Blocks">Blocks</Link>
+              <Link href="/Blocks" className={styles3.enlacesMenu}>Blocks</Link>
             </td>
             <td align="right">
-              <Link href="/Transactions">Transactions</Link>
+              <Link href="/Transactions" className={styles3.enlacesMenu}>Transactions</Link>
             </td>
           </tr>
         </tbody>
