@@ -6,7 +6,7 @@ import Peu from "../components/Peu";
 import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
-import Frontend4 from "./Frontend4"; 
+import Frontend from "./Frontend"; 
 
 export default function Blocks() {
   const [blockCount, setBlockCount] = useState(null);
@@ -16,16 +16,13 @@ export default function Blocks() {
     
     // puedes hacer algo con blockCount aquí si es necesario
   }, [blockCount]);
-  console.log(`estoy en Blocks, blockcount vale: ${blockCount}`);  
-  {Frontend4({ blockCount, setBlockCount })}
+  {Frontend({ blockCount, setBlockCount })}
   lastBlock = blockCount;  
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
   const blocks = [];
 
-console.log(`lastBlock vale: ${lastBlock}`)
-console.log(`CurrentBlock vale: ${currentBlock}`);
   const [vacio, setVacio] = useState('');
   const handlePrevious = () => {
 
