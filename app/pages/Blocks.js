@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import styles1 from "../styles/Styles1.module.css";
 import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
 import Menu from "./../components/Menu";
@@ -67,15 +68,21 @@ export default function Blocks() {
     <main>
       <div className={styles2.container}>
         <Menu />
-        <h3>Blocks of Chain</h3>
-        <div>
-          <button onClick={""}>
-            <h3><strong>  <font color="#008C00">{vacio}</font></strong></h3>
-          </button>
-          <button onClick={""}>----</button>
 
-          <button onClick={handleNext}>NEXT</button>
-          <button onClick={handlePrevious}>PREVIOUS</button>
+        <div>
+          <nav>
+            <ul className={styles1.menu}>
+              <li >
+              <p className={styles1.lastblock}>{vacio}</p>
+              </li>
+               <li className={styles1.nextblock}>
+                <button onClick={handleNext}>NEXT</button>
+              </li>
+              <li className={styles1.prevblock}>
+              <button onClick={handlePrevious}>PREVIOUS</button>
+              </li>
+            </ul>      
+          </nav>
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
         <br />
