@@ -68,33 +68,20 @@ export default function Blocks() {
     <main>
       <div className={styles2.container}>
         <Menu />
-        <h3>Blocks of Chain</h3>
+
         <div>
           <nav>
             <ul className={styles1.menu}>
-              <li className="{styles1.menu">
-                <a href="#">Last Block</a>
+              <li >
+              <p className={styles1.lastblock}>{vacio}</p>
               </li>
-              <li>
-                <a href="#">------</a>
-              </li>
-              <li>
-                <a href="#">Next</a>
+               <li className={styles1.nextblock}>
                 <button onClick={handleNext}>NEXT</button>
               </li>
-              <li>
-                <a href="#">Previous</a>
+              <li className={styles1.prevblock}>
+              <button onClick={handlePrevious}>PREVIOUS</button>
               </li>
-            </ul>
-
-
-            <button onClick={""}>
-            <h4>{vacio}</h4>
-          </button>
-          <button onClick={""}>----</button>
-
-      
-          <button onClick={handlePrevious}>PREVIOUS</button>
+            </ul>      
           </nav>
         </div>
         <div className={styles2.contenedor}>{blocks}</div>

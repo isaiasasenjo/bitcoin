@@ -3,37 +3,50 @@
 Estilos de la barra de navegación
 **************/
 .menu > li{
-    padding:5px;
-    margin-left:20px;
-    margin-top: 30px;
-    text-align: center;
+    padding:0px;
+    margin-left:10px;
+    margin-top: 0px;
+    text-align: left;
     float: left;
-    background-color: rgb(192, 192, 207);
+    
     width: 5%;
-}
-
-
-
-.menu li ul{
-    display:none;
-
-}
-
-
-
-.menu li:hover > ul{
-    display:block;
+    list-style: none;
     
 }
 
 
-.menu nav{
-    background-color: rgb(11, 51, 209);
+
+
+.lastblock > li p{
+    margin-top: 40px;
+    margin-left: 0px;
+    margin: 0px;
+    color:rgb(175, 13, 13);
+}
+
+.menu >  ul li{
+    display:none;
+}
+
+.nextblock{
+    margin-left: 140px;
+    
+}
+
+.menu > li:hover > ul{
+    display:block;   
+    color:azure;
+    text-decoration: none;
 
 }
 
 
-.menu nav a{
+.menu > nav{
+    background-color: rgb(11, 51, 209);
+}
+
+
+.menu > nav a{
 
     color:azure;
     text-decoration: none;
@@ -41,14 +54,20 @@ Estilos de la barra de navegación
     padding:5px 10px;
 }
 
-.menu nav a:hover{
-
+.menu > nav a:hover{
     background-color: brown;
 }
 
-.menu nav ul{
+.menu > nav ul{
 
     list-style: none;
+}
+
+.lastblock{
+    color: rgb(4, 105, 92);
+    margin-left: 0cm;
+    margin-top: 0cm;
+
 }
 
 

@@ -55,7 +55,7 @@ const Menu = () => {
             </td>
 
             <td align="right">
-              <Link href="/Blocks" className={styles3.enlacesMenu}>Blocks</Link>
+              <Link href="/Blocks01" className={styles3.enlacesMenu}>Blocks</Link>
             </td>
             <td align="right">
               <Link href="/Transactions" className={styles3.enlacesMenu}>Transactions</Link>

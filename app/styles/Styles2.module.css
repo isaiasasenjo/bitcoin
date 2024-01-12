@@ -1,6 +1,8 @@
 .contenedor {
     display: flex; /* Utilizamos Flexbox para el contenedor */
-    gap: 20px; /* Separación entre los elementos dentro del contenedor */
+    gap: 10px; /* Separación entre los elementos dentro del contenedor */
+    margin-top: 70px;
+    margin-left: 20px;
 }
 
 
@@ -40,7 +42,7 @@ border-radius: 5px;
 
 
 .cabecera{
-    margin5499c7-top: 0px;
+    margin-top: 0px;
     margin-left: 0px;
     padding: 0px;
     background-color:#cccfdf;
