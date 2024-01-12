@@ -1,5 +1,6 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import styles1 from "../styles/Styles1.module.css";
 import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
 import Menu from "./../components/Menu";
@@ -7,54 +8,56 @@ import Peu from "../components/Peu";
 import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
-import Frontend from "./Frontend"; 
+import Frontend from "./Frontend";
 
 export default function Blocks() {
   const [blockCount, setBlockCount] = useState(null);
- 
+
   let lastBlock = 2450000;
   useEffect(() => {
-    
     // puedes hacer algo con blockCount aquí si es necesario
   }, [blockCount]);
-  {Frontend({ blockCount, setBlockCount })}
-  lastBlock = blockCount;  
+  {
+    Frontend({ blockCount, setBlockCount });
+  }
+  lastBlock = blockCount;
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
   const blocks = [];
 
-  const [vacio, setVacio] = useState('');
+  const [vacio, setVacio] = useState("");
   const handlePrevious = () => {
-
- 
-    if (lastBlock>currentBlock){
-      setVacio('');
-    }else{
-      setVacio('LastBlock');
-    } 
+    if (lastBlock > currentBlock) {
+      setVacio("");
+    } else {
+      setVacio("LastBlock");
+    }
 
     setCurrentBlock((prevBlock) => prevBlock - numBlocksToShow);
-
-    
-   };
+  };
 
   const handleNext = () => {
-
-    if (lastBlock>(blockCount+currentBlock)){
+    if (lastBlock > blockCount + currentBlock) {
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
-    }else{
-      setVacio('LastBlock');
-    } 
-    };
+    } else {
+      setVacio("LastBlock");
+    }
+  };
 
   for (let i = 0; i < numBlocksToShow; i++) {
     const blockNumber = currentBlock - i;
     blocks.push(
       <div key={blockNumber} className={styles2.cuadrado}>
         <h3>
-          <a href={`https://blockchair.com/es/bitcoin/testnet/block/${blockNumber+blockCount}`} className={styles3.enlaces}target="_blank">
-            {blockNumber+blockCount}
+          <a
+            href={`https://blockchair.com/es/bitcoin/testnet/block/${
+              blockNumber + blockCount
+            }`}
+            className={styles3.enlaces}
+            target="_blank"
+          >
+            {blockNumber + blockCount}
           </a>
         </h3>
       </div>
@@ -66,12 +69,33 @@ export default function Blocks() {
       <div className={styles2.container}>
         <Menu />
         <h3>Blocks of Chain</h3>
-        <div> 
-        <button onClick={""}><h4>{vacio}</h4></button>
-        <button onClick={""}>----</button>
+        <div>
+          <nav>
+            <ul className={styles1.menu}>
+              <li className="{styles1.menu">
+                <a href="#">Last Block</a>
+              </li>
+              <li>
+                <a href="#">------</a>
+              </li>
+              <li>
+                <a href="#">Next</a>
+                <button onClick={handleNext}>NEXT</button>
+              </li>
+              <li>
+                <a href="#">Previous</a>
+              </li>
+            </ul>
+
+
+            <button onClick={""}>
+            <h4>{vacio}</h4>
+          </button>
+          <button onClick={""}>----</button>
+
       
-        <button onClick={handleNext}>NEXT</button>
-        <button onClick={handlePrevious}>PREVIOUS</button>
+          <button onClick={handlePrevious}>PREVIOUS</button>
+          </nav>
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
         <br />

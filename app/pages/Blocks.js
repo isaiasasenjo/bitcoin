@@ -70,7 +70,7 @@ export default function Blocks() {
         <h3>Blocks of Chain</h3>
         <div>
           <button onClick={""}>
-            <h4>{vacio}</h4>
+            <h3><strong>  <font color="#008C00">{vacio}</font></strong></h3>
           </button>
           <button onClick={""}>----</button>
 
