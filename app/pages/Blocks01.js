@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import styles1 from "../styles/Styles1.module.css";
+import styles2 from "../styles/Styles2.module.css";
+import styles3 from "../styles/Styles3.module.css";
+import Menu from "./../components/Menu";
+import Peu from "../components/Peu";
+import Blocks1 from "./Blocks1";
+import Blocks2 from "./Blocks2";
+//import Frontend4, { blockCount } from "./Frontend4";
+import Frontend from "./Frontend";
 
-export default function Blocks01() {
+export default function Blocks() {
   const [blockCount, setBlockCount] = useState(null);
-  const [blockHash, setBlockHash] = useState(null);
-  const [lastBlock, setLastBlock] = useState(2450000); // Inicializa con el valor que desees
 
+  let lastBlock = 2450000;
   useEffect(() => {
-    // Llamada al endpoint para obtener el blockCount
-    fetch("/blockcount")
-      .then((response) => response.json())
-      .then((data) => setBlockCount(data.blockCount))
-      .catch((error) => console.error("Error:", error));
-  }, []); // Solo se ejecuta una vez al cargar el componente
-
-  useEffect(() => {
-    // Llamada al endpoint para obtener el hash del bloque específico
-    if (lastBlock !== null) {
-      fetch(`/blockhash/${lastBlock}`)
-        .then((response) => response.text())
-        .then((data) => setBlockHash(data))
-        .catch((error) => console.error("Error:", error));
-    }
-  }, [lastBlock]);
-
+    // puedes hacer algo con blockCount aquí si es necesario
+  }, [blockCount]);
+  {
+    Frontend({ blockCount, setBlockCount });
+  }
+  lastBlock = blockCount;
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
@@ -68,12 +66,30 @@ export default function Blocks01() {
 
   return (
     <main>
-      {/* Resto de tu JSX */}
-      <div>
-        <h3>BlockCount: {blockCount}</h3>
-        <h3>BlockHash: {blockHash}</h3>
+      <div className={styles2.container}>
+        <Menu />
+
+        <div>
+          <nav>
+            <ul className={styles1.menu}>
+              <li>
+              <p className={styles1.lastblock}>{vacio}</p>
+              </li>
+               <li className={styles1.nextblock}>
+                <button onClick={handleNext}>NEXT</button>
+              </li>
+              <li className={styles1.prevblock}>
+              <button onClick={handlePrevious}>PREVIOUS</button>
+              </li>
+            </ul>      
+          </nav>
+        </div>
+        <div className={styles2.contenedor}>{blocks}</div>
+        <br />
+        <Blocks1 />
+        <br />
+        <Blocks2 />
       </div>
-      {/* Resto de tu JSX */}
     </main>
   );
 }
