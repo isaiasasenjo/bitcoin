@@ -72,7 +72,7 @@ export default function Blocks() {
         <div>
           <nav>
             <ul className={styles1.menu}>
-              <li >
+              <li>
               <p className={styles1.lastblock}>{vacio}</p>
               </li>
                <li className={styles1.nextblock}>

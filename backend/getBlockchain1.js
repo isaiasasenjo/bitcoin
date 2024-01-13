@@ -1,10 +1,19 @@
 // https://www.youtube.com/watch?v=dsWD2fR8O7I
 
 const express = require("express");
+const cors = require('cors');
 const Client = require("bitcoin-core");
+
 const app = express();
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+
+// Configurar middleware para servir archivos estáticos
+app.use(express.static('/home/eduard/bitcoin/backend'));
 const fs = require("fs");
-const port = 3000;
+const port = 3001;
 
 // Configure the client to connect to your Bitcoin node
 const client = new Client({
@@ -13,6 +22,57 @@ const client = new Client({
   password: "2001", // Replace with your rpcpassword
   port: 18332, // Default RPC port for testnet
 });
+
+
+//FUNCIONA BIEN
+//inicio del ultimo getblock
+app.get("/getblock", async (req, res) => {
+  try {
+    const blockHash =
+      "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871";
+    const blockHashBuffer = Buffer.from(blockHash, "hex");
+    // Convert the const express = require('express');
+    const formattedBlockHash = blockHashBuffer.toString("hex");
+    // Retrieve the block header from the Bitcoin node using the formatted block hash
+    const blockHeader = await client.getBlockHeader(formattedBlockHash);
+    // Convert the raw block header object to a JSON object
+    const formattedBlockHeader = JSON.stringify(blockHeader);
+    //res.send(`Block Header: ${blockHeader.hash}`);
+    console.log(blockHeader);
+    const response =
+      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr>BLOCK DATA</tr><tr><td>Block Number:</td><td><b>" +
+      blockHeader.height +
+      "</b></td><td>Confirmations:</td><td><b>" +
+      blockHeader.confirmations +
+      "</b></td></tr><tr><td>Block Hash:</td><td><b>" +
+      blockHeader.hash +
+      "</b></td><td>Nonce:</td><td><b>" +
+      blockHeader.nonce +
+      "</b></td></tr><tr><td>Merkle Root: </td><td><b>" +
+      blockHeader.merkleroot +
+      "</b></td><td>Number of Transactions:</td><td><b>" +
+      blockHeader.nTx +
+      "</b></td></tr><tr><td>Next Block Hash:</td><td><b>" +
+      blockHeader.nextblockhash +
+      "</b></td><td>Nonce:</td><td><h4>" +
+      blockHeader.nonce +
+      "</h4></td></tr><tr><td>Difficulty:</td><td><b>" +
+      blockHeader.difficulty +
+      "</b></td><td>Time:</td><td><b>" +
+      blockHeader.time +
+      "</b></td></tr><tr><td>Previous Block Hash:</td><td><b>" +
+      blockHeader.previousblockhash +
+      "</b></td><td>Bits:</td><td><b>" +
+      blockHeader.bits +
+      "</b></td></tr></table></body></html>";
+
+    res.send(response);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
 
 //FUNCIONA BIEN
 app.get("/", async (req, res) => {
@@ -23,17 +83,40 @@ app.get("/", async (req, res) => {
     res.status(500).send("Error in the initial page");
   }
 });
-//console.log(mempoolInfo.size);
-// Define a route to get the block count
-// Es un endpoint:
-//Un endpoint es una dirección de una API, o bien un backend que se encarga de dar respuesta
-//a una petición, mientras que una REST, en una API, es una interfaz que sirve para la conexión
-// de varios sistemas. Se basa en HTTP y sirve para obtener y enviar datos e información.
+
+
 //FUNCIONA BIEN
-app.get("/blockcount", async (req, res) => {
+app.get("/index1", async (req, res) => {
+  try {
+    res.sendFile("/home/eduard/bitcoin/backend/index1.html");
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("Error in the initial page");
+  }
+});
+
+//FUNCIONA BIEN
+app.get("/index2", async (req, res) => {
+  try {
+    res.sendFile("/home/eduard/bitcoin/backend/index2.html");
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("Error in the initial page");
+  }
+});
+
+
+
+//https://platzi.com/tutoriales/2485-backend-nodejs/22425-como-instalar-y-configurar-cors/
+// FUNCIONA BIEN
+app.get("/blockcount", cors(corsOptions),async (req, res) => {
   try {
     const blockCount = await client.getBlockCount();
-    res.send(`Current block count: ${blockCount}`);
+    res.json({
+      blockCount,
+    });
+ 
+    //res.send(`Current block count: ${blockCount}`);
   } catch (e) {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
@@ -42,9 +125,10 @@ app.get("/blockcount", async (req, res) => {
 
 //FUNCIONA BIEN
 // Define a route to get the block count
-app.get("/blockhash", async (req, res) => {
+app.get("/blockhash/:blockNumber", async (req, res) => {
   try {
-    const blockHash = await client.getBlockHash(1000);
+    const blockNumber = req.params.blockNumber;
+    const blockHash = await client.getBlockHash(blockNumber);
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);
@@ -53,21 +137,19 @@ app.get("/blockhash", async (req, res) => {
 });
 
 
+
+
+
+
 // Define a route to get the block count
 //FUNCIONA BIEN
 app.get("/blockchaininfo", async (req, res) => {
   try {
-    //Aquí tenim un objecte a la variable blockchaininfo
+    //Aquí tenim un objecte blockchaininfo
     const blockChainInfo = await client.getBlockchainInfo();
-   
-    // aqui pasem l'objecte blockchaininfo a string
+    //console.log(blockChainInfo.chain);
     const blockchainInfoString = JSON.stringify(blockChainInfo);
-    //console.log(blockchainInfoString);
-    //Aqui pasem el string a un objecte JSON que no necessesitem però que queda com a exemple
-    //const blockchainStringToJSON = JSON.parse(blockchainInfoString);
-    //console.log(blockchainStringToJSON);
 
-    //Fabriquem el html de resposta amb una taula, files i columnes
     const response =
       "<html><body><table border=2><tr><td>Concept</td><td>Result</td></tr> <tr><td>Network: </td><td><h3>" +
       blockChainInfo.chain +
@@ -75,7 +157,7 @@ app.get("/blockchaininfo", async (req, res) => {
       blockChainInfo.blocks +
       "</h3></td></tr> <tr><td>Best Block Hash: </td><td><h3>" +
       blockChainInfo.bestblockhash +
-      "</h3></td>    console.log(mempoolInfo1);</tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h3>" +
+      "</h3></td></tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h3>" +
       blockChainInfo.softforks.bip34.height +
       "</h3></td></tr><tr><td></td><td>Fork number two (bip 66) in block number:  </td><td><h3>" +
       blockChainInfo.softforks.bip66.height +
@@ -97,108 +179,83 @@ app.get("/blockchaininfo", async (req, res) => {
 
 
 
-// Define a route to get the block count
-//FUNCIONA BIEN
-app.get("/mempoolinfo", async (req, res) => {
+
+
+
+app.get("/transactions", async (req, res) => {
+  const blockHash =
+    "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
+  // 00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9
+  // https://blockstream.i// Configurar middleware para servir archivos estáticos
+app.use(express.static('ruta_de_tus_archivos_estaticos'));
+
+  const blockHashBuffer = Buffer.from(blockHash, "hex");
+  const formattedBlockHash = blockHashBuffer.toString("hex");
+
   try {
-    //Aquí tenim un objecte blockchaininfo
-    console.log("0000000000000000");
-    const mempoolInfo = await client.getMemoryPoolContent;
-    const mempoolInfo1 = mempoolInfo().getmempoolinfo;
-    console.log(mempoolInfo1);
+    // Obtén el bloque completo (incluyendo las transacciones)
+    const block = await client.getBlock(formattedBlockHash);
+    // Accede a las transa// Configurar middleware para servir archivos estáticos
 
-    //console.log(typeof(mempoolInfo2));
-    //console.log(JSON.parse(mempoolInfo2))    
-    //console.log(mempoolInfo2);
-    //console.log(blockChainInfo.softforks.bip34.type);
-    // aqui pasem lobjecte blockchaininfo a string
-    //const mempoolInfoString = await client.getmempoolinfo;
-    //const mempoolInfoString = JSON.stringify(mempoolInfo);
-    //console.log(mempoolInfo);
-    console.log(11111111111);
-    //console.log(mempoolInfoString);
-    //Aqui pasem el string a un objecte JSON
-    //const blockchainStringToJSON = JSON.parse(blockchainInfoString);
-    //console.log(blockchainStringToJSON);
-
-    //Fabriquem el html de resposta
-    const response =
-      "";
-    res.send(response);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
+    const transactions = block.transaction;
+    // Imprime la información sobre las transacciones
+    transactions.forEach((transaction, index) => {
+      console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
+    });
+    res.send(transactions); // Envia las transacciones como respuesta HTTP
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send(`An error occurred: ${error.message}`);
   }
 });
 
+app.get("/transactions2", async (req, es) => {
+  const blockHash =
+    "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
+  const blockHashBuffer = Buffer.from(blockHash, "hex");
+  const formattedBlockHash = blockHashBuffer.toString("hex");
 
-
-//UNDEFINED
-// Define a route to get the block count
-app.get("/bestblockhash", async (req, res) => {
   try {
-    //     const blockChainInfo = await client.getBlockchainInfo();
-    // const bestblockhash1 = await client.getbestblockhash;
-    const bestblockhash1 = await client.getbestblockhash;
-    console.log(bestblockhash1);
-
-    res.send(`Best Block Hash: ${bestblockhash1}`);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
+    // Obtén el bloque completo (incluyendo las transacciones)
+    const block = await client.getBlock(formattedBlockHash);
+    // Accede a las transacciones del bloque
+    const transactions = block.transactions;
+    // Imprime la información sobre las transacciones
+    transactions.forEach((transaction, index) => {
+      console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
+    });
+  } catch (error) {
+    console.error("Error:", error);
   }
 });
 
-
-//UNDEFINED
-app.get("/difficulty", async (req, res) => {
+app.get("/transactions1", async (req, es) => {
   try {
-    //const blockHeader = await client.getBlockHeader(1);
-    //const difficulty = blockHeader.difficulty;
-    //res.send(`Difficulty: ${difficulty}`);
+    const blockHash =
+      "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
+    const blockHashBuffer = Buffer.from(blockHash, "hex");
+    const formattedBlockHash = blockHashBuffer.toString("hex");
+    const blockHeader = await client.getBlockHeader(formattedBlockHash);
+    const formattedBlockHeader = JSON.stringify(blockHeader);
 
-    const difficulty = await client.getdifficulty;
-    const difficulty1 = JSON.stringify(difficulty);
-    res.send(`Difficulty: ${difficulty1}`);
+    // const blockJson = getblock.toJSON();
+    // const transactions = blockJson.transactions;
+
+    const transactions1 = blockHeader.transactions;
+
+    //console.log(formattedBlockHeader);
+    //console.log(blockHeader);
+    //console.log(typeof(blockHeader));
+    console.log(typeof blockHeader);
+    //console.log(typeof(blockHeader));
   } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
+    console.error("Error: ", e);
+    res
+      .status(500)
+      .send(`An error occurred: $ypeof(mempoolInfo2));{e.message}`);
   }
 });
 
-// Define a route to get the block count
-app.get("/mempoolinfo1", async (req, res) => {
-  try {
-    const mempoolinfo = await client.getmempoolinfo;
-    res.send(`MempoolInfo:  ${mempoolinfo}`);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
-
-// Define a route to get the block count
-app.get("/pruneblockchain", async (req, res) => {
-  try {
-    const pruneblockchain = await client.pruneblockchain(1000);
-    res.send(`Prune Blockchain:  ${pruneblockchain}`);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
-
-// Define a route to get the block count
-app.get("/blockheader", async (req, res) => {
-  try {
-    //const blockHeader2 = await client.getBlockHeader('00000000373403049c5fff2cd653590e8cbe6f7ac639db270e7d1a7503d698df');
-    const blockHeader = await client.getBlockHeader("1000");
-    res.send(`Block Header: ${blockHeader}`);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
 
 // Start the server
 app.listen(port, () => {
