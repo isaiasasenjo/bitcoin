@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles1 from "../styles/Styles1.module.css";
 import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
-import styles4 from "../styles/Styles4.module.css";
 import Menu1 from "./../components/Menu1";
 import Peu from "../components/Peu";
 import Blocks1 from "./Blocks1";
@@ -11,7 +10,7 @@ import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
 import Frontend from "./Frontend";
 
-export default function Blocks() {
+export default function Blocks0() {
   const [blockCount, setBlockCount] = useState(null);
 
   let lastBlock = 2450000;
@@ -22,6 +21,14 @@ export default function Blocks() {
     Frontend({ blockCount, setBlockCount });
   }
   lastBlock = blockCount;
+
+  console.log(lastBlock);
+
+
+
+
+
+
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
@@ -66,50 +73,15 @@ export default function Blocks() {
   }
 
   return (
-    <div>
-      <div>
-      <nav>
-        <ul className={styles4.menu}>
-          <li>
-            <Link href="/" className={styles3.enlacesMenu}>Home </Link>
-          </li>
-          <li>
-            <Link href="/Blocks0" className={styles3.enlacesMenu}>
-              Blocks
-            </Link>
-          </li>
-          <li>
-            <Link href="/Transactions" className={styles3.enlacesMenu}>
-              Transactions
-            </Link>
-          </li>
-          <li>
-            <Link href="/Network" className={styles3.enlacesMenu}>
-              Network
-            </Link>
-            <ul>
-              <li>
-                <Link href="#" className={styles3.enlacesMenu}>
-                  Mainnet
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className={styles3.enlacesMenu}>
-                  Testnet
-                </Link>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+    <main>
+      <div className={styles2.container}>
+        <Menu1 />
         <br></br>
         <br></br>
         <br></br>
         <div>
-
-         
           <nav>
-            <ul className={styles1.menu}>
+            <ul>
               <li>
               <p className={styles1.lastblock}>{vacio}</p>
               </li>
@@ -128,6 +100,6 @@ export default function Blocks() {
         <br />
         <Blocks2 />
       </div>
-      </div>
+    </main>
   );
 }

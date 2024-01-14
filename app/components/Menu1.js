@@ -4,6 +4,7 @@ import "./../styles/Styles2.module.css";
 import styles1 from "../styles/Styles1.module.css";
 import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
+import styles4 from "../styles/Styles4.module.css";
 //import Blocks from "../pages/Blocks";
 //import Transactions from "../pages/Transactions";
 //import Mempool from "../pages/Mempool";
@@ -22,53 +23,44 @@ import styles3 from "../styles/Styles3.module.css";
 
 // import Boton from "./Boton";
 const Menu1 = () => {
-  const divStylesMenu = {
-    backgroundColor: "#5499c7",
-    color: "white",
-    fontSize: "18px",
-    display: "flex", // Utilizamos flexbox
-    justifyContent: "flex-end", // Alineamos los elementos a la derecha
-    padding: "10px", // Añadimos algún espacio de padding
 
-  };
 
   return (
-  <div>
-
-
-  
-          <nav>
-            <ul className={styles1.menu}>
+    <div>
+      <nav>
+        <ul className={styles4.menu}>
+          <li>
+            <Link href="/" className={styles3.enlacesMenu}>Home </Link>
+          </li>
+          <li>
+            <Link href="/Blocks0" className={styles3.enlacesMenu}>
+              Blocksssss
+            </Link>
+          </li>
+          <li>
+            <Link href="/Transactions" className={styles3.enlacesMenu}>
+              Transactions
+            </Link>
+          </li>
+          <li>
+            <Link href="/Network" className={styles3.enlacesMenu}>
+              Network
+            </Link>
+            <ul>
               <li>
-                  <Link href="/" >Home</Link>
+                <Link href="#" className={styles3.enlacesMenu}>
+                  Mainnet
+                </Link>
               </li>
-               <li >
-                  <Link href="/Blocks01" className={styles3.enlacesMenu}>Blocks</Link>
+              <li>
+                <Link href="#" className={styles3.enlacesMenu}>
+                  Testnet
+                </Link>
               </li>
-              <li >
-              
-                  <Link href="/Transactions" className={styles3.enlacesMenu}>Transactions</Link>
-              </li>
-              <li >
-              
-                  <Link href="/Network" className={styles3.enlacesMenu}>Network</Link>
-                  <ul>
-                    <li>
-                    
-                  <Link href="*" className={styles3.enlacesMenu}>Mainnet</Link>
-                      
-                    </li>
-                    <li>
-                    <Link href="*" className={styles3.enlacesMenu}>Testnet</Link>
-                 
-                    </li>
-                  </ul>
-              </li>
-            </ul>      
-          </nav>
-  
-
-  
+            </ul>
+          </li>
+        </ul>
+      </nav>
 
       {/* 
      <button onClick="triggerEnglish()">English</button>

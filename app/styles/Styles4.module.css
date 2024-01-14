@@ -1,0 +1,31 @@
+.menu {
+    align-self: flex-end; /* Ajustar alineación en lugar de write */
+    background-color: #5499c7;
+    list-style: none;
+    display: flex; /* Alineación de flexbox para que los elementos se muestren de derecha a izquierda */
+    justify-content: flex-end; /* Alinea los elementos del final al principio */
+    padding:20px;
+    width: 100%;
+}
+
+.menu > li {
+    padding: 0px;
+    margin-left: 10px;
+    margin-top: 0px;
+    text-align: right;
+    float: right;
+    width: 10%;
+    list-style: none;
+}
+
+.menu > li ul li {
+    display: none;
+}
+
+.menu > li:hover ul li {
+    display: block; /* Mostrar elementos secundarios al hacer hover en el elemento principal */
+}
+
+.menu > nav {
+    background-color: rgb(11, 51, 209);
+}

@@ -2,6 +2,15 @@
 /************************************
 Estilos de la barra de navegación
 **************/
+.nav{
+    background-color: red;
+}
+
+.menu{
+    align-self:write;
+    background-color: aqua;
+    list-style: none;
+}
 .menu > li{
     align-items:flex-end;
     padding:0px;
@@ -10,7 +19,7 @@ Estilos de la barra de navegación
     text-align: write;
     float: left;
     
-    width: 7%;
+    width: 10%;
     list-style: none;
     
 }
@@ -23,9 +32,19 @@ Estilos de la barra de navegación
     margin-left: 0px;
     margin: 0px;
     color:rgb(175, 13, 13);
+    list-style: none;
 }
 
 .menu >  ul li{
+    align-items:flex-end;
+    padding:0px;
+    margin-left:10px;
+    margin-top: 0px;
+    text-align: write;
+    float: left;
+    
+    width: 10%;
+    list-style: none;
     display:none;
 }
 
@@ -43,10 +62,6 @@ Estilos de la barra de navegación
 }
 
 
-.menu > nav{
-    background-color: rgb(11, 51, 209);
-}
-
 
 .menu > nav a{
 
@@ -54,10 +69,11 @@ Estilos de la barra de navegación
     text-decoration: none;
     display:block;
     padding:5px 10px;
+    list-style: none;
 }
 
 .menu > nav a:hover{
-    background-color: brown;
+    background-color: rgb(29, 155, 3);
 }
 
 .menu > nav ul{

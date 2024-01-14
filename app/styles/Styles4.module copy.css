@@ -1,0 +1,36 @@
+
+/************************************
+Estilos de la barra de navegación
+**************/
+
+.nav >menu{
+    background-color: red;
+}
+
+.menu{
+    align-self:write;
+    background-color: aqua;
+    list-style: none;
+}
+.menu > li{
+    
+    padding:0px;
+    margin-left:10px;
+    margin-top: 0px;
+    text-align: right;
+    float: right;
+    
+    width: 10%;
+    list-style: none;   
+}
+
+
+.menu >  li ul li{
+    display: none;
+    
+}
+
+.menu li:hover{
+    display:block;
+}
+
