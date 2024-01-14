@@ -153,7 +153,7 @@ app.get("/blockchaininfo", async (req, res) => {
     const response =
       "<html><body><table border=2><tr><td>Concept</td><td>Result</td></tr> <tr><td>Network: </td><td><h3>" +
       blockChainInfo.chain +
-      "</h3> </td></tr><tr><td>Number of Blocks: </td><td><h3>" +
+      "</h3> </td></tr><tr><td>Number of Blockssssssss: </td><td><h3>" +
       blockChainInfo.blocks +
       "</h3></td></tr> <tr><td>Best Block Hash: </td><td><h3>" +
       blockChainInfo.bestblockhash +

@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles1 from "../styles/Styles1.module.css";
 import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
-import Menu from "./../components/Menu";
+import Menu1 from "./../components/Menu1";
 import Peu from "../components/Peu";
 import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
@@ -67,8 +67,10 @@ export default function Blocks() {
   return (
     <main>
       <div className={styles2.container}>
-        <Menu />
-
+        <Menu1 />
+        <br></br>
+        <br></br>
+        <br></br>
         <div>
           <nav>
             <ul className={styles1.menu}>
