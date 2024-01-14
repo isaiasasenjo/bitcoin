@@ -22,7 +22,7 @@ import styles4 from "../styles/Styles4.module.css";
 //let idioma_etiquetas = idioma2[idioma];
 
 // import Boton from "./Boton";
-const Menu1 = () => {
+const Menu = () => {
 
 
   return (
@@ -33,8 +33,8 @@ const Menu1 = () => {
             <Link href="/" className={styles3.enlacesMenu}>Home </Link>
           </li>
           <li>
-            <Link href="/Blocks0" className={styles3.enlacesMenu}>
-              Blocksssss
+            <Link href="/Blocks" className={styles3.enlacesMenu}>
+              Blocks
             </Link>
           </li>
           <li>
@@ -70,4 +70,4 @@ const Menu1 = () => {
   );
 };
 
-export default Menu1;
+export default Menu;

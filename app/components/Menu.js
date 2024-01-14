@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import "./../styles/Styles2.module.css";
+import styles1 from "../styles/Styles1.module.css";
+import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
+import styles4 from "../styles/Styles4.module.css";
 //import Blocks from "../pages/Blocks";
 //import Transactions from "../pages/Transactions";
 //import Mempool from "../pages/Mempool";
@@ -20,49 +23,45 @@ import styles3 from "../styles/Styles3.module.css";
 
 // import Boton from "./Boton";
 const Menu = () => {
-  const divStylesMenu = {
-    backgroundColor: "#5499c7",
-    color: "white",
-    fontSize: "18px",
-    display: "flex", // Utilizamos flexbox
-    justifyContent: "flex-end", // Alineamos los elementos a la derecha
-    padding: "10px", // Añadimos algún espacio de padding
 
-  };
 
   return (
-    <div style={divStylesMenu}>
-      <table
-        className="cabecera-tabla"
-        width="25%"
+    <div>
+      <nav>
+        <ul className={styles4.menu}>
+          <li>
+            <Link href="/" className={styles3.enlacesMenu}>Home </Link>
+          </li>
+          <li>
+            <Link href="/Blocks" className={styles3.enlacesMenu}>
+              Blocks
+            </Link>
+          </li>
+          <li>
+            <Link href="/Transactions" className={styles3.enlacesMenu}>
+              Transactions
+            </Link>
+          </li>
+          <li>
+            <Link href="/Network" className={styles3.enlacesMenu}>
+              Network
+            </Link>
+            <ul>
+              <li>
+                <Link href="#" className={styles3.enlacesMenu}>
+                  Mainnet
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className={styles3.enlacesMenu}>
+                  Testnet
+                </Link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
 
-        // style={dinvStylesMenu}
-        // align="right"
-        // cellspacing="10"
-        // cellpadding="10"
-        // border="0"
-      >
-        <tbody>
-          <tr align="right">
-            <td align="right">
-              <a href="" target="_parent">
-                {/* <img src={logo} width="40" height="34" /> */}
-              </a>
-            </td>
-          
-            <td align="right">
-              <Link href="/"  className={styles3.enlacesMenu}>Home</Link>
-            </td>
-
-            <td align="right">
-              <Link href="/Blocks01" className={styles3.enlacesMenu}>Blocks</Link>
-            </td>
-            <td align="right">
-              <Link href="/Transactions" className={styles3.enlacesMenu}>Transactions</Link>
-            </td>
-          </tr>
-        </tbody>
-      </table>
       {/* 
      <button onClick="triggerEnglish()">English</button>
     <button onClick="triggerSpanish()">Spanish</button>
