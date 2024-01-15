@@ -10,6 +10,7 @@ color: #ffffff;
 text-decoration: none;
 padding: 3px;
 border-radius: 5px;
+word-spacing: 5px;
 }
 
 .enlaces:hover {

@@ -1,3 +1,6 @@
+/**************estilos del Menú */
+
+
 .menu {
     align-self: flex-end; /* Ajustar alineación en lugar de write */
     background-color: #5499c7;
@@ -20,6 +23,7 @@
 
 .menu > li ul li {
     display: none;
+    padding:5px;
 }
 
 .menu > li:hover ul li {
@@ -28,4 +32,53 @@
 
 .menu > nav {
     background-color: rgb(11, 51, 209);
+}
+
+
+/**************estilos del Peu */
+
+/**************estilos del Peu */
+
+.peu {
+    display: flex;
+    justify-content: space-between;
+    background-color: #5499c7;
+    list-style: none;
+    padding: 5px;
+    margin: 0; /* Agrega esto para quitar el margen predeterminado en <ul> */
+    width: 100%;
+}
+
+.peu > li {
+    padding: 0px;
+    margin: 0; /* Agrega esto para quitar el margen predeterminado en <li> */
+    text-align: center;
+    list-style: none;
+}
+
+.peu > li ul li {
+    display: none;
+    padding: 0px;
+}
+
+.peu > li:hover ul li {
+    display: block;
+}
+
+.peu > nav {
+    background-color: rgb(11, 51, 209);
+}
+
+.enlacesPeu {
+    background-color: #5497c7;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 3px;
+    border-radius: 5px;
+    list-style: none;
+}
+
+.enlacesPeu:hover {
+    color: #fa0404;
+    cursor: pointer;
 }

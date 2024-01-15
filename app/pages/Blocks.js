@@ -89,7 +89,9 @@ export default function Blocks() {
         <Blocks1 />
         <br />
         <Blocks2 />
+        <Peu />
       </div>
+
     </main>
   );
 }

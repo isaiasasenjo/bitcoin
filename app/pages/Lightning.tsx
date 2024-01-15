@@ -1,65 +1,52 @@
 import Image from "next/image";
 
 import Menu from "./../components/Menu";
-import Peu from "../components/Peu";
-import styles from "../styles/Home.module.css";
+import Peu from "./../components/Peu";
+import styles from "./../styles/Home.module.css";
 
 export default function Lightning() {
   return (
-    <main>
-      <div className={styles.container}>
-        <Menu />
-        <p>
-          <h3>Conceptos Básicos</h3>
-        </p>
-        <p>
-          <ul>
-            <li>
-              El protocolo Lightning Network, es un protocolo pensado para
-              mejorar la escalabilidad del Bitcoin. Esto es posible porque
-              trabaja como una segunda capa sobre Bitcoin que le permite
-              realizar cosas que normalmente no podría y más específicamente;
-              transacciones instantáneas y con muy bajas comisiones.
-            </li>
-          </ul>
-          <p>
-            <ul>
-              <li>
-                Bitcoin se creó como una solución de dinero digital. La segunda,
-                es que ese objetivo es imposible de alcanzar con el estado
-                actual de la red y el software Bitcoin. La razón de esto es muy
-                sencilla: Bitcoin tiene problemas para escalar. En la
-                actualidad, Bitcoin solo puede procesar de 7 a 8 transacciones
-                por segundo. Esta es una capacidad muy pequeña y que no puede
-                hacer frente al uso masivo de la criptomoneda. Como resultado,
-                la red Bitcoin se hace lenta y muy cara a la hora de pagar
-                comisiones. Por esta razón se necesitaba una nueva forma de
-                realizar transacciones de forma rápida, que fuera sencilla de
-                utilizar y compatible con Bitcoin sin tener que hacer grandes
-                modificaciones. La respuesta a estas necesidades es Lightning
-                Network.
-              </li>
-            </ul>
-          </p>
+    <div>
+      <Menu />
 
-          <p>
-            <p>
-              <strong>
-                <h3>Práctica con la LightNing Network</h3>
-              </strong>
-              <ul>
-                <li>Acceder a la Terminal de Linux</li>$ cd bitcoin/polar
-                <br></br>
-                $./ polar-linux-x86_v64-v2.0.0.AppImage<br></br>
-                <br></br>
-                Se abrirá la ventana de polar y podremos practicar con la
-                LightNing Network.Podremos crear nodos de red, etc.
-              </ul>
-            </p>
-          </p>
-        </p>
-        <Peu />
-      </div>
-    </main>
+      <ul>
+        <li>
+          The Lightning Network protocol is a protocol designed to improve the
+          scalability of Bitcoin. This is possible because works as a second
+          layer on top of Bitcoin that allows you perform things you normally
+          could not and more specifically; Instant transactions and with very
+          low commissions.
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          Bitcoin was created as a digital money solution. The second, is that
+          this objective is impossible to achieve with the state current Bitcoin
+          network and software. The reason for this is very Simple: Bitcoin has
+          trouble scaling. In the Currently, Bitcoin can only process 7 to 8
+          transactions per second. This is a very small capacity and it cannot
+          confront the massive use of cryptocurrency. As a result, The Bitcoin
+          network becomes slow and very expensive when paying commissions. For
+          this reason, a new way of carry out transactions quickly, that were
+          easy to use and compatible with Bitcoin without having to make big
+          modifications. The answer to these needs is Lightning Network.
+        </li>
+      </ul>
+
+      <strong>
+        <h3>Practice with the LightNing Network</h3>
+      </strong>
+      <ul>
+        <li>Access to the Terminal Linux</li>$ cd bitcoin/polar
+        <br></br>
+        $./ polar-linux-x86_v64-v2.0.0.AppImage<br></br>
+        <br></br>
+        The polar window will open and we can practice with the LightNing
+        Network. We can create network nodes, etc.
+      </ul>
+
+      <Peu />
+    </div>
   );
 }
