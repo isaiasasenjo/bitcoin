@@ -8,6 +8,8 @@ const Peu = () => {
     backgroundColor: "#5499c7",
     color: "white",
     fontSize: "1rem",
+    align:"center",
+    width:"100%",
   };
   return (
     <div style={divStyles}>
@@ -19,14 +21,15 @@ const Peu = () => {
           Mainnet Bitcoin</a></td>
           <td> <a  href="https://mempool.space/" target="_blank"> 
           Mempool</a></td>
-          <td>Local Mainnet</td>       
+          <td>Options-1</td>       
           <td> English</td>
         </tr>
         <tr>
         <td> <a  href="https://blockchair.com/es/bitcoin/testnet" target="_blank"> 
         Tesnet Bitcoin</a></td>
           <td>   <Link href="/Lightning">Lightning</Link></td>
-          <td>Local Testnet</td>
+          <td>Options-2</td>
+          
           <td> Spanish</td>
         </tr>
       </tbody>

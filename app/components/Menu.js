@@ -42,6 +42,12 @@ const Menu = () => {
               Transactions
             </Link>
           </li>
+                    <li>
+            <Link href="/Contacts" className={styles3.enlacesMenu}>
+              Contact
+            </Link>
+          </li>
+          
           <li>
             <Link href="/Network" className={styles3.enlacesMenu}>
               Network
