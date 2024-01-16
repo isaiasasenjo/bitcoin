@@ -82,3 +82,34 @@
     color: #fa0404;
     cursor: pointer;
 }
+
+
+/***********************
+Estilos de datos que estan en el body como Blocks1 Blocks2 etc
+
+******************/
+
+.blocks1 {
+    align-self: flex-end; /* Ajustar alineación en lugar de write */
+    background-color: #f3f4f5;
+    list-style: none;
+    display: left; /* Alineación de flexbox para que los elementos se muestren de derecha a izquierda */
+    justify-content: flex-end; /* Alinea los elementos del final al principio */
+    padding:10px;
+    width: 100%;
+}
+
+.blocks1 > li {
+    padding: 0px;
+    margin-left: 10px;
+    margin-top: 0px;
+    text-align: right;
+    float: right;
+    width: 10%;
+    list-style: none;
+}
+
+.blocks1 > li ul li {
+    display: none;
+    padding:5px;
+}

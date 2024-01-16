@@ -67,7 +67,7 @@ app.get("/getblock", cors(corsOptions), async (req, res) => {
       "</b></td><td>Bits:</td><td><b>" +
       blockHeader.bits +
       "</b></td></tr></table></body></html>";
-      <br></br>
+
 
     res.send(response);
   } catch (e) {

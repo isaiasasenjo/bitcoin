@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles4 from "../styles/Styles4.module.css";
 
 export default function Blocks1({ blockNumberSeleccionado }) {
   const [blockHash, setBlockHash] = useState(null);
@@ -22,8 +23,17 @@ export default function Blocks1({ blockNumberSeleccionado }) {
 
   return (
     <div>
-      <h3>Selection Block: {blockNumberSeleccionado}</h3>
-      <p>BlockHash: {blockHash}</p>
+      <nav>
+        <ul className={styles4.blocks1}>
+          <li>
+            <h3>Selected Block: {blockNumberSeleccionado}</h3>
+          </li>
+          <li>
+            <h3>Block Hash: {blockHash}</h3>
+          </li>
+        </ul>
+      </nav>
+
       {/* Resto del contenido del componente Blocks1 */}
     </div>
   );
