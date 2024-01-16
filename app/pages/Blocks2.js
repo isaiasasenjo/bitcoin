@@ -1,31 +1,32 @@
 import { getBlockHash } from "bitcoin-core/src/methods";
 import React, { useEffect, useState } from "react";
 
-export default function Blocks1({ blockNumberSeleccionado }) {
-  const [blockHash, setBlockHash] = useState(null);
+export default function Blocks2() {
+  const [blockData, setBlockData] = useState(null);
 
   useEffect(() => {
-    // Realiza la llamada al backend para obtener el hash del bloque seleccionado
-    const fetchBlockHash = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`/getblock/${blockNumberSeleccionado}`);
-        const data = await response.json();
-        setBlockHash(data.blockHash);
+        const response = await fetch("http://localhost:3001/getblock");
+        const data = await response.text();
+        setBlockData(data);
       } catch (error) {
-        console.error("Error:", error);
-        // Puedes manejar el error de alguna manera si es necesario
+        console.error("Error fetching block data:", error);
       }
     };
-
-    // Llama a la función de fetch cuando blockNumberSeleccionado cambia
-    fetchBlockHash();
-  }, [blockNumberSeleccionado]);
+console.log(`blockData: ${blockData}`)
+    fetchData();
+  }, []); // La dependencia está vacía, esto se ejecutará solo una vez al montar el componente
 
   return (
     <div>
-      <h3>Selection Block: {blockNumberSeleccionado}</h3>
-      <p>Block Data: {blockHash}</p>
-      {/* Resto del contenido del componente Blocks1 */}
+      <br></br>
+      {/* Aquí puedes mostrar blockData en tu interfaz de usuario */}
+      <div dangerouslySetInnerHTML={{ __html: blockData }} />
     </div>
   );
 }
+
+/*******************
+ *       <h3>Selection Block: {blockNumberSeleccionado}</h3>
+ */

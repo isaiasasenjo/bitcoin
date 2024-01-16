@@ -7,7 +7,7 @@ export default function Blocks1({ blockNumberSeleccionado }) {
     // Realiza la llamada al backend para obtener el hash del bloque seleccionado
     const fetchBlockHash = async () => {
       try {
-        const response = await fetch(`/blockhash`);
+        const response = await fetch(`/blockhash1/${blockNumberSeleccionado}`);
         const data = await response.json();
         setBlockHash(data.blockHash);
       } catch (error) {

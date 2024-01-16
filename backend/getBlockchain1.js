@@ -4,6 +4,8 @@ const express = require("express");
 const cors = require('cors');
 const Client = require("bitcoin-core");
 
+//app.use(cors());
+
 const app = express();
 var corsOptions = {
   origin: 'http://localhost:3000',
@@ -26,7 +28,7 @@ const client = new Client({
 
 //FUNCIONA BIEN
 //inicio del ultimo getblock
-app.get("/getblock", async (req, res) => {
+app.get("/getblock", cors(corsOptions), async (req, res) => {
   try {
     const blockHash =
       "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871";
@@ -65,6 +67,7 @@ app.get("/getblock", async (req, res) => {
       "</b></td><td>Bits:</td><td><b>" +
       blockHeader.bits +
       "</b></td></tr></table></body></html>";
+      <br></br>
 
     res.send(response);
   } catch (e) {

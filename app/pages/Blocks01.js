@@ -18,7 +18,6 @@ export default function Blocks() {
   let lastBlock = 2450000;  //último Bloque de la BD
   const [blockNumberSeleccionado, setBlockNumberSeleccionado] = useState(lastBlock);
   useEffect(() => {
-    console.log(`dentro de useEffect, blockCount vale: ${blockCount}`)
     // puedes hacer algo con blockCount aquí si es necesario
   }, [blockCount]);
 
@@ -94,11 +93,11 @@ export default function Blocks() {
           </nav>
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
-        <br />
 
-        <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/>
-        <br />
-        <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
+        <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
+        <br></br>
+            <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
+            <br></br>
         <Peu />
       </div>
 
@@ -107,3 +106,13 @@ export default function Blocks() {
 }
 
 
+/***************************************
+ * 
+ * 
+ *    <br />
+
+         <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
+        <br /> 
+ * 
+ * 
+ */
