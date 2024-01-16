@@ -74,6 +74,23 @@ app.get("/getblock", async (req, res) => {
 });
 
 
+//https://platzi.com/tutoriales/2485-backend-nodejs/22425-como-instalar-y-configurar-cors/
+// FUNCIONA BIEN
+app.get("/blockcount", cors(corsOptions),async (req, res) => {
+  try {
+    const blockCount = await client.getBlockCount();
+    res.json({
+      blockCount,
+    });
+ 
+    //res.send(`Current block count: ${blockCount}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+
 //FUNCIONA BIEN
 app.get("/", async (req, res) => {
   try {
@@ -125,10 +142,22 @@ app.get("/blockcount", cors(corsOptions),async (req, res) => {
 
 //FUNCIONA BIEN
 // Define a route to get the block count
-app.get("/blockhash/:blockNumber", async (req, res) => {
+app.get("/blockhash1/:blockNumber", async (req, res) => {
   try {
     const blockNumber = req.params.blockNumber;
     const blockHash = await client.getBlockHash(blockNumber);
+    res.json({ blockHash }); // Devolver como JSON
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).json({ error: "An error occurred" }); // Devolver error como JSON
+  }
+});
+
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhash", async (req, res) => {
+  try {
+    const blockHash = await client.getBlockHash(1000);
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);

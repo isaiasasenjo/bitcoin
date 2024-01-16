@@ -1,62 +1,31 @@
-import Image from "next/image";
-import Link from "next/link";
-import styles from "../styles/Home.module.css";
-import styles2 from "../styles/Styles2.module.css";
+import { getBlockHash } from "bitcoin-core/src/methods";
+import React, { useEffect, useState } from "react";
 
-export default function Blocks2() {
-  
+export default function Blocks1({ blockNumberSeleccionado }) {
+  const [blockHash, setBlockHash] = useState(null);
+
+  useEffect(() => {
+    // Realiza la llamada al backend para obtener el hash del bloque seleccionado
+    const fetchBlockHash = async () => {
+      try {
+        const response = await fetch(`/getblock/${blockNumberSeleccionado}`);
+        const data = await response.json();
+        setBlockHash(data.blockHash);
+      } catch (error) {
+        console.error("Error:", error);
+        // Puedes manejar el error de alguna manera si es necesario
+      }
+    };
+
+    // Llama a la función de fetch cuando blockNumberSeleccionado cambia
+    fetchBlockHash();
+  }, [blockNumberSeleccionado]);
+
   return (
-    
-    
-      <div>
-<h3>Blocks-2 Transactions</h3>
-
-
-        <table className={styles2.tabla1}>
-        <tbody>        
-          <tr>
-            <td>Transactions ID</td>
-            <td>Value</td>
-            <td>Size</td>
-            <td>Fee</td>
-          </tr>
-          <tr>
-            <td>0f7cc5c82330876174979dd9f47d1e3994ecd28d2f30e7375cb27883336751a8</td>
-            <td>124</td>
-            <td>0.04</td>
-            <td>0.004</td>
-
-          </tr>
-
-          <tr>
-            <td>0f7cc5c82330876174979dd9f47d1e3994ecd28d2f30e7375cb27883336751a8</td>
-            <td>124</td>
-            <td>0.04</td>
-            <td>0.004</td>
-
-          </tr>
-
-          <tr>
-            <td>0f7cc5c82330876174979dd9f47d1e3994ecd28d2f30e7375cb27883336751a8</td>
-            <td>124</td>
-            <td>0.04</td>
-            <td>0.004</td>
-
-          </tr>
-
-
-          <tr>
-            <td>0f7cc5c82330876174979dd9f47d1e3994ecd28d2f30e7375cb27883336751a8</td>
-            <td>124</td>
-            <td>0.04</td>
-            <td>0.004</td>
-
-          </tr>
-          </tbody>
-
-        </table>
-      </div>
-
-
+    <div>
+      <h3>Selection Block: {blockNumberSeleccionado}</h3>
+      <p>Block Data: {blockHash}</p>
+      {/* Resto del contenido del componente Blocks1 */}
+    </div>
   );
 }

@@ -14,10 +14,11 @@ import { getBlockHash } from "bitcoin-core/src/methods";
 
 export default function Blocks() {
   const [blockCount, setBlockCount] = useState(null);
-  let blockNumberSeleccionado =2500000  //numero de Bloque seleccionado
+  //numero de Bloque seleccionado
   let lastBlock = 2450000;  //último Bloque de la BD
-
+  const [blockNumberSeleccionado, setBlockNumberSeleccionado] = useState(lastBlock);
   useEffect(() => {
+    console.log(`dentro de useEffect, blockCount vale: ${blockCount}`)
     // puedes hacer algo con blockCount aquí si es necesario
   }, [blockCount]);
 
@@ -25,9 +26,10 @@ export default function Blocks() {
     Frontend({ blockCount, setBlockCount });
   }
   lastBlock = blockCount;
-  blockNumberSeleccionado = lastBlock;
+  
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
+
 
   const blocks = [];
   const [vacio, setVacio] = useState("");
@@ -50,7 +52,9 @@ export default function Blocks() {
   };
 
   function miAlerta(blockNumber) {
-    blockNumberSeleccionado = blockNumber+blockCount;
+    setBlockNumberSeleccionado(blockNumber+blockCount);
+    console.log(`blockNumberSeleccionado: ${blockNumberSeleccionado}`)
+    return(blockNumberSeleccionado);
   }
   
   for (let i = 0; i < numBlocksToShow; i++) {
@@ -63,9 +67,12 @@ export default function Blocks() {
           </Link>
         </h3>
       </div>
+      
     );
     
+    
   }
+  console.log(`blockNumberSeleccionado: ${blockNumberSeleccionado}`);
   return (
     <main>
       <div className={styles2.container}>
@@ -91,7 +98,7 @@ export default function Blocks() {
 
         <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/>
         <br />
-        <Blocks2 />
+        <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
         <Peu />
       </div>
 
