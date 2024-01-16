@@ -3,12 +3,13 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import styles2 from "../styles/Styles2.module.css";
 
-export default function Blocks() {
-  
+
+export default function Blocks1({ blockNumberSeleccionado }){
+   
   return (
     
       <div>
-        <h3>Blocks-1 Blocks</h3>
+        <h3>Selection Block: {blockNumberSeleccionado}</h3>
 
         <table className={styles2.tabla1}>
         <tbody>
@@ -19,33 +20,12 @@ export default function Blocks() {
             <td>Size(KB)</td>
             <td>Weight(KWU)</td>
           </tr>
-          <tr>
-            <td>257456</td>
-            <td>2024-01.04 20:50</td>
-            <td>38</td>
-            <td>10.66</td>
-            <td>31.561</td>
-          </tr>
-          <tr>
-            <td>2570652</td>
-            <td>2024-01.04 20:44</td>
-            <td>25</td>
-            <td>7.139</td>
-            <td>22.136</td>
-          </tr>
-          <tr>
+           <tr>
             <td>2570659</td>
             <td>2024-01.04 20:40</td>
             <td>26</td>
             <td>8.555</td>
             <td>23.771</td>
-          </tr>
-          <tr>
-            <td>2570658</td>
-            <td>2024-01.04 36:45</td>
-            <td>111</td>
-            <td>83.821</td>
-            <td>195.433</td>
           </tr>
           </tbody>        
         </table>
