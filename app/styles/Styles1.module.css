@@ -48,11 +48,7 @@ Estilos de la barra de navegación
     display:none;
 }
 
-.nextblock{
-    margin-left: 140px;
-    padding: 10px;
-    
-}
+
 
 .menu > li:hover > ul{
     display:block;   
@@ -85,8 +81,23 @@ Estilos de la barra de navegación
     color: rgb(4, 105, 92);
     margin-left: 0cm;
     margin-top: 0cm;
-
 }
+
+
+
+.nextblock {
+    color:brown;
+    margin-left: 40px;
+    margin-right: 2px;  /* Agrega un margen derecho */
+    padding: 5px;
+}
+
+.prevblock {
+    margin-left: 10px;  /* Agrega un margen izquierdo */
+    padding: 5px;
+}
+
+
 
 
 /******************
@@ -95,9 +106,21 @@ BORRADOR EJEMPLO
 .menu-item ul {
     display: none;
 }
-
+cm
 .menu-item:hover > ul {
     display: block;
+}
+
+
+
+.nextblock{
+    margin-left: 140px;
+    padding: 5px;
+}
+.prevblock{
+    
+    margin-left: 40px;
+    padding: 5px;
 }
 
 

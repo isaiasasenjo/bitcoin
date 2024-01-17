@@ -7,7 +7,7 @@
     list-style: none;
     display: flex; /* Alineación de flexbox para que los elementos se muestren de derecha a izquierda */
     justify-content: flex-end; /* Alinea los elementos del final al principio */
-    padding:20px;
+    padding:17px;
     width: 100%;
 }
 
@@ -90,10 +90,10 @@ Estilos de datos que estan en el body como Blocks1 Blocks2 etc
 ******************/
 
 .blocks1 {
-    align-self: flex-end; /* Ajustar alineación en lugar de write */
+   /* align-self: flex-end; /* Ajustar alineación en lugar de write */
     background-color: #f3f4f5;
     list-style: none;
-    display: left; /* Alineación de flexbox para que los elementos se muestren de derecha a izquierda */
+    display: inline; /* Alineación de flexbox para que los elementos se muestren de derecha a izquierda */
     justify-content: flex-end; /* Alinea los elementos del final al principio */
     padding:10px;
     width: 100%;
@@ -112,4 +112,22 @@ Estilos de datos que estan en el body como Blocks1 Blocks2 etc
 .blocks1 > li ul li {
     display: none;
     padding:5px;
+}
+
+
+.blocks2 {
+    display: inline;
+  
+    vertical-align: top;
+    display: inline;
+    font-size: 1.2em;
+    padding: 0.5em;
+
+    display: flex;
+    justify-content: space-between;
+  
+    list-style: none;
+    padding: 5px;
+    margin: 0; /* Agrega esto para quitar el margen predeterminado en <ul> */
+    width: 100%;
 }

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+
+import React, { use, useEffect, useState } from "react";
 import Link from "next/link";
 import styles1 from "../styles/Styles1.module.css";
 import styles2 from "../styles/Styles2.module.css";
@@ -9,23 +10,27 @@ import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
 import Frontend from "./Frontend";
+import { getBlockHash } from "bitcoin-core/src/methods";
 
 export default function Blocks() {
   const [blockCount, setBlockCount] = useState(null);
-
-  let lastBlock = 2450000;
+  //numero de Bloque seleccionado
+  let lastBlock = 2573000;  //último Bloque de la BD
+  const [blockNumberSeleccionado, setBlockNumberSeleccionado] = useState(lastBlock);
   useEffect(() => {
     // puedes hacer algo con blockCount aquí si es necesario
   }, [blockCount]);
+
   {
     Frontend({ blockCount, setBlockCount });
   }
   lastBlock = blockCount;
+  
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
-  const blocks = [];
 
+  const blocks = [];
   const [vacio, setVacio] = useState("");
   const handlePrevious = () => {
     if (lastBlock > currentBlock) {
@@ -45,25 +50,28 @@ export default function Blocks() {
     }
   };
 
+  function miAlerta(blockNumber) {
+    setBlockNumberSeleccionado(blockNumber+blockCount);
+
+    return(blockNumberSeleccionado);
+  }
+  
   for (let i = 0; i < numBlocksToShow; i++) {
     const blockNumber = currentBlock - i;
     blocks.push(
       <div key={blockNumber} className={styles2.cuadrado}>
         <h3>
-          <a
-            href={`https://blockchair.com/es/bitcoin/testnet/block/${
-              blockNumber + blockCount
-            }`}
-            className={styles3.enlaces}
-            target="_blank"
-          >
+          <Link href="#" onClick={() => miAlerta(blockNumber)}>
             {blockNumber + blockCount}
-          </a>
+          </Link>
         </h3>
       </div>
+      
     );
+    
+    
   }
-
+  console.log(`blockNumberSeleccionado: ${blockNumberSeleccionado}`);
   return (
     <main>
       <div className={styles2.container}>
@@ -85,14 +93,14 @@ export default function Blocks() {
           </nav>
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
-        <br />
-        <p>Block Number: ${blockNumberSeleccionado}</p>
-        <Blocks1 />
-        <br />
-        <Blocks2 />
+
+        <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
+        <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
+            <br></br>
         <Peu />
       </div>
 
     </main>
   );
 }
+

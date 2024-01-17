@@ -5,6 +5,16 @@ export default function Blocks1({ blockNumberSeleccionado }) {
   const [blockHash, setBlockHash] = useState(null);
 
   useEffect(() => {
+    <nav>
+      <ul className={styles4.blocks1}>
+        <li>
+          <h3>Selected Block: {blockNumberSeleccionado}</h3>
+        </li>
+        <li>
+          <h3>Block Hash: {blockHash}</h3>
+        </li>
+      </ul>
+    </nav>;
     // Realiza la llamada al backend para obtener el hash del bloque seleccionado
     const fetchBlockHash = async () => {
       try {
@@ -23,17 +33,15 @@ export default function Blocks1({ blockNumberSeleccionado }) {
 
   return (
     <div>
-      <nav>
-        <ul className={styles4.blocks1}>
-          <li>
-            <h3>Selected Block: {blockNumberSeleccionado}</h3>
-          </li>
-          <li>
-            <h3>Block Hash: {blockHash}</h3>
-          </li>
-        </ul>
-      </nav>
-
+      <ul className={styles4.blocks2}>
+        <li className={styles4.blocks2}>
+          {" "}
+          <h3>Selected Block: {blockNumberSeleccionado}</h3>
+        </li>
+        <li className={styles4.blocks2}>
+          <h3>Block Hash: {blockHash}</h3>
+        </li>
+      </ul>
       {/* Resto del contenido del componente Blocks1 */}
     </div>
   );

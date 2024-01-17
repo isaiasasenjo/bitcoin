@@ -20,13 +20,9 @@ console.log(`blockData: ${blockData}`)
 
   return (
     <div>
-      <br></br>
+
       {/* Aquí puedes mostrar blockData en tu interfaz de usuario */}
       <div dangerouslySetInnerHTML={{ __html: blockData }} />
     </div>
   );
 }
-
-/*******************
- *       <h3>Selection Block: {blockNumberSeleccionado}</h3>
- */
