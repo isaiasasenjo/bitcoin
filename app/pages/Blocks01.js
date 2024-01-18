@@ -95,7 +95,7 @@ export default function Blocks() {
         <div className={styles2.contenedor}>{blocks}</div>
 
         <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/>   
-        <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
+        
             <br></br>
         <Peu />
       </div>
@@ -107,4 +107,5 @@ export default function Blocks() {
 /*************
  * 
  *  <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
+ * <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
  */
