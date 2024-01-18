@@ -16,14 +16,16 @@ export default function Blocks1({ blockNumberSeleccionado }) {
       </ul>
     </nav>;
     // Realiza la llamada al backend para obtener el hash del bloque seleccionado
+    
+    
     const fetchBlockHash = async () => {
       try {
-        const response = await fetch(`/blockhash1/${blockNumberSeleccionado}`);
+        const response = await fetch(`http://localhost:3001/blockhashnumber/${blockNumberSeleccionado}`);
         const data = await response.json();
         setBlockHash(data.blockHash);
-      } catch (error) {
-        console.error("Error:", error);
-        // Puedes manejar el error de alguna manera si es necesario
+      }
+      catch  (error) {
+        console.error("Error fetching block data:", error);
       }
     };
 

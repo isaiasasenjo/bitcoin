@@ -35,9 +35,8 @@
 }
 
 
-/**************estilos del Peu */
+/************** Estilos del Peu ****************************************/
 
-/**************estilos del Peu */
 
 .peu {
     display: flex;
@@ -84,10 +83,8 @@
 }
 
 
-/***********************
-Estilos de datos que estan en el body como Blocks1 Blocks2 etc
+/********* Estilos de datos que estan en el body como Blocks1 Blocks2 etc *******/
 
-******************/
 
 .blocks1 {
    /* align-self: flex-end; /* Ajustar alineación en lugar de write */

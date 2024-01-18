@@ -14,8 +14,9 @@ export default function Blocks2() {
         console.error("Error fetching block data:", error);
       }
     };
-console.log(`blockData: ${blockData}`)
+
     fetchData();
+    console.log(`blockData: ${blockData}`);
   }, []); // La dependencia está vacía, esto se ejecutará solo una vez al montar el componente
 
   return (

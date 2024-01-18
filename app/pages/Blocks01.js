@@ -3,14 +3,14 @@ import React, { use, useEffect, useState } from "react";
 import Link from "next/link";
 import styles1 from "../styles/Styles1.module.css";
 import styles2 from "../styles/Styles2.module.css";
-import styles3 from "../styles/Styles3.module.css";
+//import styles3 from "../styles/Styles3.module.css";
 import Menu from "./../components/Menu";
 import Peu from "../components/Peu";
 import Blocks1 from "./Blocks1";
 import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
 import Frontend from "./Frontend";
-import { getBlockHash } from "bitcoin-core/src/methods";
+//import { getBlockHash } from "bitcoin-core/src/methods";
 
 export default function Blocks() {
   const [blockCount, setBlockCount] = useState(null);
@@ -94,7 +94,7 @@ export default function Blocks() {
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
 
-        <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
+        <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/>   
         <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
             <br></br>
         <Peu />
@@ -104,3 +104,7 @@ export default function Blocks() {
   );
 }
 
+/*************
+ * 
+ *  <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
+ */
