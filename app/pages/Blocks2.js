@@ -1,4 +1,4 @@
-import { getBlockHash } from "bitcoin-core/src/methods";
+//import { getBlockHash } from "bitcoin-core/src/methods";
 import React, { useEffect, useState } from "react";
 
 export default function Blocks2() {
@@ -9,14 +9,15 @@ export default function Blocks2() {
       try {
         const response = await fetch("http://localhost:3001/getblock");
         const data = await response.text();
+        console.log(`DATAAAAAA: ${data}`);    
         setBlockData(data);
+
       } catch (error) {
         console.error("Error fetching block data:", error);
       }
     };
 
-    fetchData();
-    console.log(`blockData: ${blockData}`);
+    fetchData();  
   }, []); // La dependencia está vacía, esto se ejecutará solo una vez al montar el componente
 
   return (

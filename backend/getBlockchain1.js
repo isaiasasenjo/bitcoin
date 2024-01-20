@@ -145,23 +145,37 @@ app.get("/blockcount", cors(corsOptions),async (req, res) => {
 
 //FUNCIONA BIEN
 // Define a route to get the block count
-app.get("/blockhashnumber/:blockNumber", cors(corsOptions),async (req, res) => {
+app.get("/blockhashnumber/:blockNumber", cors(corsOptions), async (req, res) => {
   try {
     const blockNumber = req.params.blockNumber;
-    const blockHash = await client.getblockhash(blockNumber);
-    res.json({ blockHash }); // Devolver como JSON
-  }catch (e) {
+    const blockHash = await client.getBlockHash(blockNumber);
+    //res.json({ blockHash }); // Devolver como JSON
+    res.send(`BlockHash: ${blockHash}`);
+  } catch (e) {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
   }
-  
+});
+
+
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhashnumberseleccionado/:blockNumber", cors(corsOptions),async (req, res) => {
+  try {
+    const blockNumber = req.params.blockNumber;
+    const blockHash = await client.getBlockHash(blockNumber);
+    res.json({ blockHash }); // Devolver como JSON
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).json({ error: "An error occurred" }); // Devolver error como JSON
+  }
 });
 
 //FUNCIONA BIEN
 // Define a route to get the block count
 app.get("/blockhash", async (req, res) => {
   try {
-    const blockHash = await client.getBlockHash(1000);
+    const blockHash = await client.getBlockHash(1);
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);

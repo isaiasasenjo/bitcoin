@@ -14,8 +14,8 @@ var corsOptions = {
 
 // Configurar middleware para servir archivos estáticos
 app.use(express.static('/home/eduard/bitcoin/backend'));
-const fs = require("fs");
-const port1 = 3001;
+//const fs = require("fs");
+const port = 3001;
 
 // Configure the client to connect to your Bitcoin node
 const client = new Client({
@@ -26,65 +26,46 @@ const client = new Client({
 });
 
 
-
-
-//FUNCIONA BIEN
-//inicio del ultimo getblock
-app.get("/getblock", cors(corsOptions), async (req, res) => {
+app.get("/blockcount", cors(corsOptions),async (req, res) => {
   try {
-    const blockHash =
-      "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871";
-    const blockHashBuffer = Buffer.from(blockHash, "hex");
-    // Convert the const express = require('express');
-    const formattedBlockHash = blockHashBuffer.toString("hex");
-    // Retrieve the block header from the Bitcoin node using the formatted block hash
-    const blockHeader = await client.getBlockHeader(formattedBlockHash);
-    // Convert the raw block header object to a JSON object
-    const formattedBlockHeader = JSON.stringify(blockHeader);
-    //res.send(`Block Header: ${blockHeader.hash}`);
-    console.log(blockHeader);
-    const response =
-      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr>BLOCK DATA</tr><tr><td>Block Number:</td><td><b>" +
-      blockHeader.height +
-      "</b></td><td>Confirmations:</td><td><b>" +
-      blockHeader.confirmations +
-      "</b></td></tr><tr><td>Block Hash:</td><td><b>" +
-      blockHeader.hash +
-      "</b></td><td>Nonce:</td><td><b>" +
-      blockHeader.nonce +
-      "</b></td></tr><tr><td>Merkle Root: </td><td><b>" +
-      blockHeader.merkleroot +
-      "</b></td><td>Number of Transactions:</td><td><b>" +
-      blockHeader.nTx +
-      "</b></td></tr><tr><td>Next Block Hash:</td><td><b>" +
-      blockHeader.nextblockhash +
-      "</b></td><td>Nonce:</td><td><h4>" +
-      blockHeader.nonce +
-      "</h4></td></tr><tr><td>Difficulty:</td><td><b>" +
-      blockHeader.difficulty +
-      "</b></td><td>Time:</td><td><b>" +
-      blockHeader.time +
-      "</b></td></tr><tr><td>Previous Block Hash:</td><td><b>" +
-      blockHeader.previousblockhash +
-      "</b></td><td>Bits:</td><td><b>" +
-      blockHeader.bits +
-      "</b></td></tr></table></body></html>";
-
-
-    res.send(response);
+    const blockCount = await client.getBlockCount();
+    res.json({
+      blockCount,
+    });
+ 
+    //res.send(`Current block count: ${blockCount}`);
   } catch (e) {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
   }
 });
 
-// Start the server
-app.listen(port1, () => {
-  console.log(`Server running on http://localhost:${port1}`);
+
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhashnumber/:blockNumber", cors(corsOptions),async (req, res) => {
+  try {
+    const blockNumber = req.params.blockNumber;
+    console.log(`blockNumberrrrrrrrrr111111111: ${blockNumber}`);
+    const blockHash = await client.getBlockHash(blockNumber);
+
+    console.log(`blockNumberrrrrrrrrr2222222222: ${blockNumber}`);
+    res.json({ blockHash }); // Devolver como JSON
+
+    console.log(`blockNumberrrrrrrrrrr333333333333: ${blockNumber}`);
+  } catch (e) {
+
+    console.error("Error:", e);
+    //res.status(500).send(`An error occurred: ${e.message}`);
+    res.status(500).json({ error: `An error occurred: ${e.message}` });
+
+
+  }
 });
 
 
-
-
-
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
 

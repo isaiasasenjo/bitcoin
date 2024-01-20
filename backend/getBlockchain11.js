@@ -31,7 +31,7 @@ const client = new Client({
 app.get("/getblock", cors(corsOptions), async (req, res) => {
   try {
     const blockHash =
-      "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871";
+      "00000000b873e79784647a6c82962c70d228557d24a747ea4d1b8bbe878e1206";
     const blockHashBuffer = Buffer.from(blockHash, "hex");
     // Convert the const express = require('express');
     const formattedBlockHash = blockHashBuffer.toString("hex");
@@ -143,7 +143,21 @@ app.get("/blockcount", cors(corsOptions),async (req, res) => {
   }
 });
 
-//FUNCIONA BIENNNNNNNNNNNNNNNNN
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhashnumber/:blocknumber", cors(corsOptions), async (req, res) => {
+  try {
+    const blockNumber = req.params.blockNumber;
+    const blockHash = await client.getBlockHash(blockNumber);
+    res.json({ blockHash }); // Devolver como JSON
+    //res.send(`BlockHash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+//FUNCIONA BIEN
 // Define a route to get the block count
 app.get("/blockhashnumberseleccionado/:blockNumber", cors(corsOptions),async (req, res) => {
   try {
@@ -160,7 +174,7 @@ app.get("/blockhashnumberseleccionado/:blockNumber", cors(corsOptions),async (re
 // Define a route to get the block count
 app.get("/blockhash", async (req, res) => {
   try {
-    const blockHash = await client.getBlockHash(1000);
+    const blockHash = await client.getBlockByHash(1);
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);
@@ -264,7 +278,7 @@ app.get("/transactions2", async (req, es) => {
 app.get("/transactions1", async (req, es) => {
   try {
     const blockHash =
-      "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
+      "00000000b873e79784647a6c82962c70d228557d24a747ea4d1b8bbe878e1206";
     const blockHashBuffer = Buffer.from(blockHash, "hex");
     const formattedBlockHash = blockHashBuffer.toString("hex");
     const blockHeader = await client.getBlockHeader(formattedBlockHash);

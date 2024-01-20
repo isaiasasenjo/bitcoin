@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import "./../styles/Styles2.module.css";
-import styles1 from "../styles/Styles1.module.css";
-import styles2 from "../styles/Styles2.module.css";
+//import styles1 from "../styles/Styles1.module.css";
+//import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
 import styles4 from "../styles/Styles4.module.css";
 //import Blocks from "../pages/Blocks";

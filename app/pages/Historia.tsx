@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import styles from "./../styles/Home.module.css";
 const Historia = () => {
   return (
     <div className={styles.container}>

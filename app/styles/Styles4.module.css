@@ -9,6 +9,8 @@
     justify-content: flex-end; /* Alinea los elementos del final al principio */
     padding:17px;
     width: 100%;
+    font-size: 1.4em;
+        
 }
 
 .menu > li {
@@ -46,6 +48,7 @@
     padding: 5px;
     margin: 0; /* Agrega esto para quitar el margen predeterminado en <ul> */
     width: 100%;
+    font-size: 1.4em;
 }
 
 .peu > li {
@@ -113,12 +116,12 @@
 
 
 .blocks2 {
-    display: inline;
+    
   
     vertical-align: top;
     display: inline;
     font-size: 1.2em;
-    padding: 0.5em;
+    padding: 15px;
 
     display: flex;
     justify-content: space-between;
