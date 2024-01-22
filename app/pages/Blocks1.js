@@ -26,10 +26,10 @@ export default function Blocks1({ blockNumberSeleccionado }) {
       <ul className={styles4.blocks2}>
         <li className={styles4.blocks2}>
           {" "}
-          <h3>Selected Block: {blockNumberSeleccionado}</h3>
+          <h4>Selected Block: {blockNumberSeleccionado}</h4>
         </li>
         <li className={styles4.blocks2}>
-          <h3>Block Hash: {blockHash}</h3>
+          <h4>Block Hash: {blockHash}</h4>
         </li>
       </ul>
   

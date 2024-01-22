@@ -213,12 +213,11 @@ app.get("/getblockhash/:hash", cors(corsOptions), async (req, res) => {
       "</b></td><td>Bits:</td><td><b>" +
       blockHeader.bits +
       "</b></td></tr></table></body></html>";
-
-
     res.send(response);
+    
   } catch (e) {
     console.error("Error:", e);
-    res.status(500).send("An error occurredddddddddddddd");
+    res.status(500).send("An error occurred");
   }
 });
 

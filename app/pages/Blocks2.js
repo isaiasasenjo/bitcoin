@@ -10,7 +10,7 @@ export default function Blocks2({hash}) {
         console.log("ESTOY EN BLOCK2");
         console.log(`El hash es: ${hash}`);
         console.log(hash);
-                
+        console.log(`blockData: ${blockData}`);        
         const response = await fetch(`http://localhost:3001/getblockhash/${hash}`);
         const data = await response.text();
         setBlockData(data);

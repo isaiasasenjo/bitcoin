@@ -100,10 +100,12 @@ export default function Blocks() {
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
 
+        <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
         
         <Blocks2 hash = {hash}/>
       
-        
+ 
+            
             <br></br>
         <Peu />
       </div>
