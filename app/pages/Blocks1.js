@@ -32,7 +32,7 @@ export default function Blocks1({ blockNumberSeleccionado }) {
           <h3>Block Hash: {blockHash}</h3>
         </li>
       </ul>
-      {/* Resto del contenido del componente Blocks1 */}
+  
     </div>
   );
 }

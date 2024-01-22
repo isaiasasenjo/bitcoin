@@ -16,6 +16,7 @@ import Frontend from "./Frontend";
 
 
 export default function Blocks() {
+  const [hash, setHash] = useState("00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871");  
   const [blockCount, setBlockCount] = useState(null);
   //numero de Bloque seleccionado
   let lastBlock = 1;  //último Bloque de la BD
@@ -23,10 +24,6 @@ export default function Blocks() {
   useEffect(() => {
     // puedes hacer algo con blockCount aquí si es necesario
   }, [blockCount]);
-
-
-
-
 
   {
     Frontend({ blockCount, setBlockCount });
@@ -42,6 +39,7 @@ export default function Blocks() {
   const handlePrevious = () => {
     if (lastBlock > currentBlock) {
       setVacio("");
+      setHash("00000000000000075b80ff4fa438d35a12e2c17250284bdcab6681b06315023e")
     } else {
       setVacio("LastBlock");
     }
@@ -52,6 +50,7 @@ export default function Blocks() {
   const handleNext = () => {
     if (lastBlock > blockCount + currentBlock) {
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
+      setHash("00000000000070452df909e2c35304e97243c8125b1ec38b35de6df7b5cce60e")
     } else {
       setVacio("LastBlock");
     }
@@ -78,6 +77,7 @@ export default function Blocks() {
     
     
   }
+  console.log(`Estoy en Block01, El hash es: ${hash}`)
   console.log(`blockNumberSeleccionado: ${blockNumberSeleccionado}`);
   return (
     <main>
@@ -100,8 +100,9 @@ export default function Blocks() {
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
 
-        <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
-        <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
+        
+        <Blocks2 hash = {hash}/>
+      
         
             <br></br>
         <Peu />
