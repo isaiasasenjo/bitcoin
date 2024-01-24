@@ -1,8 +1,8 @@
 //import { getBlockHash } from "bitcoin-core/src/methods";
 import React, { useEffect, useState } from "react";
-import Blocks3 from "./Blocks3";
 
-export default function Blocks2({blockHash}) {
+
+export default function Blocks3({blockHash}) {
   const [blockData, setBlockData] = useState(null);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export default function Blocks2({blockHash}) {
         console.log(`El blockHash es: ${blockHash}`);
         console.log(blockHash);
         console.log(`blockData: ${blockData}`);        
-        const response = await fetch(`http://localhost:3001/getblockhash/${blockHash}`);
+        //const response = await fetch(`http://localhost:3001/getblockhash/${blockHash}`);
         const data = await response.text();
         setBlockData(data);
       } catch (error) {
@@ -25,10 +25,8 @@ export default function Blocks2({blockHash}) {
 
   return (
     <div>
-
-      {/* Aquí puedes mostrar blockData en tu interfaz de usuario */}
-      <div dangerouslySetInnerHTML={{ __html: blockData }} />
-      <Blocks3 blockHash={blockHash} />
+            <br></br>
+      Transactions:
     </div>
   );
 }
