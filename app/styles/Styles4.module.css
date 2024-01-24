@@ -117,17 +117,18 @@
 
 .blocks2 {
     
-  
+    display: flex;
     vertical-align: top;
-    display: inline;
+    margin-left: auto;
+    margin-right: 0px;
     font-size: 1em;
     padding: 15px;
 
-    display: flex;
+
     justify-content: space-between;
   
     list-style: none;
     padding: 5px;
-    margin: 0; /* Agrega esto para quitar el margen predeterminado en <ul> */
+    /*  margin: 0;Agrega esto para quitar el margen predeterminado en <ul> */
     width: 100%;
 }

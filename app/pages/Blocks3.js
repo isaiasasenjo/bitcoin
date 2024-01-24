@@ -12,7 +12,7 @@ export default function Blocks3({blockHash}) {
         console.log(`El blockHash es: ${blockHash}`);
         console.log(blockHash);
         console.log(`blockData: ${blockData}`);        
-        //const response = await fetch(`http://localhost:3001/getblockhash/${blockHash}`);
+        const response = await fetch(`http://localhost:3001/getblockhash/${blockHash}`);
         const data = await response.text();
         setBlockData(data);
       } catch (error) {
