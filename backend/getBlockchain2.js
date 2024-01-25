@@ -26,107 +26,6 @@ const client = new Client({
 });
 
 
-//FUNCIONA BIEN
-//inicio del ultimo getblock
-app.get("/getblock1/:blockhash1", cors(corsOptions), async (req, res) => {
-  try {
-    const blockHash = req.params.blockhash1;
-     
-    const blockHashBuffer = Buffer.from(blockHash, "hex");
-    // Convert the const express = require('express');
-    const formattedBlockHash = blockHashBuffer.toString("hex");
-    // Retrieve the block header from the Bitcoin node using the formatted block hash
-    const blockHeader = await client.getBlockHeader(formattedBlockHash);
-    // Convert the raw block header object to a JSON object
-    const formattedBlockHeader = JSON.stringify(blockHeader);
-    //res.send(`Block Header: ${blockHeader.hash}`);
-    
-    const response =
-      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr>BLOCK DATA</tr><tr><td>Block Number:</td><td><b>" +
-      blockHeader.height +
-      "</b></td><td>Confirmations:</td><td><b>" +
-      blockHeader.confirmations +
-      "</b></td></tr><tr><td>Block Hash:</td><td><b>" +
-      blockHeader.hash +
-      "</b></td><td>Nonce:</td><td><b>" +
-      blockHeader.nonce +
-      "</b></td></tr><tr><td>Merkle Root: </td><td><b>" +
-      blockHeader.merkleroot +
-      "</b></td><td>Number of Transactions:</td><td><b>" +
-      blockHeader.nTx +
-      "</b></td></tr><tr><td>Next Block Hash:</td><td><b>" +
-      blockHeader.nextblockhash +
-      "</b></td><td>Nonce:</td><td><h4>" +
-      blockHeader.nonce +
-      "</h4></td></tr><tr><td>Difficulty:</td><td><b>" +
-      blockHeader.difficulty +
-      "</b></td><td>Time:</td><td><b>" +
-      blockHeader.time +
-      "</b></td></tr><tr><td>Previous Block Hash:</td><td><b>" +
-      blockHeader.previousblockhash +
-      "</b></td><td>Bits:</td><td><b>" +
-      blockHeader.bits +
-      "</b></td></tr></table></body></html>";
-
-
-    res.send(response);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
-
-//FUNCIONA BIEN
-//inicio del ultimo getblock
-app.get("/getblock", cors(corsOptions), async (req, res) => {
-  try {
-    const blockHash =
-      "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871";
-    const blockHashBuffer = Buffer.from(blockHash, "hex");
-    // Convert the const express = require('express');
-    const formattedBlockHash = blockHashBuffer.toString("hex");
-    // Retrieve the block header from the Bitcoin node using the formatted block hash
-    const blockHeader = await client.getBlockHeader(formattedBlockHash);
-    // Convert the raw block header object to a JSON object
-    const formattedBlockHeader = JSON.stringify(blockHeader);
-    //res.send(`Block Header: ${blockHeader.hash}`);
-    
-    const response =
-      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr>BLOCK DATA</tr><tr><td>Block Number:</td><td><b>" +
-      blockHeader.height +
-      "</b></td><td>Confirmations:</td><td><b>" +
-      blockHeader.confirmations +
-      "</b></td></tr><tr><td>Block Hash:</td><td><b>" +
-      blockHeader.hash +
-      "</b></td><td>Nonce:</td><td><b>" +
-      blockHeader.nonce +
-      "</b></td></tr><tr><td>Merkle Root: </td><td><b>" +
-      blockHeader.merkleroot +
-      "</b></td><td>Number of Transactions:</td><td><b>" +
-      blockHeader.nTx +
-      "</b></td></tr><tr><td>Next Block Hash:</td><td><b>" +
-      blockHeader.nextblockhash +
-      "</b></td><td>Nonce:</td><td><h4>" +
-      blockHeader.nonce +
-      "</h4></td></tr><tr><td>Difficulty:</td><td><b>" +
-      blockHeader.difficulty +
-      "</b></td><td>Time:</td><td><b>" +
-      blockHeader.time +
-      "</b></td></tr><tr><td>Previous Block Hash:</td><td><b>" +
-      blockHeader.previousblockhash +
-      "</b></td><td>Bits:</td><td><b>" +
-      blockHeader.bits +
-      "</b></td></tr></table></body></html>";
-
-
-    res.send(response);
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
-
-
 //este endpoint devuelve el último bloque minado
 app.get("/blockcount", cors(corsOptions),async (req, res) => {
   try {
@@ -142,6 +41,81 @@ app.get("/blockcount", cors(corsOptions),async (req, res) => {
   }
 });
 
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhash", cors(corsOptions), async (req, res) => {
+  try {
+    const blockHash = await client.getBlockHash(1);
+    res.send(`BlockHash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+
+//FUNCIONA BIEN
+// Esto no da el hash de un número de bloque que entremos por parámetro
+app.get("/blockhashnumber/:blocknumber", cors(corsOptions), async (req, res) => {
+  try {
+
+    const blockNumber = req.params.blocknumber;
+    const blockHash = await client.getBlockHash(`${blockNumber}`);
+    res.send(`BlockHash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+
+
+app.get("/transactions", cors(corsOptions),  async (req, res) => {
+  const blockHash =
+    "0000000000000027003b6ec59d14dc00c7284aafcdb2d26f6215ddc1ea938158";
+  // 00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9
+  // https://blockstream.i// Configurar middleware para servir archivos estáticos
+app.use(express.static('ruta_de_tus_archivos_estaticos'));
+
+  const blockHashBuffer = Buffer.from(blockHash, "hex");
+  const formattedBlockHash = blockHashBuffer.toString("hex");
+
+  try {
+    // Obtén el bloque completo (incluyendo las transacciones)
+    const block = await client.getBlock(formattedBlockHash);
+    // Accede a las transa// Configurar middleware para servir archivos estáticos
+
+    const transactions = block.transaction;
+    // Imprime la información sobre las transacciones
+    transactions.forEach((transaction, index) => {
+      console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
+    });
+    res.send(transactions); // Envia las transacciones como respuesta HTTP
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send(`An error occurred: ${error.message}`);
+  }
+});
+
+app.get("/transactions2", cors(corsOptions),  async (req, es) => {
+  const blockHash =
+    "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
+  const blockHashBuffer = Buffer.from(blockHash, "hex");
+  const formattedBlockHash = blockHashBuffer.toString("hex");
+
+  try {
+    // Obtén el bloque completo (incluyendo las transacciones)
+    const block = await client.getBlock(formattedBlockHash);
+    // Accede a las transacciones del bloque
+    const transactions = block.transactions;
+    // Imprime la información sobre las transacciones
+    transactions.forEach((transaction, index) => {
+      console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+});
 
 
 

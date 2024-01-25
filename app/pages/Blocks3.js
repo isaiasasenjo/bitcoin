@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from "react";
 
 
-export default function Blocks3({blockHash}) {
+export default function Blocks3({numBlock}) {
   const [blockData, setBlockData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/getblockhash/${blockHash}`);
+        const response = await fetch(`http://localhost:3001/getblockhash/${numBlock}`);
         //const response = await fetch(`http://localhost:3001/getblock/`);
         const data = await response.text();
         setBlockData(data);

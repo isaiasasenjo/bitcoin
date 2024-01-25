@@ -97,7 +97,7 @@ app.get("/getblock", cors(corsOptions), async (req, res) => {
     const response =
       "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr>BLOCK DATA</tr><tr><td>Block Number:</td><td><b>" +
       blockHeader.height +
-      "</b></td><td>Confirmations:</td><td><b>" +
+      "</b></td><td>Confirmationsssssssssssssttt:</td><td><b>" +
       blockHeader.confirmations +
       "</b></td></tr><tr><td>Block Hash:</td><td><b>" +
       blockHeader.hash +

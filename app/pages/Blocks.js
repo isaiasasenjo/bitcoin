@@ -38,7 +38,7 @@ export default function Blocks() {
     if (lastBlock > currentBlock) {
       setVacio("");
       setblockHash(
-        "00000000000000075b80ff4fa438d35a12e2c17250284bdcab6681b06315023e"
+        "00000000b873e79784647a6c82962c70d228557d24a747ea4d1b8bbe878e1206"
       );
     } else {
       setVacio("LastBlock");
@@ -51,7 +51,7 @@ export default function Blocks() {
     if (lastBlock > blockCount + currentBlock) {
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
       setblockHash(
-        "00000000000070452df909e2c35304e97243c8125b1ec38b35de6df7b5cce60e"
+        "000000006c02c8ea6e4ff69651f7fcde348fb9d557a06e6957b65552002a7820"
       );
     } else {
       setVacio("LastBlock");

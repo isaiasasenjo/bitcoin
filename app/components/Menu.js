@@ -33,7 +33,7 @@ const Menu = () => {
             <Link href="/" className={styles3.enlacesMenu}>Home </Link>
           </li>
           <li>
-            <Link href="/Blocks" className={styles3.enlacesMenu}>
+            <Link href="/Blocks01" className={styles3.enlacesMenu}>
               Blocks
             </Link>
           </li>
