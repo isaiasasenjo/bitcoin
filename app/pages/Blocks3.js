@@ -8,11 +8,8 @@ export default function Blocks3({blockHash}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("ESTOY EN BLOCK2");
-        console.log(`El blockHash es: ${blockHash}`);
-        console.log(blockHash);
-        console.log(`blockData: ${blockData}`);        
         const response = await fetch(`http://localhost:3001/getblockhash/${blockHash}`);
+        //const response = await fetch(`http://localhost:3001/getblock/`);
         const data = await response.text();
         setBlockData(data);
       } catch (error) {
@@ -22,6 +19,8 @@ export default function Blocks3({blockHash}) {
 
     fetchData();  
   }, [blockHash]); // Esto se ejecutará cada vez que cambien el valor de la variable blockHash
+
+
 
   return (
     <div>
