@@ -18,7 +18,7 @@ export default function Blocks3({numBlock}) {
     };
 
     fetchData();  
-  }, [blockHash]); // Esto se ejecutará cada vez que cambien el valor de la variable blockHash
+  }, [numBlock]); // Esto se ejecutará cada vez que cambien el valor de la variable blockHash
 
 
 
