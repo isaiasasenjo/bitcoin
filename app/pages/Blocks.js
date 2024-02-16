@@ -17,7 +17,7 @@ export default function Blocks() {
   );
   const [blockCount, setBlockCount] = useState(null);
   //numero de Bloque seleccionado
-  let lastBlock = 2570000; //último Bloque de la BD pero pongo uno por defecto
+  let lastBlock = 2578356; //último Bloque de la BD pero pongo uno por defecto
   const [blockNumberSeleccionado, setBlockNumberSeleccionado] =
     useState(lastBlock);
   useEffect(() => {
