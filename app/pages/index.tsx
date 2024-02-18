@@ -1,9 +1,10 @@
+//index.tsx  está en la carpeta public
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Menu from '../components/Menu'
 import Peu from '../components/Peu'
-import Historia from './Historia'
+import Historia from '../pages/Historia'
 
 
 export default function Home() {

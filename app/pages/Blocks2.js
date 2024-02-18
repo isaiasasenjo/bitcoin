@@ -15,6 +15,7 @@ export default function Blocks2({blockHash}) {
         const data = await response.text();
         setBlockData(data);
         console.log(`Blockdata: ${blockData}`);
+        console.log(`blockHash: ${blockHash}`);
       } catch (error) {
         console.error("Error fetching block data:", error);
       }

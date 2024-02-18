@@ -291,7 +291,7 @@ app.get("/blockhashnumberseleccionado/:blockNumber", cors(corsOptions),async (re
 
 //FUNCIONA BIEN
 // Define a route to get the block count
-app.get("/blockhash", async (req, res) => {
+app.get("/blockhash",  cors(corsOptions), async (req, res) => {
   try {
     const blockHash = await client.getBlockHash(2578603);
     res.send(`BlockHash: ${blockHash}`);
