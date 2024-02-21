@@ -1,6 +1,10 @@
 //import { getBlockHash } from "bitcoin-core/src/methods";
 import React, { useEffect, useState } from "react";
 import Blocks3 from "./Blocks3";
+//  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
+//  getblockhash   2500000      retorna el hash del bloque 2500000   
+
+
 
 export default function Blocks2({blockHash}) {
   const [blockData, setBlockData] = useState(null);

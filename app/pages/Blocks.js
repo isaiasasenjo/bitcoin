@@ -11,6 +11,9 @@ import Blocks2 from "./Blocks2";
 import Frontend from "./Frontend";
 //import { getBlockHash } from "bitcoin-core/src/methods";
 
+//  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
+//  getblockhash   2500000      retorna el hash del bloque 2500000   
+
 export default function Blocks() {
   const [blockHash, setblockHash] = useState(
     "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871"
@@ -107,7 +110,10 @@ export default function Blocks() {
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
 
-        <Blocks1 blockNumberSeleccionado={blockNumberSeleccionado} />
+
+
+
+        <Blocks1 blockNumberSeleccionado={blockNumberSeleccionado} blockHash={blockHash}/>
 
         <Blocks2 blockHash={blockHash} />
 
