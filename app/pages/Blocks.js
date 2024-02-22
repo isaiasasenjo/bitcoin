@@ -15,9 +15,7 @@ import Frontend from "./Frontend";
 //  getblockhash   2500000      retorna el hash del bloque 2500000   
 
 export default function Blocks() {
-  const [blockHash, setblockHash] = useState(
-    "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871"
-  );
+  const [blockHash, setblockHash] = useState(null);
   const [blockCount, setBlockCount] = useState(null);
   //numero de Bloque seleccionado
   let lastBlock = 2578600; //último Bloque de la BD pero pongo uno por defecto
@@ -113,9 +111,9 @@ export default function Blocks() {
 
 
 
-        <Blocks1 blockNumberSeleccionado={blockNumberSeleccionado} blockHash={blockHash}/>
+    
 
-        <Blocks2 blockHash={blockHash} />
+        <Blocks2 blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
 
         <br></br>
         <Peu />
@@ -126,7 +124,11 @@ export default function Blocks() {
 
 /*************
  * 
- *  <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
+ *     <Blocks1 blockNumberSeleccionado={blockNumberSeleccionado} blockHash={blockHash}/> 
+ *     <Blocks2 blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
+ * 
+ * 
+ * <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
  * <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
  * 
  * 

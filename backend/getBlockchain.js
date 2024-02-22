@@ -12,6 +12,25 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
+
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhashnumber/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
+  try {
+    const blockNumberSeleccionado = req.params.blockNumberSeleccionado;
+    console.log("blockNumberSeleccionadooooooooo:"+blockNumberSeleccionado);
+    //FALLA EN LA SIGUIENTE LINEA
+    const blockHash = await client.getblockhash(blockNumberSeleccionado);
+    //res.json({ blockHash }); // Devolver como JSON
+    res.send(`BlockHash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+
+
 // Configurar middleware para servir archivos estáticos
 app.use(express.static('/home/eduard/bitcoin/backend'));
 const fs = require("fs");
@@ -198,11 +217,12 @@ app.get("/blockcount", cors(corsOptions),async (req, res) => {
 
 //FUNCIONA BIEN
 // Define a route to get the block count
-app.get("/blockhashnumber/:blockNumber", cors(corsOptions), async (req, res) => {
+app.get("/blockhashnumber/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
   try {
-    const blockNumber = req.params.blockNumber;
+    const blockNumberSeleccionado = req.params.blockNumberSeleccionado;
+    console.log("blockNumberSeleccionadooooooooo:"+blockNumberSeleccionado);
     //FALLA EN LA SIGUIENTE LINEA
-    const blockHash = await client.getblockhash(blockNumber);
+    const blockHash = await client.getblockhash(blockNumberSeleccionado);
     //res.json({ blockHash }); // Devolver como JSON
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
