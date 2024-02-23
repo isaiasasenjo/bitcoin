@@ -12,7 +12,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
-
+//ESTOY AQUI blockhash funciona pero blockhashnumber no
 //FUNCIONA BIEN
 // Define a route to get the block count
 app.get("/blockhashnumber/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
@@ -23,6 +23,24 @@ app.get("/blockhashnumber/:blockNumberSeleccionado", cors(corsOptions), async (r
     const blockHash = await client.getblockhash(blockNumberSeleccionado);
     //res.json({ blockHash }); // Devolver como JSON
     res.send(`BlockHash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhash/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
+  try {
+   //console.log("eeeeeeeeeeeeeeeeee");
+    // Extraer blockNumberSeleccionado de los parámetros de la URL
+    const blockNumberSeleccionado = parseInt(req.params.blockNumberSeleccionado);
+
+    //console.log("11-El Bloque seleccionado para el hash es: "+blockNumberSeleccionado);
+    // Usar blockNumberSeleccionado para obtener el hash del bloque
+    const blockHash = await client.getBlockHash(blockNumberSeleccionado);
+    res.send(`Hash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
