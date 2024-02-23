@@ -132,3 +132,13 @@
     /*  margin: 0;Agrega esto para quitar el margen predeterminado en <ul> */
     width: 100%;
 }
+
+.blocks3 {
+    position: relative;
+    display:flex;
+    margin-left: 0.3cm;
+    margin-right: 25px;  /* Agrega un margen derecho */
+    padding: 0px;
+}
+
+

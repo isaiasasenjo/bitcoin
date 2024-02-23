@@ -25,7 +25,8 @@ export default function Blocks3({numBlock}) {
   return (
     <div>
             <br></br>
-      Transactions:
+      Transactionsssssssssss: 
+      <h4>Block: {blockData}</h4>
     </div>
   );
 }
