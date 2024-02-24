@@ -6,7 +6,7 @@ import styles2 from "./../styles/Styles2.module.css";
 import Menu from "./../components/Menu";
 import Peu from "./../components/Peu";
 import Blocks1 from "./Blocks1";
-import Blocks2 from "./Blocks2";
+//import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
 import Frontend from "./Frontend";
 //import { getBlockHash } from "bitcoin-core/src/methods";
@@ -108,12 +108,7 @@ export default function Blocks() {
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
 
-
-
-
-    
-
-        <Blocks2 blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
+        <Blocks1 blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
 
         <br></br>
         <Peu />

@@ -4,21 +4,21 @@ import styles1 from "./../styles/Styles1.module.css";
 import styles2 from "./../styles/Styles2.module.css";
 //import styles3 from "./../styles/Styles3.module.css";
 import Menu from "./../components/Menu";
-import Peu from "../components/Peu";
+import Peu from "./../components/Peu";
 import Blocks1 from "./Blocks1";
-import Blocks2 from "./Blocks2";
-import Blocks3 from "./Blocks3";
+//import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
 import Frontend from "./Frontend";
 //import { getBlockHash } from "bitcoin-core/src/methods";
 
+//  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
+//  getblockhash   2500000      retorna el hash del bloque 2500000   
+
 export default function Blocks() {
-  const [blockHash, setblockHash] = useState(
-    "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871"
-  );
+  const [blockHash, setblockHash] = useState(null);
   const [blockCount, setBlockCount] = useState(null);
   //numero de Bloque seleccionado
-  let lastBlock = 2570000; //último Bloque de la BD pero pongo uno por defecto
+  let lastBlock = 2578600; //último Bloque de la BD pero pongo uno por defecto
   const [blockNumberSeleccionado, setBlockNumberSeleccionado] =
     useState(lastBlock);
   useEffect(() => {
@@ -30,6 +30,9 @@ export default function Blocks() {
   }
   lastBlock = blockCount;
 
+  //********************************************************** */
+  //gestion de los cuadros con el número de bloque que sale en pantalla
+  //********************************************************** */ 
   const numBlocksToShow = 10;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
@@ -39,7 +42,7 @@ export default function Blocks() {
     if (lastBlock > currentBlock) {
       setVacio("");
       setblockHash(
-        "00000000000000075b80ff4fa438d35a12e2c17250284bdcab6681b06315023e"
+        "00000000b873e79784647a6c82962c70d228557d24a747ea4d1b8bbe878e1206"
       );
     } else {
       setVacio("LastBlock");
@@ -52,13 +55,12 @@ export default function Blocks() {
     if (lastBlock > blockCount + currentBlock) {
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
       setblockHash(
-        "00000000000070452df909e2c35304e97243c8125b1ec38b35de6df7b5cce60e"
+        "000000006c02c8ea6e4ff69651f7fcde348fb9d557a06e6957b65552002a7820"
       );
     } else {
       setVacio("LastBlock");
     }
   };
-
   function miAlerta(blockNumber) {
     setBlockNumberSeleccionado(blockNumber + blockCount);
 
@@ -77,8 +79,15 @@ export default function Blocks() {
       </div>
     );
   }
-  console.log(`Estoy en Block01, El hash es: ${blockHash}`);
+
+//*********************************************************************** */
+//***************** Acaba la gestión del pintado de los bloques en pantalla */
+//************************************************************************* */
+
+  console.log(`Estoy en Blocks.js, El hash es: ${blockHash}`);
   console.log(`blockNumberSeleccionado: ${blockNumberSeleccionado}`);
+  
+  
   return (
     <main>
       <div className={styles2.container}>
@@ -99,10 +108,7 @@ export default function Blocks() {
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
 
-        
-
-      
-        <Blocks3 blockHash={1000} />
+        <Blocks1 blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
 
         <br></br>
         <Peu />
@@ -113,9 +119,12 @@ export default function Blocks() {
 
 /*************
  * 
- *  <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
+ *     <Blocks1 blockNumberSeleccionado={blockNumberSeleccionado} blockHash={blockHash}/> 
+ *     <Blocks2 blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
+ * 
+ * 
+ * <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
  * <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
- *  <Blocks3 blockHash={blockHash} />
  * 
  * 
 Paso de dos parámetros de un bloque a otro
@@ -131,21 +140,4 @@ En Blocks1.js
 export default function Blocks1({ blockNumberSeleccionado, hash }) {
   // Ahora puedes usar blockNumberSeleccionado y hash dentro de tu componente
   // ...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  */

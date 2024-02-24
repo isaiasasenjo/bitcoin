@@ -13,6 +13,20 @@ var corsOptions = {
   }
 
 
+// Configurar middleware para servir archivos estáticos
+app.use(express.static('/home/eduard/bitcoin/backend'));
+const fs = require("fs");
+const port = 3001;
+
+// Configure the client to connect to your Bitcoin node
+const client = new Client({
+  network: "testnet",
+  username: "eduard", // Replace with your rpcuser
+  password: "2001", // Replace with your rpcpassword
+  port: 18332, // Default RPC port for testnet
+});
+
+
 
 
 //ESTOY AQUI blockhash funciona pero blockhashnumber no
@@ -99,35 +113,20 @@ app.get("/getblockhash/:hash", cors(corsOptions), async (req, res) => {
 });
 
 
-// Configurar middleware para servir archivos estáticos
-app.use(express.static('/home/eduard/bitcoin/backend'));
-const fs = require("fs");
-const port = 3001;
-
-// Configure the client to connect to your Bitcoin node
-const client = new Client({
-  network: "testnet",
-  username: "eduard", // Replace with your rpcuser
-  password: "2001", // Replace with your rpcpassword
-  port: 18332, // Default RPC port for testnet
-});
-
-
-
 
 //FUNCIONA BIEN
 //inicio del ultimo getblock
-app.get("/getblock1/:blockhash1", cors(corsOptions), async (req, res) => {
+app.get("/getblock/:blockHash", cors(corsOptions), async (req, res) => {
   try {
-    const blockHash = req.params.blockhash1;
-     
+    
+    const blockHash = req.params.blockHash; // Obtén el hash del bloque de la URL
     const blockHashBuffer = Buffer.from(blockHash, "hex");
-    // Convert the const express = require('express');
     const formattedBlockHash = blockHashBuffer.toString("hex");
-    // Retrieve the block header from the Bitcoin node using the formatted block hash
     const blockHeader = await client.getBlockHeader(formattedBlockHash);
-    // Convert the raw block header object to a JSON object
     const formattedBlockHeader = JSON.stringify(blockHeader);
+
+
+    // Convert the raw block header object to a JSON object
     //res.send(`Block Header: ${blockHeader.hash}`);
     
     const response =
@@ -166,12 +165,17 @@ app.get("/getblock1/:blockhash1", cors(corsOptions), async (req, res) => {
 });
 
 
+
+
+
+
+
 //FUNCIONA BIEN
 //inicio del ultimo getblock
-app.get("/getblock", cors(corsOptions), async (req, res) => {
+app.get("/getblock1/:blockhash1", cors(corsOptions), async (req, res) => {
   try {
-    const blockHash =
-      "000000000000000dbdd837909ace8c520d6676b56f24e9e0c423252dfe9a2e68";
+    const blockHash = req.params.blockhash1;
+     
     const blockHashBuffer = Buffer.from(blockHash, "hex");
     // Convert the const express = require('express');
     const formattedBlockHash = blockHashBuffer.toString("hex");

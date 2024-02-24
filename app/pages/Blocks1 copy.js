@@ -14,11 +14,7 @@ export default function Blocks1({blockNumberSeleccionado}) {
         //const response = await fetch(`http://localhost:3001/blockhash/`);
         const response = await fetch(`http://localhost:3001/blockhash/${blockNumberSeleccionado}`);
         const data = await response.text();
-        //data = data.replace("Hash: ", "");
-        setBlockData(data.replace("Hash: ",""));
-        
-        console.log("blockData  en Blocks1.js: "+blockData);
-        console.log("LONGITUD DE blockData: "+blockData.length);
+        setBlockData(data);
       } catch (error) {
         console.error("Error fetching block data:", error);
       }
@@ -34,7 +30,7 @@ export default function Blocks1({blockNumberSeleccionado}) {
           <h4>Block: {blockNumberSeleccionado}</h4>
         </li>
         <li className={styles4.blocks3}>
-          <h4>Hash: {blockData}</h4>
+          <h4>{blockData}</h4>
         </li>
       </ul>
 

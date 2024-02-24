@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 
 
-export default function Blocks4() {
+export default function Blocks2() {
   const [blockData, setBlockData] = useState(null);
 
   useEffect(() => {
@@ -26,8 +26,10 @@ export default function Blocks4() {
 
   return (
     <div>
+      
             {/* Aquí puedes mostrar blockData en tu interfaz de usuario */} 
       <div dangerouslySetInnerHTML={{ __html: blockData }} />
+      
       {/*<h4>Blocksssssss: {blockData}</h4>*/}
     </div>
   );

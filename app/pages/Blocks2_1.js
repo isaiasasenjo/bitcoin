@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Blocks2({ blockHash }) {
   const [blockData, setBlockData] = useState(null);
-console.log("Blockhash en el frontend:"+blockHash);
+
   useEffect(() => {
     if (!blockHash) return; // Asegúrate de que blockHash no esté vacío
 
