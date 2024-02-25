@@ -8,7 +8,7 @@ import Blocks2 from "./Blocks2";
 export default function Blocks1({blockNumberSeleccionado}) {
   const [blockData, setBlockData] = useState(null);
   useEffect(() => {
-    console.log("blockNumberSeleccionado actualizado:", blockNumberSeleccionado);
+    //console.log("blockNumberSeleccionado actualizado:", blockNumberSeleccionado);
     const fetchData = async () => {
       try {
         //const response = await fetch(`http://localhost:3001/blockhash/`);
@@ -17,9 +17,7 @@ export default function Blocks1({blockNumberSeleccionado}) {
         //data = data.replace("Hash: ", "");
         setBlockData(data.replace("Hash: ",""));
         
-        console.log("blockData  en Blocks1.js: "+blockData);
-        console.log("LONGITUD DE blockData: "+blockData.length);
-      } catch (error) {
+       } catch (error) {
         console.error("Error fetching block data:", error);
       }
     };
