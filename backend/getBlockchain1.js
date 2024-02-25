@@ -12,6 +12,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
+
 // Configurar middleware para servir archivos estáticos
 app.use(express.static('/home/eduard/bitcoin/backend'));
 const fs = require("fs");
@@ -28,12 +29,46 @@ const client = new Client({
 
 
 
+//ESTOY AQUI blockhash funciona pero blockhashnumber no
 //FUNCIONA BIEN
-//inicio del ultimo getblock
-app.get("/getblock1/:blockhash1", cors(corsOptions), async (req, res) => {
+// Define a route to get the block count
+app.get("/blockhashnumber/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
   try {
-    const blockHash = req.params.blockhash1;
-     
+    const blockNumberSeleccionado = req.params.blockNumberSeleccionado;
+    
+    //FALLA EN LA SIGUIENTE LINEA
+    const blockHash = await client.getblockhash(blockNumberSeleccionado);
+    //res.json({ blockHash }); // Devolver como JSON
+    res.send(`BlockHash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhash/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
+  try {
+   
+    // Extraer blockNumberSeleccionado de los parámetros de la URL
+    const blockNumberSeleccionado = parseInt(req.params.blockNumberSeleccionado);
+
+    // Usar blockNumberSeleccionado para obtener el hash del bloque
+    const blockHash = await client.getBlockHash(blockNumberSeleccionado);
+    res.send(`Hash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+
+//FUNCIONA BIEN
+app.get("/getblockhash/:hash", cors(corsOptions), async (req, res) => {
+  try {
+    const blockHash = req.params.hash;
+    
     const blockHashBuffer = Buffer.from(blockHash, "hex");
     // Convert the const express = require('express');
     const formattedBlockHash = blockHashBuffer.toString("hex");
@@ -42,9 +77,60 @@ app.get("/getblock1/:blockhash1", cors(corsOptions), async (req, res) => {
     // Convert the raw block header object to a JSON object
     const formattedBlockHeader = JSON.stringify(blockHeader);
     //res.send(`Block Header: ${blockHeader.hash}`);
-    
+    console.log(blockHeader);
     const response =
       "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr>BLOCK DATA</tr><tr><td>Block Number:</td><td><b>" +
+      blockHeader.height +
+      "</b></td><td>Confirmations:</td><td><b>" +
+      blockHeader.confirmations +
+      "</b></td></tr><tr><td>Block Hash:</td><td><b>" +
+      blockHeader.hash +
+      "</b></td><td>Nonce:</td><td><b>" +
+      blockHeader.nonce +
+      "</b></td></tr><tr><td>Merkle Root: </td><td><b>" +
+      blockHeader.merkleroot +
+      "</b></td><td>Number of Transactions:</td><td><b>" +
+      blockHeader.nTx +
+      "</b></td></tr><tr><td>Next Block Hash:</td><td><b>" +
+      blockHeader.nextblockhash +
+      "</b></td><td>Nonce:</td><td><h4>" +
+      blockHeader.nonce +
+      "</h4></td></tr><tr><td>Difficulty:</td><td><b>" +
+      blockHeader.difficulty +
+      "</b></td><td>Time:</td><td><b>" +
+      blockHeader.time +
+      "</b></td></tr><tr><td>Previous Block Hash:</td><td><b>" +
+      blockHeader.previousblockhash +
+      "</b></td><td>Bits:</td><td><b>" +
+      blockHeader.bits +
+      "</b></td></tr></table></body></html>";
+    res.send(response);
+    
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+
+
+//FUNCIONA BIEN
+//inicio del ultimo getblock
+app.get("/getblock/:blockHash", cors(corsOptions), async (req, res) => {
+  try {
+    
+    const blockHash = req.params.blockHash; // Obtén el hash del bloque de la URL
+    const blockHashBuffer = Buffer.from(blockHash, "hex");
+    const formattedBlockHash = blockHashBuffer.toString("hex");
+    const blockHeader = await client.getBlockHeader(formattedBlockHash);
+    const formattedBlockHeader = JSON.stringify(blockHeader);
+
+
+    // Convert the raw block header object to a JSON object
+    //res.send(`Block Header: ${blockHeader.hash}`);
+    
+    const response =
+      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr><td>Block Number:</td><td><b>" +
       blockHeader.height +
       "</b></td><td>Confirmations:</td><td><b>" +
       blockHeader.confirmations +
@@ -79,12 +165,17 @@ app.get("/getblock1/:blockhash1", cors(corsOptions), async (req, res) => {
 });
 
 
+
+
+
+
+
 //FUNCIONA BIEN
 //inicio del ultimo getblock
-app.get("/getblock", cors(corsOptions), async (req, res) => {
+app.get("/getblock1/:blockhash1", cors(corsOptions), async (req, res) => {
   try {
-    const blockHash =
-      "00000000000000128dda605ce393023a3812685c357b4d80a09b00352f13a871";
+    const blockHash = req.params.blockhash1;
+     
     const blockHashBuffer = Buffer.from(blockHash, "hex");
     // Convert the const express = require('express');
     const formattedBlockHash = blockHashBuffer.toString("hex");
@@ -93,7 +184,7 @@ app.get("/getblock", cors(corsOptions), async (req, res) => {
     // Convert the raw block header object to a JSON object
     const formattedBlockHeader = JSON.stringify(blockHeader);
     //res.send(`Block Header: ${blockHeader.hash}`);
-    console.log(blockHeader);
+    
     const response =
       "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr>BLOCK DATA</tr><tr><td>Block Number:</td><td><b>" +
       blockHeader.height +
@@ -198,11 +289,12 @@ app.get("/blockcount", cors(corsOptions),async (req, res) => {
 
 //FUNCIONA BIEN
 // Define a route to get the block count
-app.get("/blockhashnumber/:blockNumber", cors(corsOptions), async (req, res) => {
+app.get("/blockhashnumber/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
   try {
-    const blockNumber = req.params.blockNumber;
+    const blockNumberSeleccionado = req.params.blockNumberSeleccionado;
+    console.log("blockNumberSeleccionadooooooooo:"+blockNumberSeleccionado);
     //FALLA EN LA SIGUIENTE LINEA
-    const blockHash = await client.getblockhash(blockNumber);
+    const blockHash = await client.getblockhash(blockNumberSeleccionado);
     //res.json({ blockHash }); // Devolver como JSON
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
@@ -225,55 +317,6 @@ app.get("/blockhashnumber/:blockNumber", cors(corsOptions), async (req, res) => 
 
 
 
-//FUNCIONA BIEN
-app.get("/getblockhash/:hash", cors(corsOptions), async (req, res) => {
-  try {
-    const blockHash = req.params.hash;
-    console.log("ESTOY EN EL BACKEND GETBLOCKHASH");
-    
-    const blockHashBuffer = Buffer.from(blockHash, "hex");
-    // Convert the const express = require('express');
-    const formattedBlockHash = blockHashBuffer.toString("hex");
-    // Retrieve the block header from the Bitcoin node using the formatted block hash
-    const blockHeader = await client.getBlockHeader(formattedBlockHash);
-    // Convert the raw block header object to a JSON object
-    const formattedBlockHeader = JSON.stringify(blockHeader);
-    //res.send(`Block Header: ${blockHeader.hash}`);
-    console.log(blockHeader);
-    const response =
-      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =1 width=100%><tr>BLOCK DATA</tr><tr><td>Block Number:</td><td><b>" +
-      blockHeader.height +
-      "</b></td><td>Confirmations:</td><td><b>" +
-      blockHeader.confirmations +
-      "</b></td></tr><tr><td>Block Hash:</td><td><b>" +
-      blockHeader.hash +
-      "</b></td><td>Nonceeeeeeee:</td><td><b>" +
-      blockHeader.nonce +
-      "</b></td></tr><tr><td>Merkle Root: </td><td><b>" +
-      blockHeader.merkleroot +
-      "</b></td><td>Number of Transactions:</td><td><b>" +
-      blockHeader.nTx +
-      "</b></td></tr><tr><td>Next Block Hash:</td><td><b>" +
-      blockHeader.nextblockhash +
-      "</b></td><td>Nonce:</td><td><h4>" +
-      blockHeader.nonce +
-      "</h4></td></tr><tr><td>Difficulty:</td><td><b>" +
-      blockHeader.difficulty +
-      "</b></td><td>Time:</td><td><b>" +
-      blockHeader.time +
-      "</b></td></tr><tr><td>Previous Block Hash:</td><td><b>" +
-      blockHeader.previousblockhash +
-      "</b></td><td>Bits:</td><td><b>" +
-      blockHeader.bits +
-      "</b></td></tr></table></body></html>";
-    res.send(response);
-    
-  } catch (e) {
-    console.error("Error:", e);
-    res.status(500).send("An error occurred");
-  }
-});
-
 
 
 //FUNCIONA BIEN
@@ -291,9 +334,9 @@ app.get("/blockhashnumberseleccionado/:blockNumber", cors(corsOptions),async (re
 
 //FUNCIONA BIEN
 // Define a route to get the block count
-app.get("/blockhash", async (req, res) => {
+app.get("/blockhash",  cors(corsOptions), async (req, res) => {
   try {
-    const blockHash = await client.getBlockHash(1);
+    const blockHash = await client.getBlockHash(2578603);
     res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);
