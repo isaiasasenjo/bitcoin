@@ -4,45 +4,52 @@ import styles1 from "./../styles/Styles1.module.css";
 import styles2 from "./../styles/Styles2.module.css";
 //import styles3 from "./../styles/Styles3.module.css";
 import Menu from "./../components/Menu";
-import Peu from "./../components/Peu";
+//import Peu from "./../components/Peu";
 //import Blocks1 from "./Blocks1";
 //import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
 import Frontend from "./Frontend";
-//import { getBlockHash } from "bitcoin-core/src/methods";
-
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
 //  getblockhash   2500000      retorna el hash del bloque 2500000   
 
 export default function Transactions() {
   const [blockHash, setblockHash] = useState(null);
   const [blockCount, setBlockCount] = useState(null);
+  //const [lastBlock, setLastBlock] = useState(null);
   //numero de Bloque seleccionado
-  let lastBlock = 2579466; //último Bloque de la BD pero pongo uno por defecto
+  let lastBlock = 2579574; //último Bloque de la BD pero pongo uno por defecto
   const [blockNumberSeleccionado, setBlockNumberSeleccionado] =
     useState(lastBlock);
   useEffect(() => {
     // puedes hacer algo con blockCount aquí si es necesario
+ 
   }, [blockCount]); 
-
-  {
+console.log("Blockcount: "+blockCount);
+console.log("LastBlock: "+lastBlock);
+{
     Frontend({ blockCount, setBlockCount });
-  }
+}
 
+ lastBlock = blockCount;
+
+console.log("Blockcount: "+blockCount);
+console.log("LastBlock: "+lastBlock);
 
   //********************************************************** */
   //gestion de los cuadros con el número de bloque que sale en pantalla
   //********************************************************** */ 
-  const numBlocksToShow = 10;
+  const numBlocksToShow = 13;
   const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
   const blocks = [];
   const [vacio, setVacio] = useState("");
+
+  //Prodeciment Pevious block
   const handlePrevious = () => {
     if (lastBlock > currentBlock) {
       setVacio("");
       setblockHash(
-        "00000000b873e79784647a6c82962c70d228557d24a747ea4d1b8bbe878e1206"
+        null
       );
     } else {
       setVacio("LastBlock");
@@ -51,16 +58,23 @@ export default function Transactions() {
     setCurrentBlock((prevBlock) => prevBlock - numBlocksToShow);
   };
 
+  console.log("Blockcount: "+blockCount);
+  console.log("LastBlock: "+lastBlock);
+  console.log("currentBlock: "+currentBlock);
+  
+    
+  //Procediment  Next blocks
   const handleNext = () => {
     if (lastBlock > blockCount + currentBlock) {
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
       setblockHash(
-        "000000006c02c8ea6e4ff69651f7fcde348fb9d557a06e6957b65552002a7820"
+        null
       );
     } else {
       setVacio("LastBlock");
     }
   };
+
   function miAlerta(blockNumber) {
     setBlockNumberSeleccionado(blockNumber + blockCount);
 
@@ -70,7 +84,7 @@ export default function Transactions() {
   for (let i = 0; i < numBlocksToShow; i++) {
     const blockNumber = currentBlock - i;
     blocks.push(
-      <div key={blockNumber} className={styles2.cuadrado}>
+      <div key={blockNumber} className={styles2.cuadradoT}>
         <h3>
           <Link href="#" onClick={() => miAlerta(blockNumber)}>
             {blockNumber + blockCount}
@@ -83,17 +97,11 @@ export default function Transactions() {
 //*********************************************************************** */
 //***************** Acaba la gestión del pintado de los bloques en pantalla */
 //************************************************************************* */
-
-  console.log(`Estoy en Blocks.js, El hash es: ${blockHash}`);
-  console.log(`blockNumberSeleccionado: ${blockNumberSeleccionado}`);
-  
-  
   return (
     <main>
       <div className={styles2.container}>
         <Menu />
-
-        <div>
+       <div>
           <nav>
             <ul className={styles1.menu}>
               <li>
@@ -107,37 +115,9 @@ export default function Transactions() {
           </nav>
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
-
-
-
         <br></br>
-        <Peu />
+        {/* <Peu /> */}
       </div>
     </main>
   );
 }
-
-/*************
- * 
- *     <Blocks1 blockNumberSeleccionado={blockNumberSeleccionado} blockHash={blockHash}/> 
- *     <Blocks2 blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
- * 
- * 
- * <Blocks1 blockNumberSeleccionado = {blockNumberSeleccionado}/> 
- * <Blocks2 blockNumberSeleccionado = {blockNumberSeleccionado}/>
- * 
- * 
-Paso de dos parámetros de un bloque a otro
-
-Si se desea pasar dos parámetros de Blocks.js a Blocks1.js   
-COMO dos props, blockNumberSeleccionado y hash, de Bloks a tu componente Blocks1, se hace de la forma:
-
-En Blocks.js
-<Blocks1 blockNumberSeleccionado={blockNumberSeleccionado} hash={hash} />
-Dentro del componente Blocks1, se accede de la forma:
-
-En Blocks1.js
-export default function Blocks1({ blockNumberSeleccionado, hash }) {
-  // Ahora puedes usar blockNumberSeleccionado y hash dentro de tu componente
-  // ...
- */

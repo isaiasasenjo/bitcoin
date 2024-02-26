@@ -66,7 +66,7 @@ app.get("/getblock/:blockHash", cors(corsOptions), async (req, res) => {
     //res.send(`Block Header: ${blockHeader.hash}`);
     
     const response =
-      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border =0 width=100%><tr><td>Block Number:</td><td><b>" +
+      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border = 2 width=100%><tr><td>Block Number:</td><td><b>" +
       blockHeader.height +
       "</b></td><td>Confirmations:</td><td><b>" +
       blockHeader.confirmations +

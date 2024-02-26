@@ -42,7 +42,7 @@ export default function Blocks() {
     if (lastBlock > currentBlock) {
       setVacio("");
       setblockHash(
-        "00000000b873e79784647a6c82962c70d228557d24a747ea4d1b8bbe878e1206"
+        "000000006c02c8ea6e4ff69651f7fcde348fb9d557a06e6957b65552002a7820"
       );
     } else {
       setVacio("LastBlock");
@@ -51,11 +51,17 @@ export default function Blocks() {
     setCurrentBlock((prevBlock) => prevBlock - numBlocksToShow);
   };
 
+
+  console.log("Blockcount: "+blockCount);
+  console.log("LastBlock: "+lastBlock);
+  console.log("currentBlock: "+currentBlock);
+  
+   
   const handleNext = () => {
     if (lastBlock > blockCount + currentBlock) {
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);
       setblockHash(
-        "000000006c02c8ea6e4ff69651f7fcde348fb9d557a06e6957b65552002a7820"
+        "000000008b896e272758da5297bcd98fdc6d97c9b765ecec401e286dc1fdbe10"
       );
     } else {
       setVacio("LastBlock");

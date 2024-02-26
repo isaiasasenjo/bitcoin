@@ -24,6 +24,17 @@ border-radius: 5px;
     position: relative; /* Añadimos posición relativa para posicionar la línea */
 }
 
+.cuadradoT {
+    width: 80px;
+    height: 80px;
+    background: #aeb5bb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #04fa87;
+    position: relative; /* Añadimos posición relativa para posicionar la línea */
+}
+
 /* Línea h5499c7orizontal entre cuadrados */
 .cuadrado:not(:last-child)::after {
     content: '';
