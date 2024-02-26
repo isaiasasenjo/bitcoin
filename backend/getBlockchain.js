@@ -26,9 +26,115 @@ const client = new Client({
   port: 18332, // Default RPC port for testnet
 });
 
-
 // Inicio de los EndPoints
 
+
+app.get("/transactions", async (req, res) => {
+  const blockHash = "00000000004ba3893987502e7248a9d3c038c93d94f67eaae27668998682def9";
+
+  try {
+    // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
+    const block = await client.getBlock(blockHash, 2); // El segundo parámetro especifica que quieres las transacciones detalladas
+
+    if (block && block.transactions) { // Verifica que block y block.transactions existan
+      const transactions = block.transactions;
+      transactions.forEach((transaction, index) => {
+        console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
+      });
+      res.send(transactions); // Envía las transacciones como respuesta HTTP
+    } else {
+      res.status(404).send('Block or transactions not found');
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send(`An error occurred: ${error.message}`);
+  }
+});
+
+
+
+
+
+
+//Transactions with a Block
+app.get("/transactions_copia", async (req, res) => {
+  const blockHash =
+    "00000000004ba3893987502e7248a9d3c038c93d94f67eaae27668998682def9";  
+
+  // 00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9
+  // https://blockstream.i// Configurar middleware para servir archivos estáticos
+app.use(express.static('ruta_de_tus_archivos_estaticos'));
+
+  const blockHashBuffer = Buffer.from(blockHash, "hex");
+  const formattedBlockHash = blockHashBuffer.toString("hex");
+
+  try {
+    // Obtén el bloque completo (incluyendo las transacciones)
+    const block = await client.getBlock(formattedBlockHash);
+    // Accede a las transa// Configurar middleware para servir archivos estáticos
+
+    const transactions = block.transaction;
+    // Imprime la información sobre las transacciones
+    transactions.forEach((transaction, index) => {
+      console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
+    });
+    res.send(transactions); // Envia las transacciones como respuesta HTTP
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send(`An error occurred: ${error.message}`);
+  }
+});
+
+app.get("/transactions1", async (req, es) => {
+  try {
+    const blockHash =
+    "00000000004ba3893987502e7248a9d3c038c93d94f67eaae27668998682def9";
+    const blockHashBuffer = Buffer.from(blockHash, "hex");
+    const formattedBlockHash = blockHashBuffer.toString("hex");
+    const blockHeader = await client.getBlockHeader(formattedBlockHash);
+    const formattedBlockHeader = JSON.stringify(blockHeader);
+
+    // const blockJson = getblock.toJSON();
+    // const transactions = blockJson.transactions;
+
+    const transactions1 = blockHeader.transactions;
+
+    //console.log(formattedBlockHeader);
+    //console.log(blockHeader);
+    //console.log(typeof(blockHeader));
+    console.log(typeof blockHeader);
+    //console.log(typeof(blockHeader));
+  } catch (e) {
+    console.error("Error: ", e);
+    res
+      .status(500)
+      .send(`An error occurred: $ypeof(mempoolInfo2));{e.message}`);
+  }
+});
+
+
+
+
+
+app.get("/transactions2", async (req, es) => {
+  const blockHash =
+  "00000000004ba3893987502e7248a9d3c038c93d94f67eaae27668998682def9";
+  const blockHashBuffer = Buffer.from(blockHash, "hex");
+  const formattedBlockHash = blockHashBuffer.toString("hex");
+
+  try {
+    // Obtén el bloque completo (incluyendo las transacciones)
+    const block = await client.getBlock(formattedBlockHash);
+    // Accede a las transacciones del bloque
+    const transactions = block.transactions;
+    // Imprime la información sobre las transacciones
+    transactions.forEach((transaction, index) => {
+      console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+});
 
 
 //FUNCIONA BIEN
@@ -48,6 +154,24 @@ app.get("/blockhash/:blockNumberSeleccionado", cors(corsOptions), async (req, re
   }
 });
 
+
+
+//FUNCIONA BIEN
+// Define a route to get the block count
+app.get("/blockhashtx/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
+  try {
+   
+    // Extraer blockNumberSeleccionado de los parámetros de la URL
+    const blockNumberSeleccionado = parseInt(req.params.blockNumberSeleccionado);
+
+    // Usar blockNumberSeleccionado para obtener el hash del bloque
+    const blockHash = await client.getBlockHash(blockNumberSeleccionado);
+    res.send(`Hash: ${blockHash}`);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
 
 
 //FUNCIONA BIEN
@@ -296,86 +420,6 @@ app.get("/blockchaininfo", async (req, res) => {
 
 
 
-
-
-
-app.get("/transactions", async (req, res) => {
-  const blockHash =
-    "0000000000000027003b6ec59d14dc00c7284aafcdb2d26f6215ddc1ea938158";
-  // 00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9
-  // https://blockstream.i// Configurar middleware para servir archivos estáticos
-app.use(express.static('ruta_de_tus_archivos_estaticos'));
-
-  const blockHashBuffer = Buffer.from(blockHash, "hex");
-  const formattedBlockHash = blockHashBuffer.toString("hex");
-
-  try {
-    // Obtén el bloque completo (incluyendo las transacciones)
-    const block = await client.getBlock(formattedBlockHash);
-    // Accede a las transa// Configurar middleware para servir archivos estáticos
-
-    const transactions = block.transaction;
-    // Imprime la información sobre las transacciones
-    transactions.forEach((transaction, index) => {
-      console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
-    });
-    res.send(transactions); // Envia las transacciones como respuesta HTTP
-  } catch (error) {
-    console.error("Error:", error);
-    res.status(500).send(`An error occurred: ${error.message}`);
-  }
-});
-
-app.get("/transactions1", async (req, es) => {
-  try {
-    const blockHash =
-      "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
-    const blockHashBuffer = Buffer.from(blockHash, "hex");
-    const formattedBlockHash = blockHashBuffer.toString("hex");
-    const blockHeader = await client.getBlockHeader(formattedBlockHash);
-    const formattedBlockHeader = JSON.stringify(blockHeader);
-
-    // const blockJson = getblock.toJSON();
-    // const transactions = blockJson.transactions;
-
-    const transactions1 = blockHeader.transactions;
-
-    //console.log(formattedBlockHeader);
-    //console.log(blockHeader);
-    //console.log(typeof(blockHeader));
-    console.log(typeof blockHeader);
-    //console.log(typeof(blockHeader));
-  } catch (e) {
-    console.error("Error: ", e);
-    res
-      .status(500)
-      .send(`An error occurred: $ypeof(mempoolInfo2));{e.message}`);
-  }
-});
-
-
-
-
-
-app.get("/transactions2", async (req, es) => {
-  const blockHash =
-    "00000000000000214b2caa48bdb01054d59edd42fb99b55afa118e783cab15d9";
-  const blockHashBuffer = Buffer.from(blockHash, "hex");
-  const formattedBlockHash = blockHashBuffer.toString("hex");
-
-  try {
-    // Obtén el bloque completo (incluyendo las transacciones)
-    const block = await client.getBlock(formattedBlockHash);
-    // Accede a las transacciones del bloque
-    const transactions = block.transactions;
-    // Imprime la información sobre las transacciones
-    transactions.forEach((transaction, index) => {
-      console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
-    });
-  } catch (error) {
-    console.error("Error:", error);
-  }
-});
 
 
 

@@ -2,10 +2,10 @@ import React, { use, useEffect, useState } from "react";
 import Link from "next/link";
 import styles1 from "./../styles/Styles1.module.css";
 import styles2 from "./../styles/Styles2.module.css";
-import styles4 from "./../styles/Styles4.module.css";
+//import styles3 from "./../styles/Styles3.module.css";
 import Menu from "./../components/Menu";
 //import Peu from "./../components/Peu";
-import Blocks1Tx from "./Blocks1Tx";
+//import Blocks1 from "./Blocks1";
 //import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
 import Frontend from "./Frontend";
@@ -15,34 +15,34 @@ import Frontend from "./Frontend";
 export default function Transactions() {
   const [blockHash, setblockHash] = useState(null);
   const [blockCount, setBlockCount] = useState(null);
-  const [lastBlock, setlastBlock] = useState(null);
   //const [lastBlock, setLastBlock] = useState(null);
   //numero de Bloque seleccionado
-  //let lastBlock = 2579574; //último Bloque de la BD pero pongo uno por defecto
+  let lastBlock = 2579574; //último Bloque de la BD pero pongo uno por defecto
   const [blockNumberSeleccionado, setBlockNumberSeleccionado] =
     useState(lastBlock);
   useEffect(() => {
     // puedes hacer algo con blockCount aquí si es necesario
-    setlastBlock(blockCount);
+ 
   }, [blockCount]); 
 console.log("Blockcount: "+blockCount);
 console.log("LastBlock: "+lastBlock);
 {
     Frontend({ blockCount, setBlockCount });
 }
- //lastBlock = blockCount;
+
+ lastBlock = blockCount;
+
+console.log("Blockcount: "+blockCount);
+console.log("LastBlock: "+lastBlock);
+
   //********************************************************** */
   //gestion de los cuadros con el número de bloque que sale en pantalla
   //********************************************************** */ 
   const numBlocksToShow = 13;
-  const [currentBlock, setCurrentBlock] = useState(null);
+  const [currentBlock, setCurrentBlock] = useState(lastBlock);
 
   const blocks = [];
   const [vacio, setVacio] = useState("");
-
-console.log("Blockcount: "+blockCount);
-console.log("LastBlock: "+lastBlock);
-console.log("currentBlock: "+currentBlock);
 
   //Prodeciment Pevious block
   const handlePrevious = () => {
@@ -115,10 +115,8 @@ console.log("currentBlock: "+currentBlock);
           </nav>
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
-        <div>
-        <Blocks1Tx blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
+        <br></br>
         {/* <Peu /> */}
-      </div>
       </div>
     </main>
   );
