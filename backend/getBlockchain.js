@@ -27,14 +27,17 @@ const client = new Client({
 });
 
 // Inicio de los EndPoints
+//  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
+//  getblockhash   2500000      retorna el hash del bloque 2500000   
 
 
-app.get("/transactions", async (req, res) => {
-  const blockHash = "00000000004ba3893987502e7248a9d3c038c93d94f67eaae27668998682def9";
 
+app.get("/transactions/:blockData", cors(corsOptions), async (req, res) => {
   try {
     // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
-    const block = await client.getBlock(blockHash, 2); // El segundo parámetro especifica que quieres las transacciones detalladas
+    const blockData = parseInt(req.params.blockData);
+console.log(blockData);
+    const block = await client.getBlock(blockData, 2); // El segundo parámetro especifica que quieres las transacciones detalladas
 
     if (block && block.transactions) { // Verifica que block y block.transactions existan
       const transactions = block.transactions;
@@ -163,10 +166,12 @@ app.get("/blockhashtx/:blockNumberSeleccionado", cors(corsOptions), async (req, 
    
     // Extraer blockNumberSeleccionado de los parámetros de la URL
     const blockNumberSeleccionado = parseInt(req.params.blockNumberSeleccionado);
-
+    console.log("BLOCKKKKKKKKKK seleccionado: "+blockNumberSeleccionado);
     // Usar blockNumberSeleccionado para obtener el hash del bloque
     const blockHash = await client.getBlockHash(blockNumberSeleccionado);
-    res.send(`Hash: ${blockHash}`);
+    console.log("hola estoy en el backend linea 175");
+    res.send(`${blockHash}`);
+    //res.send(`Hash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);
     res.status(500).send("An error occurred");

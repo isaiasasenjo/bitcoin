@@ -2,7 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import Link from "next/link";
 import styles1 from "./../styles/Styles1.module.css";
 import styles2 from "./../styles/Styles2.module.css";
-import styles4 from "./../styles/Styles4.module.css";
+//import styles4 from "./../styles/Styles4.module.css";
 import Menu from "./../components/Menu";
 //import Peu from "./../components/Peu";
 import Blocks1Tx from "./Blocks1Tx";
@@ -116,7 +116,8 @@ console.log("currentBlock: "+currentBlock);
         </div>
         <div className={styles2.contenedor}>{blocks}</div>
         <div>
-        <Blocks1Tx blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />
+        <Blocks1Tx blockNumberSeleccionado={blockNumberSeleccionado} />
+        {/*<Blocks1Tx blockHash={blockHash} blockNumberSeleccionado={blockNumberSeleccionado} />*/}
         {/* <Peu /> */}
       </div>
       </div>

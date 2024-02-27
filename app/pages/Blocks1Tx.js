@@ -4,18 +4,19 @@ import styles4 from "./../styles/Styles4.module.css";
 import Blocks2Tx from "./Blocks2Tx";
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
 //  getblockhash   2500000      retorna el hash del bloque 2500000   
-export default function Blocks1({blockNumberSeleccionado}) {
+export default function Blocks1Tx({blockNumberSeleccionado}) {
   const [blockData, setBlockData] = useState(null);
   useEffect(() => {
     console.log("blockNumberSeleccionado actualizado:", blockNumberSeleccionado);
     const fetchData = async () => {
       try {
         //const response = await fetch(`http://localhost:3001/blockhash/`);
+        console.log(blockNumberSeleccionado);
         const response = await fetch(`http://localhost:3001/blockhashtx/${blockNumberSeleccionado}`);
         const data = await response.text();
         //data = data.replace("Hash: ", "");
         setBlockData(data.replace("Hash: ",""));
-        console.log("Hash: ", blockData);       
+        console.log(blockData);       
        } catch (error) {
         console.error("Error fetching block data:", error);
       }
@@ -36,7 +37,7 @@ export default function Blocks1({blockNumberSeleccionado}) {
           <h4>Hash: {blockData}</h4>
         </li>
       </ul>
-        <Blocks2Tx />
+        <Blocks2Tx blockData={blockData}/>
 
       {/* Aquí puedes mostrar blockData en tu interfaz de usuario 
       <div dangerouslySetInnerHTML={{ __html: blockData }} />*/}
