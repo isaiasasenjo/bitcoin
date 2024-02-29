@@ -35,11 +35,14 @@ const client = new Client({
 app.get("/transactions/:blockData", cors(corsOptions), async (req, res) => {
   try {
     // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
+    
+
     const blockHash = req.params.blockData;
+    console.log("Params recibidos en el EndPoint transactions:", req.params);
     console.log("ESTOY EN BACKEND transactions el hash del bloque vale:"+blockHash);
     const block = await client.getBlock(blockHash,2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
     //const block = await client.getBlock(blockData,2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
-
+    //console.log("blockkkkkkkk en transactions"+block);
     if (block && block.transactions) { // Verifica que block y block.transactions existan
       const transactions = block.transactions;
       transactions.forEach((transaction, index) => {
