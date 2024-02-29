@@ -15,7 +15,7 @@ import Frontend from "./Frontend";
 export default function Transactions() {
   const [blockHash, setblockHash] = useState(null);
   const [blockCount, setBlockCount] = useState(null);
-  const [lastBlock, setlastBlock] = useState(null);
+  const [lastBlock, setlastBlock] = useState(2579820);
   //const [lastBlock, setLastBlock] = useState(null);
   //numero de Bloque seleccionado
   //let lastBlock = 2579574; //último Bloque de la BD pero pongo uno por defecto
@@ -25,12 +25,14 @@ export default function Transactions() {
     // puedes hacer algo con blockCount aquí si es necesario
     setlastBlock(blockCount);
   }, [blockCount]); 
-console.log("Blockcount: "+blockCount);
-console.log("LastBlock: "+lastBlock);
+
+  console.log("Transactions.js (1) Blockcount: "+blockCount);
+console.log("Transactions.js (1) LastBlock: "+lastBlock);
 {
     Frontend({ blockCount, setBlockCount });
 }
- //lastBlock = blockCount;
+
+//lastBlock = blockCount;
   //********************************************************** */
   //gestion de los cuadros con el número de bloque que sale en pantalla
   //********************************************************** */ 
@@ -40,9 +42,9 @@ console.log("LastBlock: "+lastBlock);
   const blocks = [];
   const [vacio, setVacio] = useState("");
 
-console.log("Blockcount: "+blockCount);
-console.log("LastBlock: "+lastBlock);
-console.log("currentBlock: "+currentBlock);
+console.log("Transactions.js (2) Blockcount: "+blockCount);
+console.log("Transactions.js (2) LastBlock: "+lastBlock);
+console.log("Transactions.js (2) currentBlock: "+currentBlock);
 
   //Prodeciment Pevious block
   const handlePrevious = () => {

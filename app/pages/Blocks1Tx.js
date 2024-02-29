@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles4 from "./../styles/Styles4.module.css";
 import Blocks2Tx from "./Blocks2Tx";
+//import Blocks3Tx from "./Blocks3Tx";
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
 //  getblockhash   2500000      retorna el hash del bloque 2500000   
 export default function Blocks1Tx({blockNumberSeleccionado}) {
@@ -11,12 +12,13 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
     const fetchData = async () => {
       try {
         //const response = await fetch(`http://localhost:3001/blockhash/`);
-        console.log(blockNumberSeleccionado);
+        console.log("Blocks1Tx.js blockNumber Seleccionado: "+blockNumberSeleccionado);
         const response = await fetch(`http://localhost:3001/blockhashtx/${blockNumberSeleccionado}`);
+        console.log("ESTOY EN Blocks1Tx.js")
         const data = await response.text();
         //data = data.replace("Hash: ", "");
         setBlockData(data.replace("Hash: ",""));
-        console.log(blockData);       
+        console.log("Blocks1Tx blockData: "+blockData);       
        } catch (error) {
         console.error("Error fetching block data:", error);
       }
@@ -24,7 +26,7 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
     fetchData();  
   }, [blockNumberSeleccionado]); // Esto se ejecutará cada vez que cambien el valor de la variable blockHash
 
-  console.log("Hash: ", blockData);
+  console.log("Blocks1Tx Hash: "+ blockData);
  
   return (
     <div>
@@ -33,12 +35,17 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
           {" "}
           <h4>Block: {blockNumberSeleccionado}</h4>
         </li>
+
+        {/* Block 2579820 */}
+        
+        {/*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/}
         <li className={styles4.blocks3}>
           <h4>Hash: {blockData}</h4>
         </li>
       </ul>
-        <Blocks2Tx blockData={blockData}/>
-
+        {/*<Blocks2Tx blockData={blockData}/>*/}
+        
+    <Blocks2Tx blockData={blockData}/>
       {/* Aquí puedes mostrar blockData en tu interfaz de usuario 
       <div dangerouslySetInnerHTML={{ __html: blockData }} />*/}
 

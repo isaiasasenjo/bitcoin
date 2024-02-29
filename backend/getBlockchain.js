@@ -35,9 +35,10 @@ const client = new Client({
 app.get("/transactions/:blockData", cors(corsOptions), async (req, res) => {
   try {
     // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
-    const blockData = parseInt(req.params.blockData);
-console.log(blockData);
-    const block = await client.getBlock(blockData, 2); // El segundo parámetro especifica que quieres las transacciones detalladas
+    const blockHash = req.params.blockData;
+    console.log("ESTOY EN BACKEND transactions el hash del bloque vale:"+blockHash);
+    const block = await client.getBlock(blockHash,2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
+    //const block = await client.getBlock(blockData,2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
 
     if (block && block.transactions) { // Verifica que block y block.transactions existan
       const transactions = block.transactions;
@@ -91,7 +92,7 @@ app.use(express.static('ruta_de_tus_archivos_estaticos'));
 app.get("/transactions1", async (req, es) => {
   try {
     const blockHash =
-    "00000000004ba3893987502e7248a9d3c038c93d94f67eaae27668998682def9";
+    "0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635";
     const blockHashBuffer = Buffer.from(blockHash, "hex");
     const formattedBlockHash = blockHashBuffer.toString("hex");
     const blockHeader = await client.getBlockHeader(formattedBlockHash);
@@ -120,16 +121,20 @@ app.get("/transactions1", async (req, es) => {
 
 
 app.get("/transactions2", async (req, es) => {
+  //el bloque de abajo es el 2579820 su hash acaba en 2635  Tiene 9 Tx
+  // El hash de la primera Tx es 4e8af03fe6e0540d4fa021c0376cf3a518d39c9ceff7d4a09a84b8c0bf630076
   const blockHash =
-  "00000000004ba3893987502e7248a9d3c038c93d94f67eaae27668998682def9";
+  "0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635";
   const blockHashBuffer = Buffer.from(blockHash, "hex");
   const formattedBlockHash = blockHashBuffer.toString("hex");
-
+console.log("transactions2  blockhash: "+ blockHash);
   try {
     // Obtén el bloque completo (incluyendo las transacciones)
     const block = await client.getBlock(formattedBlockHash);
+    console.log("transactions2  block: "+ block);
     // Accede a las transacciones del bloque
     const transactions = block.transactions;
+    console.log("transactions: "+ transactions);
     // Imprime la información sobre las transacciones
     transactions.forEach((transaction, index) => {
       console.log(`Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
@@ -151,6 +156,8 @@ app.get("/blockhash/:blockNumberSeleccionado", cors(corsOptions), async (req, re
     // Usar blockNumberSeleccionado para obtener el hash del bloque
     const blockHash = await client.getBlockHash(blockNumberSeleccionado);
     res.send(`Hash: ${blockHash}`);
+    //res.json({ blockHash }); // Devolver como JSON
+    //res.send(`BlockHash: ${blockHash}`);
   } catch (e) {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
@@ -158,6 +165,7 @@ app.get("/blockhash/:blockNumberSeleccionado", cors(corsOptions), async (req, re
 });
 
 
+//  getblockhash   2500000      retorna el hash del bloque 2500000   
 
 //FUNCIONA BIEN
 // Define a route to get the block count
@@ -169,9 +177,10 @@ app.get("/blockhashtx/:blockNumberSeleccionado", cors(corsOptions), async (req, 
     console.log("BLOCKKKKKKKKKK seleccionado: "+blockNumberSeleccionado);
     // Usar blockNumberSeleccionado para obtener el hash del bloque
     const blockHash = await client.getBlockHash(blockNumberSeleccionado);
-    console.log("hola estoy en el backend linea 175");
-    res.send(`${blockHash}`);
+    console.log("hola estoy en el backend linea 175, blockHash: "+blockHash);
+    //res.send(`${blockHash}`);
     //res.send(`Hash: ${blockHash}`);
+    res.send(blockHash);
   } catch (e) {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
