@@ -30,16 +30,18 @@ const client = new Client({
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
 //  getblockhash   2500000      retorna el hash del bloque 2500000   
 
-
+ {/* Block 2579820 */}
+        
+ {/*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/}
 
 app.get("/transactions/:blockData", cors(corsOptions), async (req, res) => {
   try {
     // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
     
-
-    const blockHash = req.params.blockData;
+    const [blockHash, setBlockHash] = useState("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
+    //const blockHash = req.params.blockData;
     console.log("Params recibidos en el EndPoint transactions:", req.params);
-    console.log("ESTOY EN BACKEND transactions el hash del bloque vale:"+blockHash);
+    console.log("ESTOY EN BACKEND transactions LINEA 42 el hash del bloque vale:"+blockHash);
     const block = await client.getBlock(blockHash,2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
     //const block = await client.getBlock(blockData,2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
     //console.log("blockkkkkkkk en transactions"+block);
@@ -183,6 +185,7 @@ app.get("/blockhashtx/:blockNumberSeleccionado", cors(corsOptions), async (req, 
     console.log("hola estoy en el backend linea 175, blockHash: "+blockHash);
     //res.send(`${blockHash}`);
     //res.send(`Hash: ${blockHash}`);
+    console.log("LINEA 186 DEL BACKEND tipo de blockhash: "+typeof(blockHash));
     res.send(blockHash);
   } catch (e) {
     console.error("Error:", e);
