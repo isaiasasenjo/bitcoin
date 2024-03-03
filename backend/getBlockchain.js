@@ -29,26 +29,37 @@ const client = new Client({
 // Inicio de los EndPoints
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
 //  getblockhash   2500000      retorna el hash del bloque 2500000   
-
  {/* Block 2579820 */}
-        
  {/*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/}
 
-app.get("/transactions/:blockData", cors(corsOptions), async (req, res) => {
+app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
   try {
     // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
-    const blockHash = req.params.blockData;
-
-    //req.params;
-    console.log("LINEA 44 Params recibidos en el EndPoint transactions :", req.params);
-    console.log("LINEA 45 ESTOY EN BACKEND transactions  el hash del bloque vale:"+blockHash);
+    const blockHash = req.params.blockHash;
+    //console.log("LINEA 44 Params recibidos en el EndPoint transactions :", req.params);
+    console.log("LINEA 40 ESTOY EN BACKEND transactions  el hash del bloque vale:"+blockHash);
     const block = await client.getBlock(blockHash,2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
     //const block = await client.getBlock(blockData,2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
-    //console.log("blockkkkkkkk en transactions"+block);
+    console.log("LINEA 43 TIPO DE block: "+typeof(block));
+    //console.log("LINEA 44 block DATA: ", JSON.stringify(block, null, 2));
+
+console.log("Confirmations: ", block.confirmations);
+console.log("Height: ", block.height);
+console.log("Hash: ", block.hash);
+console.log("TXID de la Transacción 2: ", block.tx[2].txid);
+
+//console.log("TXID de la Transacción 1: ", block.transactions[2].txid);
+
+// Y así sucesivamente para otras propiedades que desees acceder
+
+
+    
+    
+    //console.log("LINEA 44 DEL BACKEND EndPoint transactions"+block);
     if (block && block.transactions) { // Verifica que block y block.transactions existan
       const transactions = block.transactions;
       transactions.forEach((transaction, index) => {
-        console.log(`LINEA 52 Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
+        console.log(`LINEA 48 Transaction ${index + 1}: ${JSON.stringify(transaction)}`);
       });
       res.send(transactions); // Envía las transacciones como respuesta HTTP
     } else {
@@ -179,7 +190,7 @@ app.get("/blockhashtx/:blockNumberSeleccionado", cors(corsOptions), async (req, 
    
     // Extraer blockNumberSeleccionado de los parámetros de la URL
     const blockNumberSeleccionado = parseInt(req.params.blockNumberSeleccionado);
-    console.log("BLOCKKKKKKKKKK seleccionado: "+blockNumberSeleccionado);
+    console.log("LINEA 178 blockhashtx blockNumberSeleccionado: "+blockNumberSeleccionado);
     // Usar blockNumberSeleccionado para obtener el hash del bloque
     const blockHash = await client.getBlockHash(blockNumberSeleccionado);
     console.log("hola estoy en el backend linea 175, blockHash: "+blockHash);
@@ -207,7 +218,7 @@ app.get("/getblock/:blockHash", cors(corsOptions), async (req, res) => {
 
 
     // Convert the raw block header object to a JSON object
-    //res.send(`Block Header: ${blockHeader.hash}`);
+    //res.send(`Block getblockhashHeader: ${blockHeader.hash}`);
     
     const response =
       "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border = 2 width=100%><tr><td>Block Number:</td><td><b>" +

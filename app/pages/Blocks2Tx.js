@@ -11,17 +11,18 @@ export default function Blocks2Tx({blockData}) {
 useEffect(() => {
   const fetchBlockHash = async () => {
     try {
-      console.log("Blocks2Tx.js blockData222: "+ blockData);
+      console.log("Blocks2Tx.js LINEA 14 blockData222: "+ blockData);
         //const response = await fetch(`http://localhost:3001/transactions/${blockData}`);
         const response = await fetch(`http://localhost:3001/transactions/${blockData}`);
 
         //fetch(`http://localhost:3001/transactions/${elHashDelBloqueAqui}`)
 
-      console.log("Blocks2Tx.js  Server Response:", response);
+      console.log("Blocks2Tx.js LINEA 20 Server Response:", response);
       const data = await response.json();
       //const data = await response.text();
-      console.log("Blocks2Tx.js DATAAAAAAAAAAAA"+data);
+      console.log("Blocks2Tx.js LINEA 23 DATAAAAAAAAAAAA"+data);
       //setBlockData(data.blockData);
+
     } catch (error) {
       console.error("Error fetching block data:", error);
     }

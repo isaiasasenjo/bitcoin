@@ -1,8 +1,8 @@
 //import { getBlockHash } from "bitcoin-core/src/methods";
 import React, { useEffect, useState } from "react";
 import styles4 from "./../styles/Styles4.module.css";
-import Blocks2Tx from "./Blocks2Tx";
-//import Blocks3Tx from "./Blocks3Tx";
+//import Blocks2Tx from "./Blocks2Tx";
+import Blocks3 from "./Blocks3";
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
 //  getblockhash   2500000      retorna el hash del bloque 2500000   
 export default function Blocks1Tx({blockNumberSeleccionado}) {
@@ -45,7 +45,7 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
       </ul>
         {/*<Blocks2Tx blockData={blockData}/>*/}
         
-    <Blocks2Tx blockData={blockData}/>
+    <Blocks3 />
       {/* Aquí puedes mostrar blockData en tu interfaz de usuario 
       <div dangerouslySetInnerHTML={{ __html: blockData }} />*/}
 
