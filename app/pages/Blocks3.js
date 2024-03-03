@@ -6,14 +6,13 @@ import React, { useEffect, useState } from "react";
 
 export default function Blocks3({}) {
   const [blockHash, setBlockHash] = useState("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
-
+  const [blockData, setBlockData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:3001/transactions/${blockHash}`);
-        //const response = await fetch(`http://localhost:3001/getblock/`);
         const data = await response.text();
-        //setBlockData(data);
+        setBlockData(data);
       } catch (error) {
         console.error("Error fetching block data:", error);
       }
@@ -26,9 +25,9 @@ export default function Blocks3({}) {
 
   return (
     <div>
-            <br></br>
       Transactions: 
-      <h4>Block: {blockHash}</h4>
+      <div dangerouslySetInnerHTML={{ __html: blockData }} />
+      
     </div>
   );
 }

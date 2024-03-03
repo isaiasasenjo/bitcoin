@@ -39,7 +39,9 @@ export default function Blocks1({blockNumberSeleccionado}) {
 
       {/* Aquí puedes mostrar blockData en tu interfaz de usuario 
       <div dangerouslySetInnerHTML={{ __html: blockData }} />*/}
+
       <Blocks2 blockHash={blockData} />
+      
     </div>
   );
 }

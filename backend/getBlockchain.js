@@ -52,10 +52,39 @@ console.log("TXID de la Transacción 2: ", block.tx[2].txid);
 
 // Y así sucesivamente para otras propiedades que desees acceder
 
+const response =
+      "<html><head></head><body><table align='center' cellspacing='2' cellpadding='2' border = 2 width=100%><tr><td>Block Number:</td><td><b>" +
+      block.height +
+      "</b></td><td>Confirmations:</td><td><b>" +
+      block.confirmations +
+      "</b></td></tr><tr><td>Block Hash:</td><td><b>" +
+      block.hash +
+      "</b></td><td>Nonce:</td><td><b>" +
+      block.nonce +
+      "</b></td></tr><tr><td>Merkle Root: </td><td><b>" +
+      block.merkleroot +
+      "</b></td><td>Number of Transactions:</td><td><b>" +
+      block.nTx +
+      "</b></td></tr><tr><td>Next Block Hash:</td><td><b>" +
+      block.nextblockhash +
+      "</b></td><td>Nonce:</td><td><h4>" +
+      block.nonce +
+      "</h4></td></tr><tr><td>Difficulty:</td><td><b>" +
+      block.difficulty +
+      "</b></td><td>Time:</td><td><b>" +
+      block.time +
+      "</b></td></tr><tr><td>Previous Block Hash:</td><td><b>" +
+      block.previousblockhash +
+      "</b></td><td>Bits:</td><td><b>" +
+      block.bits +
+      "</b></td></tr></table></body></html>";
 
+
+    res.send(response);
     
     
     //console.log("LINEA 44 DEL BACKEND EndPoint transactions"+block);
+    {/*
     if (block && block.transactions) { // Verifica que block y block.transactions existan
       const transactions = block.transactions;
       transactions.forEach((transaction, index) => {
@@ -65,6 +94,9 @@ console.log("TXID de la Transacción 2: ", block.tx[2].txid);
     } else {
       res.status(404).send('Block or transactions not found');
     }
+  */}
+
+
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send(`An error occurred: ${error.message}`);
@@ -88,7 +120,7 @@ app.use(express.static('ruta_de_tus_archivos_estaticos'));
   const blockHashBuffer = Buffer.from(blockHash, "hex");
   const formattedBlockHash = blockHashBuffer.toString("hex");
 
-  try {
+  try {const [blockData, setBlockData] = useState(null);
     // Obtén el bloque completo (incluyendo las transacciones)
     const block = await client.getBlock(formattedBlockHash);
     // Accede a las transa// Configurar middleware para servir archivos estáticos
