@@ -24,11 +24,7 @@ export default function Blocks3({}) {
 
 
   return (
-    <div>
-      Transactions: 
       <div dangerouslySetInnerHTML={{ __html: blockData }} />
-      
-    </div>
   );
 }
 

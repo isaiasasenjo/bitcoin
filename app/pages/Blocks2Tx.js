@@ -1,33 +1,51 @@
+//import { getBlockHash } from "bitcoin-core/src/methods";
 import React, { useEffect, useState } from "react";
-//import styles4 from "./../styles/Styles4.module.css";
-//import Blocks2 from "./Blocks2";
-//  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
-//  getblockhash   2500000      retorna el hash del bloque 2500000   
+
 {/* Block 2579820 */}
 {/*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/}
-export default function Blocks2Tx({blockData}) {
-  //const [blockData, setBlockData] = useState(null);
-  console.log("Blocks2Tx.js  blockData111: "+blockData);
-useEffect(() => {
-  const fetchBlockHash = async () => {
-    try {
-      console.log("Blocks2Tx.js LINEA 14 blockData222: "+ blockData);
-        //const response = await fetch(`http://localhost:3001/transactions/${blockData}`);
-        const response = await fetch(`http://localhost:3001/transactions/${blockData}`);
 
-        //fetch(`http://localhost:3001/transactions/${elHashDelBloqueAqui}`)
+export default function Blocks2Tx({}) {
+  const [blockHash, setBlockHash] = useState("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
+  const [blockData, setBlockData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/transactions/${blockHash}`);
+        const data = await response.text();
+        setBlockData(data);
+      } catch (error) {
+        console.error("Error fetching block data:", error);
+      }
+    };
 
-      console.log("Blocks2Tx.js LINEA 20 Server Response:", response);
-      const data = await response.json();
-      //const data = await response.text();
-      console.log("Blocks2Tx.js LINEA 23 DATAAAAAAAAAAAA"+data);
-      //setBlockData(data.blockData);
+    fetchData();  
+  }, [blockHash]); // Esto se ejecutará cada vez que cambien el valor de la variable blockHash
 
-    } catch (error) {
-      console.error("Error fetching block data:", error);
-    }
-  };
-  // Llama a la función de fetch cuando blockNumberSeleccionado cambia
-  fetchBlockHash();
-}, [blockData]);
+
+
+  return (
+      <div dangerouslySetInnerHTML={{ __html: blockData }} />
+  );
 }
+
+/******************************
+ * 
+ *   useEffect(() => {
+    
+    const fetchBlockHash = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/blockhashnumber/${blockNumberSeleccionado}`);
+        console.log("Server Response:", response);
+        const data = await response.json();
+        setBlockHash(data.blockHash);
+      } catch (error) {
+        console.error("Error fetching block data:", error);
+      }
+    };
+    
+    // Llama a la función de fetch cuando blockNumberSeleccionado cambia
+    fetchBlockHash();
+  }, [blockNumberSeleccionado]);
+ * 
+ * 
+ */
