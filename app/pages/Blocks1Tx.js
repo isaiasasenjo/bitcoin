@@ -9,17 +9,17 @@ import Blocks2Tx from "./Blocks2Tx";
 export default function Blocks1Tx({blockNumberSeleccionado}) {
   const [blockData, setBlockData] = useState(null);
   useEffect(() => {
-    console.log("blockNumberSeleccionado actualizado:", blockNumberSeleccionado);
+    //console.log("blockNumberSeleccionado actualizado:", blockNumberSeleccionado);
     const fetchData = async () => {
       try {
         //const response = await fetch(`http://localhost:3001/blockhash/`);
-        console.log("Blocks1Tx.js blockNumber Seleccionado: "+blockNumberSeleccionado);
+        //console.log("Blocks1Tx.js blockNumber Seleccionado: "+blockNumberSeleccionado);
         const response = await fetch(`http://localhost:3001/blockhashtx/${blockNumberSeleccionado}`);
-        console.log("ESTOY EN Blocks1Tx.js")
+        //console.log("ESTOY EN Blocks1Tx.js")
         const data = await response.text();
         //data = data.replace("Hash: ", "");
         setBlockData(data.replace("Hash: ",""));
-        console.log("Blocks1Tx blockData: "+blockData);       
+        console.log("111111111111 Blocks1Tx blockData: "+blockData);       
        } catch (error) {
         console.error("Error fetching block data:", error);
       }
@@ -27,7 +27,7 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
     fetchData();  
   }, [blockNumberSeleccionado]); // Esto se ejecutará cada vez que cambien el valor de la variable blockHash
 
-  console.log("Blocks1Tx Hash: "+ blockData);
+  //console.log("Blocks1Tx Hash: "+ blockData);
  
   return (
     <div>

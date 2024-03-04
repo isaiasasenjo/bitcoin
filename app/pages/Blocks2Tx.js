@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Blocks2Tx({blockHash}) {
   //const [blockHash, setBlockHash] = useState({blockHash});
-  console.log("44444444444444 Blocks2Tx.js BLOCKHASH: "+blockHash);
+  console.log("2222222222222 Blocks2Tx blockHash:"+blockHash);
   const [blockData, setBlockData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -29,24 +29,3 @@ export default function Blocks2Tx({blockHash}) {
   );
 }
 
-/******************************
- * 
- *   useEffect(() => {
-    
-    const fetchBlockHash = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/blockhashnumber/${blockNumberSeleccionado}`);
-        console.log("Server Response:", response);
-        const data = await response.json();
-        setBlockHash(data.blockHash);
-      } catch (error) {
-        console.error("Error fetching block data:", error);
-      }
-    };
-    
-    // Llama a la función de fetch cuando blockNumberSeleccionado cambia
-    fetchBlockHash();
-  }, [blockNumberSeleccionado]);
- * 
- * 
- */
