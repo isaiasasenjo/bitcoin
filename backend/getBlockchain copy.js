@@ -52,21 +52,26 @@ app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
           transactionsHtml += `<tr><td>Transacción ${index + 1}:</td><td>${transaction.txid}</td></tr>`;
     });
     // Y así sucesivamente para otras propiedades que desees acceder
-    const response =
-      "<html><head></head><body><b>Block Header</b><table align='center' cellspacing='2'"+
-      " cellpadding='2' border = 2 width=100%><tr><td>Previous Block:</td><td><b>" +
-      block.previousblockhash +
-      "</b></td><td>Nonce:</td><td><b>" +
-      block.nonce +
-      "</b></td></tr><tr><td>Merkle Root:</td><td><b>" +
-      block.merkleroot +
-      "</b></td><td>Time:</td><td><b>" +
-      block.time +
-      "</b></td></tr><td>Version:</td><td><b>" +
-      block.version +
-      "</b></td><td>Difficulty:</td><td><b>" +
-      block.difficulty +
-      "</b></td></tr>{transactionsHtml}</table></body></html>";
+    
+
+const response = `
+  <html>
+  <head></head>
+  <body>
+    <b>Block Header</b>
+    <table align='center' cellspacing='2' cellpadding='2' border='2' width='100%'>
+      <tr><td>Previous Block:</td><td><b>${block.previousblockhash}</b></td></tr>
+      <tr><td>Nonce:</td><td><b>${block.nonce}</b></td></tr>
+      <tr><td>Merkle Root:</td><td><b>${block.merkleroot}</b></td></tr>
+      <tr><td>Time:</td><td><b>${block.time}</b></td></tr>
+      <tr><td>Version:</td><td><b>${block.version}</b></td></tr>
+      <tr><td>Difficulty:</td><td><b>${block.difficulty}</b></td></tr>
+    </table>
+    <table align='center' cellspacing='2' cellpadding='2' border='2' width='100%'>
+      ${transactionsHtml}
+    </table>
+  </body>
+  </html>`;
 
     res.send(response);
 
