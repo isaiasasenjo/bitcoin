@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 {/* Block 2579820 */}
 {/*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/}
 
-export default function Blocks2Tx({}) {
-  const [blockHash, setBlockHash] = useState("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
+export default function Blocks2Tx({blockHash}) {
+  //const [blockHash, setBlockHash] = useState({blockHash});
+  console.log("44444444444444 Blocks2Tx.js BLOCKHASH: "+blockHash);
   const [blockData, setBlockData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {

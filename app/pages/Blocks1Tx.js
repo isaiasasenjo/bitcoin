@@ -46,7 +46,7 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
       </ul>
         {/*<Blocks2Tx blockData={blockData}/>*/}
         
-    <Blocks2Tx />
+    <Blocks2Tx blockHash={blockData}/>
       {/* Aquí puedes mostrar blockData en tu interfaz de usuario 
       <div dangerouslySetInnerHTML={{ __html: blockData }} />*/}
 
