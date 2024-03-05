@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Blocks2Tx({blockHash}) {
   //const [blockHash, setBlockHash] = useState({blockHash});
-  console.log("2222222222222 Blocks2Tx blockHash:"+blockHash);
+  console.log("linea 9 Blocks2Tx blockHash:"+blockHash);
   const [blockData, setBlockData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {

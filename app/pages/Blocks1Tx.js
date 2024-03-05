@@ -27,7 +27,7 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
     fetchData();  
   }, [blockNumberSeleccionado]); // Esto se ejecutará cada vez que cambien el valor de la variable blockHash
 
-  //console.log("Blocks1Tx Hash: "+ blockData);
+  console.log("linea 30 Blocks1Tx blockData Hash: "+ blockData);
  
   return (
     <div>

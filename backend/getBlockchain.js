@@ -41,13 +41,13 @@ app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
     const blockHash = req.params.blockHash;
     console.log("LINEA 42 blockHash1: " + blockHash);
     console.log(
-      "LINEA 43 Params recibidos en el EndPoint transactions :",
+      "LINEA 44 Params recibidos en el EndPoint transactions :",
       req.params
     );
 
     const block = await client.getBlock(blockHash, 2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
-    console.log("Hash: ", block.hash);
-    console.log("TXID de la Transacción 2: ", block.tx[2].txid);
+    console.log("linea 49 hash de la variable block: ", block.hash);
+    console.log("linea 50 TXID de la Transacción 2: ", block.tx[2].txid);
     //definimos la variable html para las Transacciones
     let transactionsHtml = "";
 
@@ -193,11 +193,11 @@ app.get(
       // Usar blockNumberSeleccionado para obtener el hash del bloque
       //FALLA ESTA LINEA DE ABAJO por getBlockHash
       const blockHash = await client.getBlockHash(blockNumberSeleccionado);
-      console.log("LINEA 178 en blockhashtx  blockHash: " + blockHash);
+      console.log("LINEA 196 en blockhashtx  blockHash: " + blockHash);
       //res.send(`${blockHash}`);
       //res.send(`Hash: ${blockHash}`);
       console.log(
-        "LINEA 186 DEL BACKEND tipo de blockhash: " + typeof blockHash
+        "LINEA 200 DEL BACKEND tipo de blockhash: " + typeof blockHash +"BLOCKHASH: "+blockHash
       );
       res.send(blockHash);
     } catch (e) {
