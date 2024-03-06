@@ -22,7 +22,7 @@ import Frontend from "./Frontend";
 
 
 export default function Transactions() {
-  const [blockHash, setblockHash] = useState("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
+  const [blockHash, setblockHash] = useState(null);
   const [blockCount, setBlockCount] = useState(null);
   const [lastBlock, setlastBlock] = useState(2579820);
   //setblockHash("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");

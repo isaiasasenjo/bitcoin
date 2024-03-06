@@ -20,13 +20,8 @@ import Frontend from "./Frontend";
   /*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/
 }
 
-
-
-
-
-
 export default function Blocks() {
-  const [blockHash, setblockHash] = useState("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
+  const [blockHash, setblockHash] = useState(null);
   const [blockCount, setBlockCount] = useState(null);
   //numero de Bloque seleccionado
   let lastBlock = 2579820; //último Bloque de la BD pero pongo uno por defecto

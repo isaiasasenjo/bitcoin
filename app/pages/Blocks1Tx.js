@@ -40,8 +40,8 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
         {/* Block 2579820 */}
         
         {/*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/}
-        <li className={styles4.blocks3}>
-          <h4>Block Hash: {blockData}</h4>
+        <li className={styles4.hash}>
+          <h3>Block Hash: {blockData}</h3>
         </li>
       </ul>
         {/*<Blocks2Tx blockData={blockData}/>*/}

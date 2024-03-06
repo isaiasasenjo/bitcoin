@@ -28,59 +28,48 @@ const client = new Client({
 // Inicio de los EndPoints
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
 //  getblockhash   2500000      retorna el hash del bloque 2500000
-{
-  /* Block 2579820 */
-}
-{
-  /*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/
-}
+/* Block 2579820 */
+/*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/
+
 
 app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
   try {
-    // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
+    // Nos aseguramos que estamos usando el hash correcto y no se necesita convertirlo
     const blockHash = req.params.blockHash;
-    console.log("LINEA 42 blockHash: " + blockHash);
-    console.log(
-      "LINEA 44 Params recibidos en el EndPoint transactions :",
-      req.params
-    );
+   
+    const block = await client.getBlock(blockHash, 2); // El segundo parámetro 1,2 especifica que queremos detallar las Tx
 
-    const block = await client.getBlock(blockHash, 2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
-    console.log("linea 49 hash de la variable block: ", block.hash);
-    console.log("linea 50 TXID de la Transacción 2: ", block.tx[2].txid);
-    //definimos la variable html para las Transacciones
+    //definimos la variable transactionsHtml para todas las Tx del bloque
     let transactionsHtml = "";
 
-    // recorremos con un forEach para recoger las Transacciones y construyendo el HTML
+    // recorremos el objeto block que es un JSON con un forEach para recoger las Tx y construimos la salida en HTML
     block.tx.forEach((transaction, index) => {
       transactionsHtml += `<tr><td>Transaction ${
         index + 1
-      }:</td><td><a id="link" href="https://blockstream.info/testnet/tx/${
+      }:</td><td><a href="https://blockstream.info/testnet/tx/${
         transaction.txid
       }" target="_blank">${transaction.txid}</a></td></tr>`;
     });
 
-    // Y así sucesivamente para otras propiedades que desees acceder
-
+    // Y así sucesivamente para otras propiedades que se desee acceder
+    // consrucción de la respuesta html que enviará la API express al FrontEnd (Blocks2Tx.js)
     const response = `
   <html>
   <head>
     <style>
       p {color: red;} 
-      a { color: #FF0000;}
+      a { color: #0000ff;}
     </style>
   </head>
   <body>
     <b>Block Header,total of 80 bytes</b>
     <table align='center' cellspacing='2' cellpadding='2' border='2' width='100%'>
-    <tr><td>Version, 4 bytes:</td><td><b>${block.version}</b></td></tr>  
-    <tr><td>Previous Block, 32 bytes:</td><td><p><b>${block.previousblockhash}</b></p></td></tr>
-    <tr><td>Merkle Root, 32 bytes:</td><td><b>${block.merkleroot}</b></td></tr>  
-    <tr><td>Time, 4 bytes:</td><td><b>${block.time}</b></td></tr>
-    <tr><td>Difficulty, 4 bytes:</td><td><b>${block.difficulty}</b></td></tr>
-    <tr><td>Nonce, 4 bytes:</td><td><b>${block.nonce}</b></td></tr>
-    
-      
+      <tr><td>Version, 4 bytes:</td><td><b>${block.version}</b></td></tr>  
+      <tr><td>Previous Block, 32 bytes:</td><td><p><b>${block.previousblockhash}</b></p></td></tr>
+      <tr><td>Merkle Root, 32 bytes:</td><td><b>${block.merkleroot}</b></td></tr>  
+      <tr><td>Time, 4 bytes:</td><td><b>${block.time}</b></td></tr>
+      <tr><td>Difficulty, 4 bytes:</td><td><b>${block.difficulty}</b></td></tr>
+      <tr><td>Nonce, 4 bytes:</td><td><b>${block.nonce}</b></td></tr>
     </table>
     <hr>
     <table align='center' cellspacing='2' cellpadding='2' border='2' width='100%'>
@@ -99,6 +88,7 @@ app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
 });
 
 //Transactions with a Block
+
 
 app.get(
   "/transactions_copia/:blockHash",
@@ -193,19 +183,12 @@ app.get(
       const blockNumberSeleccionado = parseInt(
         req.params.blockNumberSeleccionado
       );
-      console.log(
-        "LINEA 172 blockhashtx blockNumberSeleccionado: " +
-          blockNumberSeleccionado
-      );
       // Usar blockNumberSeleccionado para obtener el hash del bloque
       //FALLA ESTA LINEA DE ABAJO por getBlockHash
       const blockHash = await client.getBlockHash(blockNumberSeleccionado);
-      console.log("LINEA 196 en blockhashtx  blockHash: " + blockHash);
       //res.send(`${blockHash}`);
       //res.send(`Hash: ${blockHash}`);
-      console.log(
-        "LINEA 200 DEL BACKEND tipo de blockhash: " + typeof blockHash +"BLOCKHASH: "+blockHash
-      );
+      
       res.send(blockHash);
     } catch (e) {
       console.error("Error:", e);
