@@ -55,7 +55,7 @@ app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
     block.tx.forEach((transaction, index) => {
       transactionsHtml += `<tr><td>Transaction ${
         index + 1
-      }:</td><td><a href="https://blockstream.info/testnet/tx/${
+      }:</td><td><a id="link" href="https://blockstream.info/testnet/tx/${
         transaction.txid
       }" target="_blank">${transaction.txid}</a></td></tr>`;
     });
@@ -67,6 +67,7 @@ app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
   <head>
     <style>
       p {color: red;} 
+      a { color: #FF0000;}
     </style>
   </head>
   <body>
