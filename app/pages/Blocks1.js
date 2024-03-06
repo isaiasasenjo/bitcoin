@@ -8,7 +8,6 @@ import Blocks2 from "./Blocks2";
 export default function Blocks1({blockNumberSeleccionado}) {
   const [blockData, setBlockData] = useState(null);
   useEffect(() => {
-    //console.log("blockNumberSeleccionado actualizado:", blockNumberSeleccionado);
     const fetchData = async () => {
       try {
         //const response = await fetch(`http://localhost:3001/blockhash/`);
@@ -37,7 +36,7 @@ export default function Blocks1({blockNumberSeleccionado}) {
       </ul>
 
 
-      {/* Aquí puedes mostrar blockData en tu interfaz de usuario 
+      {/* Aquí muestro blockData en tu interfaz de usuario 
       <div dangerouslySetInnerHTML={{ __html: blockData }} />*/}
 
       <Blocks2 blockHash={blockData} />
@@ -46,8 +45,8 @@ export default function Blocks1({blockNumberSeleccionado}) {
   );
 }
 
-/******************************
- * 
+/* ¿Cómo se hace una llamada al backend? 
+ * En este caso al EndPoint blockhashnumber pasando el parámetro blockNumberSeleccionado
  *   useEffect(() => {
     
     const fetchBlockHash = async () => {
@@ -65,5 +64,4 @@ export default function Blocks1({blockNumberSeleccionado}) {
     fetchBlockHash();
   }, [blockNumberSeleccionado]);
  * 
- * 
- */
+*/

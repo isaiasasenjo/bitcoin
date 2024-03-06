@@ -54,8 +54,8 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
   );
 }
 
-/******************************
- * 
+/* ¿Cómo se hace una llamada al backend? 
+ * En este caso al EndPoint blockhashnumber pasando el parámetro blockNumberSeleccionado
  *   useEffect(() => {
     
     const fetchBlockHash = async () => {
@@ -73,5 +73,4 @@ export default function Blocks1Tx({blockNumberSeleccionado}) {
     fetchBlockHash();
   }, [blockNumberSeleccionado]);
  * 
- * 
- */
+*/

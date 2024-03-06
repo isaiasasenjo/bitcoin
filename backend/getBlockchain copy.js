@@ -30,31 +30,39 @@ const client = new Client({
 //  getblockhash   2500000      retorna el hash del bloque 2500000
 {
   /* Block 2579820 */
-} {
+}
+{
   /*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/
 }
 
 app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
   try {
-
     // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
     const blockHash = req.params.blockHash;
-    console.log("LINEA 42 blockHash1: "+blockHash);
-    console.log("LINEA 43 Params recibidos en el EndPoint transactions :", req.params);
-    
+    console.log("LINEA 42 blockHash1: " + blockHash);
+    console.log(
+      "LINEA 44 Params recibidos en el EndPoint transactions :",
+      req.params
+    );
+
     const block = await client.getBlock(blockHash, 2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
-    console.log("Hash: ", block.hash);
-    console.log("TXID de la Transacción 2: ", block.tx[2].txid);
+    console.log("linea 49 hash de la variable block: ", block.hash);
+    console.log("linea 50 TXID de la Transacción 2: ", block.tx[2].txid);
     //definimos la variable html para las Transacciones
-    let transactionsHtml = '';
+    let transactionsHtml = "";
+
     // recorremos con un forEach para recoger las Transacciones y construyendo el HTML
     block.tx.forEach((transaction, index) => {
-          transactionsHtml += `<tr><td>Transacción ${index + 1}:</td><td>${transaction.txid}</td></tr>`;
+      transactionsHtml += `<tr><td>Transaction ${
+        index + 1
+      }:</td><td><a href="https://blockstream.info/testnet/tx/${
+        transaction.txid
+      }" target="_blank">${transaction.txid}</a></td></tr>`;
     });
-    // Y así sucesivamente para otras propiedades que desees acceder
-    
 
-const response = `
+    // Y así sucesivamente para otras propiedades que desees acceder
+
+    const response = `
   <html>
   <head></head>
   <body>
@@ -67,6 +75,7 @@ const response = `
       <tr><td>Version:</td><td><b>${block.version}</b></td></tr>
       <tr><td>Difficulty:</td><td><b>${block.difficulty}</b></td></tr>
     </table>
+    <hr>
     <table align='center' cellspacing='2' cellpadding='2' border='2' width='100%'>
       ${transactionsHtml}
     </table>
@@ -76,51 +85,52 @@ const response = `
     res.send(response);
 
     //console.log("LINEA 44 DEL BACKEND EndPoint transactions"+block);
-
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send(`An error occurred: ${error.message}`);
   }
 });
 
- 
 //Transactions with a Block
 
-app.get("/transactions_copia/:blockHash", cors(corsOptions), async (req, res) => {
-  try {
-    // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
-    const blockHash = req.params.blockHash;
-    //console.log("LINEA 44 Params recibidos en el EndPoint transactions :", req.params);
-    
-    const block = await client.getBlock(blockHash, 2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
-    //console.log("Hash: ", block.hash);
-    //console.log("TXID de la Transacción 2: ", block.tx[2].txid);
+app.get(
+  "/transactions_copia/:blockHash",
+  cors(corsOptions),
+  async (req, res) => {
+    try {
+      // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
+      const blockHash = req.params.blockHash;
+      //console.log("LINEA 44 Params recibidos en el EndPoint transactions :", req.params);
 
-    // Y así sucesivamente para otras propiedades que desees acceder
+      const block = await client.getBlock(blockHash, 2); // El segundo parámetro 1,2 especifica que quieres las transacciones detalladas
+      //console.log("Hash: ", block.hash);
+      //console.log("TXID de la Transacción 2: ", block.tx[2].txid);
 
-    const response =
-      "<html><head></head><body><b>Block Header</b><table align='center' cellspacing='2'"+
-      " cellpadding='2' border = 2 width=100%><tr><td>Previous Block:</td><td><b>" +
-      block.previousblockhash +
-      "</b></td><td>Nonce:</td><td><b>" +
-      block.nonce +
-      "</b></td></tr><tr><td>Merkle Root:</td><td><b>" +
-      block.merkleroot +
-      "</b></td><td>Time:</td><td><b>" +
-      block.time +
-      "</b></td></tr><td>Version:</td><td><b>" +
-      block.version +
-      "</b></td><td>Difficulty:</td><td><b>" +
-      block.difficulty +
-      "</b></td></tr></table><hr><tr><td>Hash de la tx[0]:</td><td><b>"+
-      block.tx[0].txid +
-      "</b></td></tr></body></html>";
+      // Y así sucesivamente para otras propiedades que desees acceder
 
-    res.send(response);
+      const response =
+        "<html><head></head><body><b>Block Header</b><table align='center' cellspacing='2'" +
+        " cellpadding='2' border = 2 width=100%><tr><td>Previous Block:</td><td><b>" +
+        block.previousblockhash +
+        "</b></td><td>Nonce:</td><td><b>" +
+        block.nonce +
+        "</b></td></tr><tr><td>Merkle Root:</td><td><b>" +
+        block.merkleroot +
+        "</b></td><td>Time:</td><td><b>" +
+        block.time +
+        "</b></td></tr><td>Version:</td><td><b>" +
+        block.version +
+        "</b></td><td>Difficulty:</td><td><b>" +
+        block.difficulty +
+        "</b></td></tr></table><hr><tr><td>Hash de la tx[0]:</td><td><b>" +
+        block.tx[0].txid +
+        "</b></td></tr></body></html>";
 
-    //console.log("LINEA 44 DEL BACKEND EndPoint transactions"+block);
-    {
-      /*
+      res.send(response);
+
+      //console.log("LINEA 44 DEL BACKEND EndPoint transactions"+block);
+      {
+        /*
     if (block && block.transactions) { // Verifica que block y block.transactions existan
       const transactions = block.transactions;
       transactions.forEach((transaction, index) => {
@@ -131,17 +141,20 @@ app.get("/transactions_copia/:blockHash", cors(corsOptions), async (req, res) =>
       res.status(404).send('Block or transactions not found');
     }
   */
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).send(`An error occurred: ${error.message}`);
     }
-  } catch (error) {
-    console.error("Error:", error);
-    res.status(500).send(`An error occurred: ${error.message}`);
   }
-})
-
+);
 
 //FUNCIONA BIEN
 // Define a route to get the block count
-app.get("/blockhash/:blockNumberSeleccionado", cors(corsOptions), async (req, res) => {
+app.get(
+  "/blockhash/:blockNumberSeleccionado",
+  cors(corsOptions),
+  async (req, res) => {
     try {
       // Extraer blockNumberSeleccionado de los parámetros de la URL
       const blockNumberSeleccionado = parseInt(
@@ -158,7 +171,7 @@ app.get("/blockhash/:blockNumberSeleccionado", cors(corsOptions), async (req, re
       res.status(500).send("An error occurred");
     }
   }
-)
+);
 
 //  getblockhash   2500000      retorna el hash del bloque 2500000
 
@@ -175,18 +188,16 @@ app.get(
       );
       console.log(
         "LINEA 172 blockhashtx blockNumberSeleccionado: " +
-        blockNumberSeleccionado
+          blockNumberSeleccionado
       );
       // Usar blockNumberSeleccionado para obtener el hash del bloque
       //FALLA ESTA LINEA DE ABAJO por getBlockHash
       const blockHash = await client.getBlockHash(blockNumberSeleccionado);
-      console.log(
-        "LINEA 178 en blockhashtx  blockHash: " + blockHash
-      );
+      console.log("LINEA 196 en blockhashtx  blockHash: " + blockHash);
       //res.send(`${blockHash}`);
       //res.send(`Hash: ${blockHash}`);
       console.log(
-        "LINEA 186 DEL BACKEND tipo de blockhash: " + typeof blockHash
+        "LINEA 200 DEL BACKEND tipo de blockhash: " + typeof blockHash +"BLOCKHASH: "+blockHash
       );
       res.send(blockHash);
     } catch (e) {
@@ -194,7 +205,7 @@ app.get(
       res.status(500).send("An error occurred");
     }
   }
-)
+);
 
 //FUNCIONA BIEN
 //inicio del ultimo getblock
@@ -241,7 +252,7 @@ app.get("/getblock/:blockHash", cors(corsOptions), async (req, res) => {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
   }
-})
+});
 
 //FUNCIONA BIEN
 app.get("/getblockhash/:hash", cors(corsOptions), async (req, res) => {
@@ -288,7 +299,7 @@ app.get("/getblockhash/:hash", cors(corsOptions), async (req, res) => {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
   }
-})
+});
 
 //https://platzi.com/tutoriales/2485-backend-nodejs/22425-como-instalar-y-configurar-cors/
 // FUNCIONA BIEN
@@ -304,7 +315,7 @@ app.get("/blockcount", cors(corsOptions), async (req, res) => {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
   }
-})
+});
 
 //FUNCIONA BIEN
 app.get("/", async (req, res) => {
@@ -314,7 +325,7 @@ app.get("/", async (req, res) => {
     console.error("Error:", e);
     res.status(500).send("Error in the initial page");
   }
-})
+});
 
 //FUNCIONA BIEN
 app.get("/index1", async (req, res) => {
@@ -324,7 +335,7 @@ app.get("/index1", async (req, res) => {
     console.error("Error:", e);
     res.status(500).send("Error in the initial page");
   }
-})
+});
 
 //FUNCIONA BIEN
 app.get("/index2", async (req, res) => {
@@ -334,7 +345,7 @@ app.get("/index2", async (req, res) => {
     console.error("Error:", e);
     res.status(500).send("Error in the initial page");
   }
-})
+});
 
 //FUNCIONA BIEN
 // Define a route to get the block count
@@ -354,7 +365,7 @@ app.get(
       res.status(500).send("An error occurred");
     }
   }
-)
+);
 
 //FUNCIONA BIEN
 // Define a route to get the block count
@@ -366,16 +377,16 @@ app.get(
       const blockNumber = req.params.blockNumber;
       const blockHash = await client.getBlockHash(blockNumber);
       res.json({
-        blockHash
+        blockHash,
       }); // Devolver como JSON
     } catch (e) {
       console.error("Error:", e);
       res.status(500).json({
-        error: "An error occurred"
+        error: "An error occurred",
       }); // Devolver error como JSON
     }
   }
-)
+);
 
 //FUNCIONA BIEN
 // Define a route to get the block count
@@ -387,7 +398,7 @@ app.get("/blockhash", cors(corsOptions), async (req, res) => {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
   }
-})
+});
 
 // Define a route to get the block count
 //FUNCIONA BIEN
@@ -423,9 +434,9 @@ app.get("/blockchaininfo", async (req, res) => {
     console.error("Error:", e);
     res.status(500).send("An error occurred");
   }
-})
+});
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
-})
+});

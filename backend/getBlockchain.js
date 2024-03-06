@@ -39,7 +39,7 @@ app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
   try {
     // Asegúrate de que estás usando el hash correcto y no necesitas convertirlo
     const blockHash = req.params.blockHash;
-    console.log("LINEA 42 blockHash1: " + blockHash);
+    console.log("LINEA 42 blockHash: " + blockHash);
     console.log(
       "LINEA 44 Params recibidos en el EndPoint transactions :",
       req.params
@@ -64,16 +64,22 @@ app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
 
     const response = `
   <html>
-  <head></head>
+  <head>
+    <style>
+      p {color: red;} 
+    </style>
+  </head>
   <body>
-    <b>Block Header</b>
+    <b>Block Header,total of 80 bytes</b>
     <table align='center' cellspacing='2' cellpadding='2' border='2' width='100%'>
-      <tr><td>Previous Block:</td><td><b>${block.previousblockhash}</b></td></tr>
-      <tr><td>Nonce:</td><td><b>${block.nonce}</b></td></tr>
-      <tr><td>Merkle Root:</td><td><b>${block.merkleroot}</b></td></tr>
-      <tr><td>Time:</td><td><b>${block.time}</b></td></tr>
-      <tr><td>Version:</td><td><b>${block.version}</b></td></tr>
-      <tr><td>Difficulty:</td><td><b>${block.difficulty}</b></td></tr>
+    <tr><td>Version, 4 bytes:</td><td><b>${block.version}</b></td></tr>  
+    <tr><td>Previous Block, 32 bytes:</td><td><p><b>${block.previousblockhash}</b></p></td></tr>
+    <tr><td>Merkle Root, 32 bytes:</td><td><b>${block.merkleroot}</b></td></tr>  
+    <tr><td>Time, 4 bytes:</td><td><b>${block.time}</b></td></tr>
+    <tr><td>Difficulty, 4 bytes:</td><td><b>${block.difficulty}</b></td></tr>
+    <tr><td>Nonce, 4 bytes:</td><td><b>${block.nonce}</b></td></tr>
+    
+      
     </table>
     <hr>
     <table align='center' cellspacing='2' cellpadding='2' border='2' width='100%'>

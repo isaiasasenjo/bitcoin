@@ -12,13 +12,24 @@ import Frontend from "./Frontend";
 //import { getBlockHash } from "bitcoin-core/src/methods";
 
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
-//  getblockhash   2500000      retorna el hash del bloque 2500000   
+//  getblockhash   2500000      retorna el hash del bloque 2500000
+{
+  /* Block 2579820 */
+}
+{
+  /*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/
+}
+
+
+
+
+
 
 export default function Blocks() {
-  const [blockHash, setblockHash] = useState(null);
+  const [blockHash, setblockHash] = useState("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
   const [blockCount, setBlockCount] = useState(null);
   //numero de Bloque seleccionado
-  let lastBlock = 2579466; //último Bloque de la BD pero pongo uno por defecto
+  let lastBlock = 2579820; //último Bloque de la BD pero pongo uno por defecto
   const [blockNumberSeleccionado, setBlockNumberSeleccionado] =
     useState(lastBlock);
   useEffect(() => {

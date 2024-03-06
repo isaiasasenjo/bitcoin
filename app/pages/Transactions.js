@@ -9,13 +9,23 @@ import Blocks1Tx from "./Blocks1Tx";
 //import Blocks2 from "./Blocks2";
 //import Frontend4, { blockCount } from "./Frontend4";
 import Frontend from "./Frontend";
+
 //  getblock  "hash del block"    retorna el número del bloque del hash correspondiente
-//  getblockhash   2500000      retorna el hash del bloque 2500000   
+//  getblockhash   2500000      retorna el hash del bloque 2500000
+{
+  /* Block 2579820 */
+}
+{
+  /*0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635*/
+}
+
+
 
 export default function Transactions() {
-  const [blockHash, setblockHash] = useState(null);
+  const [blockHash, setblockHash] = useState("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
   const [blockCount, setBlockCount] = useState(null);
   const [lastBlock, setlastBlock] = useState(2579820);
+  //setblockHash("0000000000000009dcd8ee8f641154453722d6c099f4b4458dfb36dc2d7c2635");
   //const [lastBlock, setLastBlock] = useState(null);
   //numero de Bloque seleccionado
   //let lastBlock = 2579574; //último Bloque de la BD pero pongo uno por defecto
@@ -38,15 +48,11 @@ console.log("Transactions.js (1) LastBlock: "+lastBlock);
   //********************************************************** */ 
   const numBlocksToShow = 13;
   const [currentBlock, setCurrentBlock] = useState(null);
-
   const blocks = [];
   const [vacio, setVacio] = useState("");
 
-console.log("Transactions.js (2) Blockcount: "+blockCount);
-console.log("Transactions.js (2) LastBlock: "+lastBlock);
-console.log("Transactions.js (2) currentBlock: "+currentBlock);
 
-  //Prodeciment Pevious block
+  //Prodeciment Previous block
   const handlePrevious = () => {
     if (lastBlock > currentBlock) {
       setVacio("");
@@ -60,12 +66,8 @@ console.log("Transactions.js (2) currentBlock: "+currentBlock);
     setCurrentBlock((prevBlock) => prevBlock - numBlocksToShow);
   };
 
-  console.log("Blockcount: "+blockCount);
-  console.log("LastBlock: "+lastBlock);
-  console.log("currentBlock: "+currentBlock);
-  
     
-  //Procediment  Next blocks
+  //Procediment  Next block
   const handleNext = () => {
     if (lastBlock > blockCount + currentBlock) {
       setCurrentBlock((prevBlock) => prevBlock + numBlocksToShow);

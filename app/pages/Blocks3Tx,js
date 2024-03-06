@@ -8,13 +8,11 @@ export default function Blocks3Tx({blockData}) {
 useEffect(() => {
   const fetchBlockHash = async () => {
     try {
-      console.log("Blocks3Tx.js blockData: "+ blockData);
         //const response = await fetch(`http://localhost:3001/transactions/${blockData}`);
-        const response = await fetch(`http://localhost:3001/transactions/${blockData}`);
-      console.log("Blocks3Tx.js  Server Response:", response);
+      const response = await fetch(`http://localhost:3001/transactions/${blockData}`);
       const data = await response.json();
       //const data = await response.text();
-      console.log("Blocks3Tx.js DATAAAAAAAAAAAA"+data);
+      
       setBlockData(data.blockData);
     } catch (error) {
       console.error("Error fetching block data:", error);
