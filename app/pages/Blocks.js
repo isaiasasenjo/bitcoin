@@ -58,10 +58,6 @@ export default function Blocks() {
   };
 
 
-  console.log("Blockcount: "+blockCount);
-  console.log("LastBlock: "+lastBlock);
-  console.log("currentBlock: "+currentBlock);
-  
    
   const handleNext = () => {
     if (lastBlock > blockCount + currentBlock) {
@@ -79,6 +75,8 @@ export default function Blocks() {
     return blockNumberSeleccionado;
   }
 
+ //FALTA POR HACER 
+//Aquí tengo que poner color azul a los números de los bloques 
   for (let i = 0; i < numBlocksToShow; i++) {
     const blockNumber = currentBlock - i;
     blocks.push(
