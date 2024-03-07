@@ -84,9 +84,9 @@ console.log("LastBlock: "+lastBlock);
   for (let i = 0; i < numBlocksToShow; i++) {
     const blockNumber = currentBlock - i;
     blocks.push(
-      <div key={blockNumber} className={styles2.cuadradoT}>
+      <div key={blockNumber} className={styles2.cuadrado}>
         <h3>
-          <Link href="#" onClick={() => miAlerta(blockNumber)}>
+          <Link href="#" onClick={() => miAlerta(blockNumber)}className={styles2.numeroBloque}>
             {blockNumber + blockCount}
           </Link>
         </h3>

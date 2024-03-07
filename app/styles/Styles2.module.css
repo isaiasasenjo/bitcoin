@@ -21,7 +21,22 @@ border-radius: 5px;
     align-items: center;
     justify-content: center;
     border: 3px solid #73828f;
-    position: relative; /* Añadimos posición relativa para posicionar la línea */
+    position: relative; /* Posición relativa necesaria para el pseudo-elemento */
+}
+
+.cuadrado:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 20px; /* Este ancho debería ser el espacio deseado entre cuadrados */
+    height: 2px; /* Altura de la línea */
+    background: #000;
+    bottom: 50%;
+    right: -20px; /* Mueve la línea hacia la izquierda fuera del cuadrado */
+    transform: translateY(50%);
+}
+
+.numeroBloque {
+    color: #2b6691; /* El color que desees */
 }
 
 .cuadradoT {
@@ -35,18 +50,17 @@ border-radius: 5px;
     position: relative; /* Añadimos posición relativa para posicionar la línea */
 }
 
-
-/* Línea h5499c7orizontal entre cuadrados */
-.cuadrado:not(:last-child)::after {
+.cuadradoT:not(:last-child)::after {
     content: '';
     position: absolute;
-    width: calc(100% + 20px); /* Ancho igual al ancho del cuadrado más el espacio entre cuadrados */
+    width: 20px; /* Este ancho debería ser el espacio deseado entre cuadrados */
     height: 2px; /* Altura de la línea */
     background: #000;
     bottom: 50%;
-    left: 100%; /* Ajusta la posición de la línea según sea necesario */
-    transform: trans/* Estilos para los submenús */lateY(-50%);
+    right: -20px; /* Mueve la línea hacia la izquierda fuera del cuadrado */
+    transform: translateY(50%);
 }
+
 
 
 .cabecera{

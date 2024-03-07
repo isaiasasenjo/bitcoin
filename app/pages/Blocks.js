@@ -82,9 +82,11 @@ export default function Blocks() {
     blocks.push(
       <div key={blockNumber} className={styles2.cuadrado}>
         <h3>
-          <Link href="#" onClick={() => miAlerta(blockNumber)}>
-            {blockNumber + blockCount}
-          </Link>
+        <Link href="#" onClick={() => miAlerta(blockNumber)} className={styles2.numeroBloque}>
+    {blockNumber + blockCount}
+</Link>
+
+
         </h3>
       </div>
     );
