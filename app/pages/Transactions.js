@@ -90,7 +90,7 @@ console.log("Transactions.js (1) LastBlock: "+lastBlock);
     blocks.push(
       <div key={blockNumber} className={styles2.cuadradoT}>
         <h3>
-          <Link href="#" onClick={() => miAlerta(blockNumber)}>
+          <Link href="#" onClick={() => miAlerta(blockNumber)}className={styles2.numeroBloque}>
             {blockNumber + blockCount}
           </Link>
         </h3>
