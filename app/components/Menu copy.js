@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import "./../styles/Styles2.module.css";
-import styles1 from "../styles/Styles1.module.css";
-import styles2 from "../styles/Styles2.module.css";
+//import styles1 from "../styles/Styles1.module.css";
+//import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
 import styles4 from "../styles/Styles4.module.css";
-//import Blocks from "../pages/Blocks";
-//import Transactions from "../pages/Transactions";
+//import Blocks from "../pages/Blocks01";
+//import Transactions from "./../pages/Transactions";
 //import Mempool from "../pages/Mempool";
 //import Lightning from "../pages/Lightning";
 //import Frontend2 from "../pages/Frontend2";
@@ -42,6 +42,12 @@ const Menu = () => {
               Transactions
             </Link>
           </li>
+                    <li>
+            <Link href="/Contacts" className={styles3.enlacesMenu}>
+              Contact
+            </Link>
+          </li>
+          
           <li>
             <Link href="/Network" className={styles3.enlacesMenu}>
               Network

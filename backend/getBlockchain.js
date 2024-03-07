@@ -56,7 +56,7 @@ app.get("/transactions/:blockHash", cors(corsOptions), async (req, res) => {
   <html>
   <head>
     <style>
-      p {color: red;} 
+      p {color: #3f73ad;} 
       a { color: #0000ff;}
     </style>
   </head>
@@ -102,7 +102,7 @@ app.get("/getblock/:blockHash", cors(corsOptions), async (req, res) => {
     //res.send(`Block getblockhashHeader: ${blockHeader.hash}`);
 
     const response =
-      "<html><head><style> p {color: red;}</style></head>" +
+      "<html><head><style> p {color: #3f73ad;}</style></head>" +
       "<body><table align='center' cellspacing='2' cellpadding='2' border = 2 width=100%><tr><td>Block Number:</td><td><b>" +
       blockHeader.height +
       "</b></td><td>Confirmations:</td><td><b>" +
@@ -387,7 +387,7 @@ app.get("/blockhash", cors(corsOptions), async (req, res) => {
 
 // Define a route to get the block count
 //FUNCIONA BIEN
-app.get("/blockchaininfo", async (req, res) => {
+app.get("/blockchaininfo", cors(corsOptions), async (req, res) => {
   try {
     //Aquí tenim un objecte blockchaininfo
     const blockChainInfo = await client.getBlockchainInfo();
@@ -395,25 +395,25 @@ app.get("/blockchaininfo", async (req, res) => {
     const blockchainInfoString = JSON.stringify(blockChainInfo);
 
     const response =
-      "<html><body><table border=2><tr><td>Concept</td><td>Result</td></tr> <tr><td>Network: </td><td><h3>" +
+      "<html><body><table border=1> <tr><td>Network: </td><td><h4>" +
       blockChainInfo.chain +
-      "</h3> </td></tr><tr><td>Number of Blockssssssss: </td><td><h3>" +
+      "</h4> </td></tr><tr><td>Number of Blocks: </td><td><h4>" +
       blockChainInfo.blocks +
-      "</h3></td></tr> <tr><td>Best Block Hash: </td><td><h3>" +
+      "</h4></td></tr> <tr><td>Best Block Hash: </td><td><h4>" +
       blockChainInfo.bestblockhash +
-      "</h3></td></tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h3>" +
+      "</h4></td></tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.bip34.height +
-      "</h3></td></tr><tr><td></td><td>Fork number two (bip 66) in block number:  </td><td><h3>" +
+      "</h4></td></tr><tr><td></td><td>Fork number two (bip 66) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.bip66.height +
-      "</h3></td></tr><tr><td></td><td>Fork number three (bip 65) in block number:  </td><td><h3>" +
+      "</h4></td></tr><tr><td></td><td>Fork number three (bip 65) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.bip65.height +
-      "</h3></td></tr><tr><td></td><td>Fork number four (bip csv) in block number:  </td><td><h3>" +
+      "</h4></td></tr><tr><td></td><td>Fork number four (bip csv) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.csv.height +
-      "</h3></td></tr><tr><td></td><td>Fork number five (segwit) in block number:  </td><td><h3>" +
+      "</h4></td></tr><tr><td></td><td>Fork number five (segwit) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.segwit.height +
-      "</h3></td></tr><tr><td></td><td>Fork number six (taproot) in block number:  </td><td><h3>" +
+      "</h4></td></tr><tr><td></td><td>Fork number six (taproot) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.taproot.height +
-      "</h3></td></tr></table></body></html>";
+      "</h4></td></tr></table></body></html>";
     res.send(response);
   } catch (e) {
     console.error("Error:", e);

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Menu from '../components/Menu'
 import Peu from '../components/Peu'
-import Historia from '../pages/Historia'
+import Historia1 from '../pages/Historia1'
 
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
 {/* <App /> */}
 
 <Menu />
-<Historia />
+<Historia1 />
 <Peu />
       <Head>
         <title>Bitcoin</title>

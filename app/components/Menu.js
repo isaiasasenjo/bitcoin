@@ -1,15 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import "./../styles/Styles2.module.css";
-//import styles1 from "../styles/Styles1.module.css";
-//import styles2 from "../styles/Styles2.module.css";
 import styles3 from "../styles/Styles3.module.css";
 import styles4 from "../styles/Styles4.module.css";
-//import Blocks from "../pages/Blocks01";
-//import Transactions from "./../pages/Transactions";
-//import Mempool from "../pages/Mempool";
-//import Lightning from "../pages/Lightning";
-//import Frontend2 from "../pages/Frontend2";
 
 //import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 //import language from "./../js/lang.json"; //language es un objecte que apunta al fitxer idioma.json
@@ -23,8 +16,6 @@ import styles4 from "../styles/Styles4.module.css";
 
 // import Boton from "./Boton";
 const Menu = () => {
-
-
   return (
     <div>
       <nav>

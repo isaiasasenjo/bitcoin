@@ -7,7 +7,7 @@
 
 .enlaces{
 background-color: #5497c7;
-color: #000000;
+color: #f3f0f0;
 text-decoration: none;
 padding: 3px;
 border-radius: 5px;
@@ -16,24 +16,25 @@ border-radius: 5px;
 .cuadrado {
     width: 100px;
     height: 100px;
-    background: #aeb5bb;
+    background: #98e8eb83;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid #fa0404;
+    border: 3px solid #73828f;
     position: relative; /* Añadimos posición relativa para posicionar la línea */
 }
 
 .cuadradoT {
     width: 80px;
     height: 80px;
-    background: #aeb5bb;
+    background: #98e8eb83;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid #04fa87;
+    border: 3px solid #73828f;
     position: relative; /* Añadimos posición relativa para posicionar la línea */
 }
+
 
 /* Línea h5499c7orizontal entre cuadrados */
 .cuadrado:not(:last-child)::after {
