@@ -25,18 +25,7 @@ const Historia = () => {
         New coins are created as part of the Bitcoin mining process. Bitcoins
         are rewarded to miners who operate computer systems that help to secure
         the network and validate incoming transactions. These Bitcoin miners run
-        full nodes and use specialized hardware otherwise known as Application
-        Specific Integrated Circuit Chips (ASICs) to find and generate new
-        blocks. Once a series of computationally demanding problems have been
-        solved a completed -block- is added to the ever-growing -chain-, this
-        mining process can fluctuate and become easier or harder depending on
-        network demand and value, this is known as the network difficulty.
-        Besides block rewards, miners also collect transaction fees which
-        further incentivizes them to secure the network and verify transactions.
-        This independent network of miners also decreases the chance for fraud
-        or false information to be recorded, as the majority of miners need to
-        confirm the authenticity of each block of data before it is added to the
-        blockchain, in a process known as -proof of work.-
+        full nodes and use specialized hardware.
       </p>
     </div>
   );

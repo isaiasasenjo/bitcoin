@@ -144,4 +144,14 @@
     color: #3f73ad;
 }
 
-
+.lista-falsa-tabla li {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .lista-falsa-tabla li div {
+    /* Ajustes para cada "columna" */
+    width: 30%; /* Ajusta según el ancho deseado */
+    text-align: center; /* O cualquier alineación deseada */
+  }
+  

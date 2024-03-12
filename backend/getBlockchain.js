@@ -385,9 +385,11 @@ app.get("/blockhash", cors(corsOptions), async (req, res) => {
   }
 });
 
+
+
 // Define a route to get the block count
 //FUNCIONA BIEN
-app.get("/blockchaininfo", cors(corsOptions), async (req, res) => {
+app.get("/blockchaininfo1", cors(corsOptions), async (req, res) => {
   try {
     //Aquí tenim un objecte blockchaininfo
     const blockChainInfo = await client.getBlockchainInfo();
@@ -395,6 +397,8 @@ app.get("/blockchaininfo", cors(corsOptions), async (req, res) => {
     const blockchainInfoString = JSON.stringify(blockChainInfo);
 
     const response =
+
+
       "<html><body><table border=1> <tr><td>Network: </td><td><h4>" +
       blockChainInfo.chain +
       "</h4> </td></tr><tr><td>Number of Blocks: </td><td><h4>" +
@@ -414,6 +418,40 @@ app.get("/blockchaininfo", cors(corsOptions), async (req, res) => {
       "</h4></td></tr><tr><td></td><td>Fork number six (taproot) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.taproot.height +
       "</h4></td></tr></table></body></html>";
+    res.send(response);
+  } catch (e) {
+    console.error("Error:", e);
+    res.status(500).send("An error occurred");
+  }
+});
+
+//FUNCIONA BIEN
+app.get("/blockchaininfo", cors(corsOptions), async (req, res) => {
+  try {
+    //Aquí tenim un objecte blockchaininfo
+    const blockChainInfo = await client.getBlockchainInfo();
+    //console.log(blockChainInfo.chain);
+    const blockchainInfoString = JSON.stringify(blockChainInfo);
+
+    const response =
+      "<html>  <head><style>.colortitle {color: #cb3234; font-size: 20px; font-weight: bold;}" +
+      " a {color: #5166E7;}" +
+      " dt { margin-top: 10px; }" + "dt a { font-weight: bold; } </style></head><body>" +
+      "<dl li {display: flex;justify-content: space-between;}" +
+      "li div {width: 50%; text-align: center;}" +
+      "<dt><span class='colortitle'> Bitcoin Database Information</span></dt>" +
+      "<dt>Network: <a>"+blockChainInfo.chain+"</a></dt>" +
+      "<dt>Number of Blocks: <a>"+blockChainInfo.blocks+"</a></dt>" +
+      "<dt>Best Block Hash: <a>"+blockChainInfo.bestblockhash+"</a></dt>" +
+      "<dt>Soft Fork number 1 (bip34) in block Number: <a>"+blockChainInfo.softforks.bip34.height+"</a></dt>" +
+      "<dt>Soft Fork number 2 (bip 66) in block number: <a>"+blockChainInfo.softforks.bip66.height+"</a></dt>" +
+      "<dt>Soft Fork number 3 (bip 65) in block Number: <a>"+blockChainInfo.softforks.bip65.height+"</a></dt>" +
+      "<dt>Fork number 4 (bip csv) in block Number: <a>"+blockChainInfo.softforks.csv.height+"</a></dt>" +
+      "<dt>Fork number 5 (segwit) in blockNumber: <a>"+blockChainInfo.softforks.segwit.height+"</a></dt>" +
+      "<dt>Fork number 6 (taproot) in block Number: <a>"+blockChainInfo.softforks.taproot.height+"</a></dt>" +
+      "</dl>" +
+    
+     "</body></html>";
     res.send(response);
   } catch (e) {
     console.error("Error:", e);
