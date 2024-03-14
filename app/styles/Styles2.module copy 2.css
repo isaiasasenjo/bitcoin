@@ -1,0 +1,180 @@
+.contenedor {
+    display: flex; /* Utilizamos Flexbox para el contenedor */
+    gap: 10px; /* Separación entre los elementos dentro del contenedor */
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+.enlaces{
+background-color: #5497c7;
+color: #f3f0f0;
+text-decoration: none;
+padding: 3px;
+border-radius: 5px;
+}
+
+.cuadrado {
+    width: 100px;
+    height: 100px;
+    background: #98e8eb83;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #73828f;
+    position: relative; /* Posición relativa necesaria para el pseudo-elemento */
+}
+
+.cuadrado:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 20px; /* Este ancho debería ser el espacio deseado entre cuadrados */
+    height: 2px; /* Altura de la línea */
+    background: #000;
+    bottom: 50%;
+    right: -20px; /* Mueve la línea hacia la izquierda fuera del cuadrado */
+    transform: translateY(50%);
+}
+
+.numeroBloque {
+    color: #0000ff; /* El color que desees */
+}
+
+.cuadradoT {
+    width: 80px;
+    height: 80px;
+    background: #98e8eb83;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #73828f;
+    position: relative; /* Añadimos posición relativa para posicionar la línea */
+}
+
+.cuadradoT:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 20px; /* Este ancho debería ser el espacio deseado entre cuadrados */
+    height: 2px; /* Altura de la línea */
+    background: #000;
+    bottom: 50%;
+    right: -20px; /* Mueve la línea hacia la izquierda fuera del cuadrado */
+    transform: translateY(50%);
+}
+
+
+
+.cabecera{
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    background-color:#cccfdf;
+}
+
+
+.logotip{
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 10px;
+    letter-spacing: 4px;
+    background-color: #dbd4d4;
+}
+
+/* Estilos para los submenús */
+
+
+/* Estilos para los submenús */
+
+#blocks{.tabla1 td:nth-child(1) {
+    width: 200px;
+  }
+
+    margin:40px;
+}
+
+
+.cabecera-tabla{
+    padding:10px;
+    
+    word-spacing:7px;
+    letter-spacing: 12px;
+    border-spacing: 5px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-color: rgb(0, 0, 0);  
+    background-color: rgb(247, 246, 245);    
+}
+
+.tabla1{
+    width:100%;
+    background-color: #ccc;
+    border: rgb(10, 10, 10) 1px solid;
+    border-collapse: separate;  
+}
+
+.table-endpoints{
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: large;
+    border: 1;
+    padding: 2px;
+}
+
+.footer{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    color: black;   
+    margin-top: 300px;
+    background-color:#cccfdf;
+}
+
+.h2{  
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+    font-size: 20px;
+    margin-top: 10px;    
+}
+
+
+/* Estilos para los submenús */
+.ul1 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.li1 {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Estilos para los submenús */
+
+.ul1--ul1 {
+    display: none;
+    position: absolute;
+    min-width: 140px;
+    background-color: #8f5757;
+    border: 1px solid #ccc;
+    z-index: 1;
+    top: 100%;
+    /* Cambiado de left a top para que aparezca debajo */
+    left: 0;
+}
+
+
+.li2 {
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+    /* Añadido para que el submenú sea relativo a este elemento */
+}
+
+
+.ul2--li1:hover>ul {
+    display: inherit;
+}
