@@ -405,7 +405,7 @@ app.get("/blockchaininfo1", cors(corsOptions), async (req, res) => {
       blockChainInfo.blocks +
       "</h4></td></tr> <tr><td>Best Block Hash: </td><td><h4>" +
       blockChainInfo.bestblockhash +
-      "</h4></td></tr> <tr><td>Forks: </td><td>Fork number one (bip34) in block number:  </td><td><h4>" +
+      "</h4></td></tr> <tr><td>Fohttps://github.com/isaiasasenjo/bitcoin.gitrks: </td><td>Fork number one (bip34) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.bip34.height +
       "</h4></td></tr><tr><td></td><td>Fork number two (bip 66) in block number:  </td><td><h4>" +
       blockChainInfo.softforks.bip66.height +
@@ -458,6 +458,7 @@ app.get("/blockchaininfo", cors(corsOptions), async (req, res) => {
     res.status(500).send("An error occurred");
   }
 });
+p
 
 // Start the server
 app.listen(port, () => {

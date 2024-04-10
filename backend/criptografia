@@ -1,0 +1,33 @@
+Valor de X, es un numéro Entero de 77 cifras. Osea > 10^77
+55066263022277343669578718895168534326250603453777594175500187360389116729240
+
+PASO 1 OK Lo pasamos a hexadcimal con la web https://www.prepostseo.com/tool/es/decimal-to-hex
+En hexadecimal sería
+79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798
+Añadimos 02 al principio porque la Y es par ya que acaba en 4
+0279BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798
+
+Hacemos el hash SHA256
+0f715baf5d4c2ed329785cef29e562f73488c8a2bb9dbc5700b361d54b9b0554
+
+Paso 2 OK la salida obtenida se aplica el algoritmo RIPEMD-160 obteniéndose una secuencia de 160 bits.
+
+751e76e8199196d454941c45d1b3a323f1433bd6
+
+Paso 3 OK
+A la salida anterior se añade al principio el byte 00 porque se trata de la red Mainnet o la red principal
+
+00751e76e8199196d454941c45d1b3a323f1433bd6
+
+Paso 4 NO Para calcular el checksum (mecanismo de verificación para asegurarse que la dirección bitcoin está bien escrita) se aplica el algoritmo SHA-256 dos veces al resultado obtenido en el paso 3, se seleccionan los primeros 4 bytes del último hash SHA-256 los cuales representan el checksum de la dirección bitcoin.
+
+Double SHA256
+
+510d1634d943109b69da527ef5948106f22b655fb5193b4e9ef7e4dcd342d245
+
+Primer hash sha256
+c5a2ed70d2c035108c2415792162a6daaf21e6dc015ace0f9a458dd3f01da598
+Segundo hash
+510d1634d943109b69da527ef5948106f22b655fb5193b4e9ef7e4dcd342d245
+
+NO me da el Checksum = 4352f398
